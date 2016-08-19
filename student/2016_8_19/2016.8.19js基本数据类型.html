@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js基本数据类型</title>
+		<script>
+		//基本数据类型 简单
+//			var String = "iutiuyiu";
+//			var num = 1;
+//			var bool = true;
+//			var undef = undefined;
+//			
+//			var func = function(){};
+//			var nu = null;
+//			
+//			var arr = [];
+//			var obj = obiect;
+			//定义函数
+//			var func =function(){};
+//			function func(){};
+			//回调函数
+			var funname1 = function(){
+				console.log("abc");
+			};
+			var funname2 = function(){
+				console.log("dfg");
+			};
+			
+//			function dosome(dodo){
+//				setTimeout(dodo,1000);
+//				
+//			}
+			function dosome(dodo){
+				setTimeout(function() {
+					dodo();
+				},1000);
+				
+			}
+			
+			dosome(funname2);
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	
+		
+	</body>
+</html>
