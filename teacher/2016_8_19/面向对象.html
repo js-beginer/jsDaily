@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="slider">
+    <ul>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+    </ul>
+    <ol>
+        <li><a class="numBtn" href="javascript:;">1</a></li>
+        <li><a class="numBtn" href="javascript:;">2</a></li>
+        <li><a class="numBtn" href="javascript:;">3</a></li>
+        <li><a class="numBtn" href="javascript:;">4</a></li>
+    </ol>
+    <a href="javascript:;" class="prev">上一个</a>
+    <a href="javascript:;" class="next">下一个</a>
+</div>
+
+
+<div id="slider2">
+    <ul>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+        <li class="picItem">
+            <img src="" alt="">
+        </li>
+    </ul>
+    <ol>
+        <li><a class="numBtn" href="javascript:;">1</a></li>
+        <li><a class="numBtn" href="javascript:;">2</a></li>
+        <li><a class="numBtn" href="javascript:;">3</a></li>
+        <li><a class="numBtn" href="javascript:;">4</a></li>
+    </ol>
+    <a href="javascript:;" class="prev">上一个</a>
+    <a href="javascript:;" class="next">下一个</a>
+</div>
+<script>
+    var slider = {
+        leftMove:function(){
+            $("#slider .prev").click(function(){
+
+            })
+        },
+        rightMove:function(){
+            $("#slider .next").click(function(){
+
+            })
+        },
+        numMove:function(){
+            $("#slider .numBtn").click(function(){
+
+            })
+        },
+        init:function(){
+            this.leftMove();
+            this.rightMove();
+            this.numMove();
+        }
+    };
+
+    slider.init();
+
+
+    var obj = {
+        name:"liuyue",
+        sex:30,
+        doSomething:function(){
+
+        }
+    }
+
+</script>
+</body>
+</html>
