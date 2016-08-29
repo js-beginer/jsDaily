@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>留言板</title>
 		<script src="jquery-1.9.1.js"></script>
 		<script src="lyb.js"></script>
 		<style>
-			.main{
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.main {
 				width: 500px;
 				margin: 0 auto;
 			}
-			.text{
+			
+			.text {
 				width: 500px;
 				height: 200px;
 				margin: 20px 0;
 			}
-			.list{
+			
+			.list {
 				background-color: gainsboro;
 				margin: 10px 0;
 				padding: 2px 0;
 				text-decoration: none;
 				position: relative;
 			}
-			.list a{
+			
+			.list a {
 				text-decoration: none;
 				color: black;
 			}
 			
+			.rem {
+				position: absolute;
+				top: 0;
+				right: 0;
+				color: red;
+			}
+			
 		</style>
 	</head>
+
 	<body>
 		<div class="main">
 			<h3>留言内容：</h3>
@@ -39,34 +56,9 @@
 			<br />
 			<input class="btn" type="button" value="发表留言" />
 		</div>
+
 		
-		<div id="div1" style="width:100px; height:100px; background:red;">
-			<a href="javascript:;">link1111111111</a>
-		</div>
-		
-		<script>
-			//$("#div1").mouseover(function(){console.log("mouseover")});
-			//$("#div1").mouseenter(function(){console.log("mouseenter")});
-			
-			$("#div1").click(function(){
-				console.log("div111111");
-			})
-			
-			$("#div1").click(function(){
-				console.log("div222222");
-			})
-			
-			var div1 = document.getElementById("div1");
-			div1.onclick = function(){
-				console.log("div3333333");
-			};
-			div1.onclick = function(){
-				console.log("div4444444");
-			};
-			
-			//addEventListener();
-			
-		</script>
-		
+
 	</body>
+
 </html>

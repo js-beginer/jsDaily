@@ -1,0 +1,97 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.main{
+	border: gray 1px solid;
+	width: 840px;
+	margin: 200px auto;
+	overflow: hidden;
+}
+.caption{
+	position: relative;
+	background-color: gainsboro;
+	padding: 5px;
+	line-height: 30px;
+	cursor: n;
+}
+.caption .cat{
+	display: inline-block;
+	font-family: "微软雅黑";
+	margin: 0px 10px;
+}
+.caption .highlight{
+	display: inline-block;
+	color: plum;
+}
+.current1{
+	color: deeppink;
+	font-weight: bold;
+}
+.caption .change_btn{
+	display: inline-block;
+	width: 40px;
+	height: 26px;
+	font-weight: bold;
+	border: 1px solid black;
+	text-align: center;
+	
+	line-height: 26px;
+	margin: 0 10px;	
+}
+.prev{
+	width: 26px;
+	height: 26px;
+	border-right: 1px solid gray;
+	padding-right: 5px;
+}
+.next{
+	width: 26px;
+	height: 26px;
+	border-left: 1px solid gray;
+	padding-left: 5px;
+}
+.caption em{
+	position: absolute;
+	right: 0;
+	top: 5px;
+	margin-right: 5px;
+	font-size: 16px;
+}
+.caption em a{
+	text-decoration: none;
+	color: gray;
+}
+.content{
+	position: relative;
+	
+	width: 2520px;
+	height: 200px;
+}
+.content .content_list{
+	position: absolute;
+	
+	width: 1680px;
+	height: 200px;
+	padding: 8px;
+	
+}
+.content_list ul{
+	width: 2520px;
+
+	text-decoration: none;
+	list-style-type: none;
+	
+	
+}
+.content_list ul li{
+	display: inline-block;
+}
+.content_list li a{
+	color: black;
+	text-decoration: none;
+}
+.content_list li span,.content_list li em{
+	font-size: 14px;
+	color: grey;
+}
