@@ -1,6 +1,6 @@
 $(function() {
 //1. 写程序将” Hello World”打印到屏幕。
-//	$("body").text("Hello World");
+	$(".name").prev().text("Hello World");
 //2. 写程序输入用户的姓名并用该姓名和他打招呼。
 	$(".sayhi").click(function() {
 			var username = $(".name").val();
@@ -122,17 +122,15 @@ $(function() {
 		var thisyear = year.getFullYear();
 		var count = 0;
 		var arr  = [];
-		console.log(thisyear);
 		while (count<20) {
-			thisyear++
+			thisyear++;
 			if (thisyear%4==0&&thisyear%100!==0||thisyear%100==0&&thisyear%400==0) {
 				count++;
 				arr.push(thisyear);
 			}
 		}
-		
-		console.log(arr);
-		
+		$(".myyear").next().append(arr+" ");
+//		console.log(arr);	
 	})
 		
 })
