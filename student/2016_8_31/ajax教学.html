@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="https://sijipiao.alitrip.com/ie/auto_complete.do?_ksTS=1467963682760_2060&_input_charset=utf-8&userInput=d&callback=jQuery310017405227118168698_1472803818342&_=1472803818343"></script>
+		
+	</head>
+	<body>
+		
+		<script>
+		//对象定义三种方法
+		var func1 = function(){
+			console.log("func1");
+		}
+		
+		window.func1 = function(){
+			console.log("func1");
+		}
+		
+		window["func1"] = function(){
+			console.log("func2");
+		}
+		
+		
+		person = {
+			name:"liuyue"
+		}
+		person = {};
+		person.name = "liuyue";
+		
+		
+		
+		var str = "name";
+		person[str] = "liuyue";
+	
+		
+		$(ul) > li .text(东方财富网)
+		
+		$.ajax({
+			url:"https://sijipiao.alitrip.com/ie/auto_complete.do?_ksTS=1467963682760_2060&_input_charset=utf-8&userInput=d&_=1472803818343",
+			data:{
+				wd:$("input").val()
+			},
+			dataType:"jsonp"
+			success:function(response){
+				console.log(response);
+			}
+		})
+		
+		https://sijipiao.alitrip.com/ie/auto_complete.do?_ksTS=1467963682760_2060&_input_charset=utf-8&userInput=d&_=1472803818343&wd=123123sdfsdf
+		
+		/*$.ajax({
+			url:"https://sijipiao.alitrip.com/ie/auto_complete.do?_ksTS=1467963682760_2060&_input_charset=utf-8&userInput=d&_=1472803818343",
+			dataType:"jsonp",
+			success:function(data){
+				console.log(data);
+			}
+		})*/
+		
+		https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=df&json=1&p=3&sid=1422_11510_20857_20733_20837_20930&req=2&csor=1&_=1472803649291
+		
+		
+		
+			//js原生的
+			var $script = $('<script>');
+			var funcName = "jQuery" + Math.random().replace(".","_");
+			window[funcName] = function(data){
+				console.log(data);
+			};
+			
+			$script.src = "https://sijipiao.alitrip.com/ie/auto_complete.do?_ksTS=1467963682760_2060&_input_charset=utf-8&userInput=d&callback="+funcName+"&_=1472803818343";
+			
+			$script.appendTo($("head"));
+			
+			$script.remove();
+			
+		</script>
+	</body>
+</html>

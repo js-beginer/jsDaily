@@ -130,7 +130,6 @@ $(function() {
 			}
 		}
 		$(".myyear").next().append(arr+" ");
-//		console.log(arr);	
 	})
 		
 })
