@@ -41,10 +41,8 @@
 		</style>
 		<script>
 			$(function () {
-
 				var doJsonp = {
 					
-					selectedNum:-1,
 					
 					createList:function(data){
 						$('ul').empty();
@@ -54,7 +52,6 @@
 							oLi.html(data.s[i]);
 						}
 					},
-					
 					bindKeyup:function(){
 						var _this = this;			
 						$(".text1").keyup(function () {
@@ -75,7 +72,7 @@
 						})
 					},
 					bindClick:function(){
-						$(".ul1").on("click","li",function () {
+						$(".ul1").on("click","li",function () {//事件委派
 							var mytext = this.innerHTML;
 							$("input").val(mytext);
 							$("li").remove();
@@ -84,42 +81,46 @@
 						}).on("mouseleave","li",function () {
 							$(this).css("backgroundColor","white");
 						})
-						
-						
-						
-						
-						
-						
-						$(".text1").keydown(function (e) {
+					},
+//					selectedNum:-1,
+					bindKeydown:function() {
+						var _this = this;
+						$(".text1").on("keydown","li",function(e) {
 							var key = e.keyCode;
-							if (key===38) {
-								console.log("123");
-							}else if(key===40){
-								
-								
-								
-								$("li:fist").css("backgroundColor","pink");
-								$(this).next().css("backgroundColor","pink").siblings().css("backgroundColor","white");
+							var selectedNum = -1;
+							var $Li = $("li",_this.result);
+               				var len = $Li.length;
+							switch (key){
+								case 40:
+									_this.selectedNum++;	
+									if (_this.selectedNum>len-1) {
+										_this.selectedNum = 0;
+									}
+//									_this.index(selectedNum).css("backgroundColor","pink").siblings().css("backgroundColor","white");
+									console.log(123);
+									break;
+								case 38:
+									break;
+								case 13:
+									break;
+								default:
+									break;
 							}
+							
+								
+//								$("li:fist").css("backgroundColor","pink");
+//								$(this).next().css("backgroundColor","pink").siblings().css("backgroundColor","white");	
 						})
 					},
 					init:function(){
 						this.bindKeyup();
+						this.bindKeydown();
 						this.bindClick();
+						
 					}
 				}
-				
-				
 				doJsonp.init();
-					
-				
-				
 			})
-			
-			/*{
-				func1:function(){},
-				func2:function(){}""
-			}*/
 			
 		</script>
 	</head>
