@@ -70,6 +70,7 @@ $(function() {
 			var sum = '';
 			for(var i = 2; i <= num; i++) {
 				var boolen = true;
+				
 				for(var j = 2; j < i; j++) {
 					if(i % j == 0) {
 						boolen = false;
@@ -79,11 +80,12 @@ $(function() {
 				if(boolen == true) {
 					sum = sum + ' ' + i;
 				}
+				
 			}
 			$(".prime").next().append(sum);
 		})
 //9. 写一个竞猜游戏，用户必须猜一个秘密的数字，在每次猜完后程序会告诉用户他猜的数是太大了还是太小了，直到猜测正确，最后打印出猜测的次数。如果用户连续猜测同一个数字则只算一次。
-		var arr = [];
+	var arr = [];
 	$(".game").click(function() {
 		var game = Number($(".gamet").val());
 		arr.push(game);

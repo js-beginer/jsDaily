@@ -40,21 +40,87 @@
 			}
 		</style>
 		<script>
-		
-		
-			$(".text1").keyup(function () {
-				var $script = $('<script>');
-				var date = new Date();
-				$.ajax({
-					url:"http://suggestion.baidu.com/su?wd=" + this.value + "&cb=suggest" + "&t=" + date.getTime(),
-					dataType:"jsonp",
-					success:function(data){
-					$script.appendTo($("head"));
-					$script.remove();
+			$(function () {
+
+				var doJsonp = {
+					
+					selectedNum:-1,
+					
+					createList:function(data){
+						$('ul').empty();
+						for (var i=0;i<data.s.length;i++) {
+							var oLi = $("<li></li>");
+							$("ul").append(oLi);
+							oLi.html(data.s[i]);
+						}
+					},
+					
+					bindKeyup:function(){
+						var _this = this;			
+						$(".text1").keyup(function () {
+							var value = $(this).val();
+							//获取数据
+							$.ajax({
+								url:"http://suggestion.baidu.com/su",
+								cache:false,
+								data:{
+									wd:value
+								},
+								jsonp:"cb",
+								dataType:"jsonp",
+								success:function(data){
+									_this.createList(data);
+								}
+							})
+						})
+					},
+					bindClick:function(){
+						$(".ul1").on("click","li",function () {
+							var mytext = this.innerHTML;
+							$("input").val(mytext);
+							$("li").remove();
+						}).on("mouseenter","li",function () {
+							$(this).css("backgroundColor","pink");
+						}).on("mouseleave","li",function () {
+							$(this).css("backgroundColor","white");
+						})
+						
+						
+						
+						
+						
+						
+						$(".text1").keydown(function (e) {
+							var key = e.keyCode;
+							if (key===38) {
+								console.log("123");
+							}else if(key===40){
+								
+								
+								
+								$("li:fist").css("backgroundColor","pink");
+								$(this).next().css("backgroundColor","pink").siblings().css("backgroundColor","white");
+							}
+						})
+					},
+					init:function(){
+						this.bindKeyup();
+						this.bindClick();
 					}
-				})
-			
+				}
+				
+				
+				doJsonp.init();
+					
+				
+				
 			})
+			
+			/*{
+				func1:function(){},
+				func2:function(){}""
+			}*/
+			
 		</script>
 	</head>
 	<body>
@@ -62,5 +128,6 @@
 			<input type="text" class="text1" />
 			<ul class="ul1"></ul>
 		</div>
+		
 	</body>
 </html>
