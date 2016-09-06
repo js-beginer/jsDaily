@@ -31,19 +31,14 @@
 				border: 1px solid #817F82;
 				margin-top: -1px;
 			}
-			.li1{
+			li{
 				font-size: 14px;
 				padding: 6px 8px;
-			}
-			#ul1 li:active {
-				background-color: rgb(238, 238, 238);
 			}
 		</style>
 		<script>
 			$(function () {
 				var doJsonp = {
-					
-					
 					createList:function(data){
 						$('ul').empty();
 						for (var i=0;i<data.s.length;i++) {
@@ -53,8 +48,13 @@
 						}
 					},
 					bindKeyup:function(){
-						var _this = this;			
-						$(".text1").keyup(function () {
+						var _this = this;
+						
+						$(".text1").keyup(function (e) {
+							var key = e.keyCode; 
+							if (key==38||key==40||key==13) {
+								return false;
+							}
 							var value = $(this).val();
 							//获取数据
 							$.ajax({
@@ -78,50 +78,52 @@
 							$("li").remove();
 						}).on("mouseenter","li",function () {
 							$(this).css("backgroundColor","pink");
+
 						}).on("mouseleave","li",function () {
 							$(this).css("backgroundColor","white");
+							
 						})
 					},
-//					selectedNum:-1,
+					selectedNum:-1,
 					bindKeydown:function() {
-						var _this = this;
-						$(".text1").on("keydown","li",function(e) {
-							var key = e.keyCode;
-							var selectedNum = -1;
-							var $Li = $("li",_this.result);
+						var selectedNum = -1;
+						$(".text1").on("keydown",function(e) {
+							var $Li = $(".ul1 li");
                				var len = $Li.length;
+							var key = e.keyCode;  
 							switch (key){
 								case 40:
-									_this.selectedNum++;	
-									if (_this.selectedNum>len-1) {
-										_this.selectedNum = 0;
-									}
-//									_this.index(selectedNum).css("backgroundColor","pink").siblings().css("backgroundColor","white");
-									console.log(123);
+									selectedNum++;
+									if (selectedNum>len-1) {
+										selectedNum = 0;
+									}	
+									$Li.eq(selectedNum).css("background-color","pink").siblings().css("background-color","white");
 									break;
 								case 38:
+									selectedNum--;
+									if (selectedNum<0) {
+										selectedNum = len-1;
+									}	
+									$Li.eq(selectedNum).css("background-color","pink").siblings().css("background-color","white");
 									break;
 								case 13:
+									var gettext =$Li.eq(selectedNum).text();
+									$("input").val(gettext);
+									$("li").remove();
 									break;
 								default:
 									break;
 							}
-							
-								
-//								$("li:fist").css("backgroundColor","pink");
-//								$(this).next().css("backgroundColor","pink").siblings().css("backgroundColor","white");	
 						})
 					},
 					init:function(){
 						this.bindKeyup();
-						this.bindKeydown();
 						this.bindClick();
-						
+						this.bindKeydown();
 					}
 				}
-				doJsonp.init();
+				doJsonp.init();  //入口
 			})
-			
 		</script>
 	</head>
 	<body>
