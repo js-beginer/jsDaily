@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>jsonp接口</title>
+		<title>jsonp</title>
 		<script src="jquery-1.9.1.js"></script>
 		<style>
 			*{
@@ -38,13 +38,15 @@
 		</style>
 		<script>
 			$(function () {
+				
 				var doJsonp = {
 					createList:function(data){
 						$('ul').empty();
+						//创建li元素
 						for (var i=0;i<data.s.length;i++) {
 							var oLi = $("<li></li>");
 							$("ul").append(oLi);
-							oLi.html(data.s[i]);
+							oLi.text(data.s[i]);
 						}
 					},
 					bindKeyup:function(){
@@ -52,7 +54,7 @@
 						
 						$(".text1").keyup(function (e) {
 							var key = e.keyCode; 
-							if (key==38||key==40||key==13) {
+							if (key==38||key==40||key==13) { //判断一下，在按这几个键的时候不再继续获取数据
 								return false;
 							}
 							var value = $(this).val();
@@ -71,6 +73,7 @@
 							})
 						})
 					},
+					//绑定鼠标事件
 					bindClick:function(){
 						$(".ul1").on("click","li",function () {//事件委派
 							var mytext = this.innerHTML;
@@ -84,7 +87,7 @@
 							
 						})
 					},
-					selectedNum:-1,
+					//绑定键盘事件
 					bindKeydown:function() {
 						var selectedNum = -1;
 						$(".text1").on("keydown",function(e) {
