@@ -76,7 +76,7 @@
 					//绑定鼠标事件
 					bindClick:function(){
 						$(".ul1").on("click","li",function () {//事件委派
-							var mytext = this.innerHTML;
+							var mytext = this.innerText;
 							$("input").val(mytext);
 							$("li").remove();
 						}).on("mouseenter","li",function () {
