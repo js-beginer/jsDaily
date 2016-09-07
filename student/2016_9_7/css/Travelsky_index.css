@@ -1,0 +1,23 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-image: url(../img/query_bg.jpg);
+	color: #333;
+}
+.main{
+	position: absolute;
+	top: calc(50% - 200px);
+	left: calc(50% - 370px);
+	/*transform: translateY(-50%);
+	margin: 50vh auto 0;*/
+	width: 740px;
+	height: 400px;
+	background-color: rgba(255,255,255,.8);
+	box-sizing: border-box;
+	border: 1px solid #5294dc;
+	border-radius: 6px;
+	padding: 10px 35px;
+	font-size: 16px;
+}
