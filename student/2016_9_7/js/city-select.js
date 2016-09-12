@@ -219,14 +219,11 @@ var search_api_url = "https://sijipiao.alitrip.com/ie/auto_complete.do?_ksTS=146
         // 搜索列表键盘事件
         bindResultKeyboard: function(){
             var _this = this;
-            console.log(_this);
-            console.log(_this,"jjjjj");
             this.$input.on('keydown', function(event) {
                 var keycode = event.keyCode;
                 if(keycode === 13){event.preventDefault()}
                 if(_this.result.is(":hidden") || _this.resultLiNum === -1) return;
                 var $Li = $("li",_this.result);
-                console.log($Li)
                 var len = $Li.length;
                 switch(keycode){
                     case 40: //向下箭头↓

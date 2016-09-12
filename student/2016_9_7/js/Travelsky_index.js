@@ -1,7 +1,34 @@
 $(function () {
+	var result = {
+		takeOffCity:"name",
+		takeOffCityCode:"code",
+		arriveCity:"name",
+		arriveCityCode:"code",
+		cabinType:"sel",
+		takeOffDate:"date",
+		returnDate:"date"
+	};	
+	//提交
+	$(".submit").click(function () {
+		var sel = $("select option:selected").val();
+		result.cabinType = sel;
+		console.log(result);
+	});
 	//选择城市
-	$('#takeOffCity').citySelect();
-	$('#arriveCity').citySelect();
+	$('#takeOffCity').citySelect({
+     selectHandler:function(name,code){
+    	result.takeOffCity = name;	
+    	result.takeOffCityCode = code;
+    	$('#takeOffCity').val(name);
+      }
+	});
+	$('#arriveCity').citySelect({
+		selectHandler:function(name,code){
+		result.arriveCity = name;	
+    	result.arriveCityCode = code;
+    	$('#arriveCity').val(name);
+      }
+	});
 	//交换城市按钮
 	$(".changeCityBtn").click(function () {
 		var $takeOffCity = $("#takeOffCity").val();
@@ -22,7 +49,8 @@ $(function () {
 	});
 	$("#returnDate").focus(function () {
 		var reValue = $("#returnDate").val();
-		console.log(reValue);
+//		result.returnDate = reValue;
+//		console.log(reValue);
 		if (reValue!==' ') {
 			$(".round_trip").prop("checked",true);
 			$(".reDate").css("color","black");
@@ -33,12 +61,15 @@ $(function () {
 	 var dayNames = $("#takeOffDate").datepicker('option','dayNames');
 	 var takeOffDate = $("#takeOffDate").val();
 	 var returnDate = $("#returnDate").val();
+	
+	 
 	$( "#takeOffDate" ).datepicker({
         numberOfMonths: 2,
 	    dateFormat: "yy-mm-dd",
-	    dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
 		minDate: new Date(),
 		onSelect:function(date){
+			
+			result.takeOffDate = date;
 			$( "#returnDate" ).datepicker( "option", "minDate", date );
 			var newday = new Date(date);
 			var myDay = newday.getDay();
@@ -73,9 +104,9 @@ $(function () {
     $( "#returnDate" ).datepicker({
         numberOfMonths: 2,
 	    dateFormat: "yy-mm-dd",
-	    dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
 	    minDate:new Date(),
 		onSelect:function(date){
+			result.returnDate = date;
 			$( "#takeOffDate" ).datepicker( "option", "maxDate", date );
 			var newday = new Date(date);
 			var myDay = newday.getDay();
