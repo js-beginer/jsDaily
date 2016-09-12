@@ -1,3 +1,4 @@
+//插件中已经封装好了事件，想要获取数据，直接在onSelect回调函数中获取
 $(function () {
 	var result = {
 		takeOffCity:"name",
@@ -8,7 +9,7 @@ $(function () {
 		takeOffDate:"date",
 		returnDate:"date"
 	};	
-	//提交
+	//提交并获取json数据
 	$(".submit").click(function () {
 		var sel = $("select option:selected").val();
 		result.cabinType = sel;
@@ -40,23 +41,13 @@ $(function () {
 	$(".one_way").click(function () {
 		$(".reDate").css("color","#BFBFBF");
 		var reValue = $("#returnDate");
-		reValue.val(' ');
-		reValue.next().text(' ');
+		reValue.val('');
+		reValue.next().text('');
 			
 	});
 	$(".round_trip").click(function () {
 		$(".reDate").css("color","black");
 	});
-	$("#returnDate").focus(function () {
-		var reValue = $("#returnDate").val();
-//		result.returnDate = reValue;
-//		console.log(reValue);
-		if (reValue!==' ') {
-			$(".round_trip").prop("checked",true);
-			$(".reDate").css("color","black");
-		}
-	})
-	
 	//日期选择插件
 	 var dayNames = $("#takeOffDate").datepicker('option','dayNames');
 	 var takeOffDate = $("#takeOffDate").val();
@@ -68,37 +59,9 @@ $(function () {
 	    dateFormat: "yy-mm-dd",
 		minDate: new Date(),
 		onSelect:function(date){
-			
 			result.takeOffDate = date;
 			$( "#returnDate" ).datepicker( "option", "minDate", date );
-			var newday = new Date(date);
-			var myDay = newday.getDay();
-			var aa = "";
-				switch(myDay) {
-					case 1:
-						aa = "一";
-						break;
-					case 2:
-						aa = "二";
-						break;
-					case 3:
-						aa = "三";
-						break;
-					case 4:
-						aa = "四";
-						break;
-					case 5:
-						aa = "五";
-						break;
-					case 6:
-						aa = "六";
-						break;
-					default:
-						aa = "日";
-						break;
-				}
-			myDay =  "星期" + aa;
-			$("#takeOffDate").next().text(myDay);
+			$("#takeOffDate").next().text(createDay(date));
 		}
     });
     $( "#returnDate" ).datepicker({
@@ -107,37 +70,43 @@ $(function () {
 	    minDate:new Date(),
 		onSelect:function(date){
 			result.returnDate = date;
+			var reValue = $("#returnDate").val();
+			if (reValue!==' ') {
+				$(".round_trip").prop("checked",true);
+				$(".reDate").css("color","black");
+			}
 			$( "#takeOffDate" ).datepicker( "option", "maxDate", date );
-			var newday = new Date(date);
-			var myDay = newday.getDay();
-			var aa = "";
-				switch(myDay) {
-					case 1:
-						aa = "一";
-						break;
-					case 2:
-						aa = "二";
-						break;
-					case 3:
-						aa = "三";
-						break;
-					case 4:
-						aa = "四";
-						break;
-					case 5:
-						aa = "五";
-						break;
-					case 6:
-						aa = "六";
-						break;
-					default:
-						aa = "日";
-						break;
-				}
-			myDay =  "星期" + aa;
-			$("#returnDate").next().text(myDay);
+			$("#returnDate").next().text(createDay(date));
 		}
     });
-   
-		
+   //使用函数进行重复的调用
+   function createDay(date){
+   		var newday = new Date(date);
+		var myDay = newday.getDay();
+		var aa = "";
+			switch(myDay) {
+				case 1:
+					aa = "一";
+					break;
+				case 2:
+					aa = "二";
+					break;
+				case 3:
+					aa = "三";
+					break;
+				case 4:
+					aa = "四";
+					break;
+				case 5:
+					aa = "五";
+					break;
+				case 6:
+					aa = "六";
+					break;
+				default:
+					aa = "日";
+					break;
+			}
+   		return "星期" + aa;
+   }	
 })
