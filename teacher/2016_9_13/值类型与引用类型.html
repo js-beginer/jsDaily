@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>值类型与引用类型</title>
+	</head>
+	<body>
+		<script>
+			//简单数据类型 - 值类型
+			var str = "123123";
+			var num = 123;
+			var bool = true;
+			var und = undefined;
+			
+			
+			// 复杂数据类型 - 引用类型
+			var obj = {
+				name:"liuyue",
+				sex:"man"
+			}
+			
+			var obj2 = obj;
+			
+			obj2.name = "zhangsan";
+			
+			console.log(obj);
+			
+			
+			var arr1 = [1,2,3,4,5];
+			var arr2 = arr1;
+			
+			//arr2.push(6);
+			//console.log("arr1",arr1);
+			
+			arr2[4] = 98;
+			console.log("arr1",arr1);
+			
+			
+		</script>
+	</body>
+</html>
