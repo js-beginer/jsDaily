@@ -11,9 +11,9 @@
 <button>点我</button>
     <script>
 
-		function randomNum(strat,end) {
-			var sum = end - strat + 1;
-			return Math.floor(Math.random()*sum+strat);
+		function randomNum(start,end) {
+			var sum = end - start + 1;
+			return Math.floor(Math.random()*sum+start);
 		}
 		var num = randomNum(10,20);
 		console.log(num);
