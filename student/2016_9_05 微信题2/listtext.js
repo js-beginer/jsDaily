@@ -6,10 +6,10 @@ var num = [0, 1, 2, 3, 6, 10, 15, 22];
 	};
 	console.log(maxNum());
 //2. 写函数逆转列表，最好是原地逆转。
-	function  reverseNum () {
-		return num.reverse();
-	}
-	console.log(reverseNum ());
+//	function  reverseNum () {
+//		return num.reverse();
+//	}
+//	console.log(reverseNum ());
 //3. 写个函数检查指定的元素是否出现在列表中。
 	function checkNum() {
 		return num.indexOf("e", 0); //或数字 10 返回5
@@ -80,5 +80,44 @@ var num = [0, 1, 2, 3, 6, 10, 15, 22];
 //11. 写个函数合并两个有序的列表。
 
 //12. 写个函数计算前100个Fibonacci数的列表。
-
+	function fib(n) {
+		if(n <= 2) alert(1);
+		else {
+			var a = 1,
+				b = 1,
+				t;
+			for(var i = 0; i < n - 2; ++i) {
+				t = a + b;
+				a = b;
+				b = t;
+			}
+			console.log(b);
+		}
+	}
+	fib(100);
 //13. 写个函数，返回指定数的各位数字的列表。
+	$(function () {
+		var sum = 0;
+		var arr = [];
+		$("button").click(function searchNum (a) {
+			var a = Number($("input").val());
+			if (-1<a<num.length) {
+				arr.push(num[a]);	
+			} else{
+				return false;
+			}
+			console.log(arr);
+		});
+	});
+	
+
+	
+
+
+
+
+
+
+
+
+
