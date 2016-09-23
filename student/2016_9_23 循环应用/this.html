@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				float: left;
+				margin-left: 30px;
+				list-style-type: none;
+				position: relative;
+			}
+			div{
+				width: 200px;
+				height: 100px;
+				border: 1px solid black;
+				background-color: gainsboro;
+				position: absolute;
+				top: 70px;
+				left: 10px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<img />
+				<div></div>
+			</li>
+			<li>
+				<img />
+				<div></div>
+			</li>
+			<li>
+				<img />
+				<div>3</div>
+			</li>
+			<li>
+				<img />
+				<div>4</div>
+			</li>
+		</ul>
+	</body>
+	<script>
+		window.onload = function () {
+			var arrImg = ["img/1.png","img/2.png","img/1.png","img/2.png"];
+			var oImg = document.getElementsByTagName("img");
+			var oDiv =document.getElementsByTagName("div");
+			var that = null;
+			for (var i = 0;i<arrImg.length;i++) {	
+				oImg[i].src = arrImg[i];
+				oImg[i].onmouseenter = function () {
+					var that  = this.parentNode;
+					var $div = that.getElementsByTagName("div")[0]
+					$div.style.display = 'block';
+				}
+			}
+			
+			
+		}
+	</script>
+</html>

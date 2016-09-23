@@ -24,7 +24,7 @@
 				width: 40px;
 				height: 40px;
 				background: #fff;
-				filter: alpha(opacity: 80);
+				filter: alpha(opacity: 80);/*为兼容IE*/
 				opacity: 0.8;
 				position: absolute;
 				top: 160px;
@@ -99,7 +99,7 @@
 					$("img").attr("src",arrUrl[num]);
 					$("#p1").html(arrText[num]);
 				}
-				fnTab ();
+				fnTab ();//代码重用！
 				
 				$("#prev").click(function () {
 					num--;
@@ -152,3 +152,11 @@
 		</div>
 	</body>
 </html>
+<!--设置attr时，attr("src",arrUrl[num])  arrUrl[num]是不需要""的，这样会把目标变成字符串-->
+
+
+
+
+
+
+
