@@ -112,7 +112,7 @@ $(function() {
 		//		console.log(res);
 		//	for(var i = 1 ;i <arr.length;i++){
 		//		if(arr[i]!== res[res.length-1]){	//如果输入的数不等于最后一个数
-		//		res.push(arr[i]);		//就把数字放进数组arr里
+		//		res.+(arr[i]);		//就把数字放进数组arr里
 		//			console.log(res)；						
 		//		}
 		//	}
