@@ -58,12 +58,15 @@
 							aUl[this.index].style.display = 'block';   //aUl一定要用数组索引值的方式查找元素！！！
 						} else{
 							this.className = '';  
-							aUl[this.index].style.display = '';
+							aUl[this.index].style.display = 'none';
 						};
 						
 						//判断其他分组与当前的显示隐藏
-						for (this) {
-							
+						for (var i=0; i<aH2.length; i++) {
+							if (i != this.index) {
+								aUl[i].style.display = 'none';
+								aH2[i].className = '';
+							}
 						}
 						
 						
