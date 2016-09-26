@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS图片切换实例</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background-color: #333;
+			}
+			#pic{
+				width: 400px;
+				height: 500px;
+				margin: 20px auto;
+				background: url(img/loader_ico.gif) no-repeat center rgba(255,255,255,.4);
+				position: relative;
+			}
+			#pic img{
+				width: 400px;
+				height: 500px;
+			}
+			#pic span,#pic p{
+				width: 400px;
+				height: 30px;
+				background-color: rgba(0,0,0,.7);
+				position: absolute;
+				left: 0;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+			}
+			#pic span{
+				top: 0;
+			}
+			#pic p{
+				bottom: 0;
+			}
+			#pic ul{
+				width: 40px;
+				/*只给ul定位*/
+				position: absolute;  
+				top: 0;
+				right: -50px;
+			}
+			#pic li{
+				width: 40px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				color: white;
+				list-style: none;
+				background-color: #666;
+				margin-bottom: 4px;
+			}
+			#pic .active{
+				background-color: orange;
+			}
+		</style>
+		<script>
+			window.onload = function () {
+				var oDiv = document.getElementById('#pic');
+				var oImg = document.getElementsByTagName('img')[0];
+				var oSpan = document.getElementsByTagName('span')[0];
+				var oP = document.getElementsByTagName('p')[0];
+				var oUl = document.getElementsByTagName('ul')[0];
+				var oLi = oUl.getElementsByTagName('li');	//注意：这里li并没有给位置[]
+				
+				var arrUrl = ['img/1.png','img/2.png','img/3.png','img/4.png',];
+				var arrP = ['老鹰','双马尾','小龙人','面具哥'];
+				var num = 0;
+				for (var i=0; i<arrP.length; i++) {
+					oUl.innerHTML += '<li>'+(i+1)+'</li>';		//innerHTML的用法
+				};
+				//初始化
+				function fnTab () {
+					oSpan.innerHTML = num+1+'/'+arrP.length;
+					oImg.src = arrUrl[num];
+					oP.innerHTML = arrP[num];
+					for (var i=0; i<arrP.length; i++) {
+						oLi[i].className = '';			//先清空class
+					};
+					oLi[num].className = 'active';		//再添加class
+				}
+				fnTab ();
+				for (var i=0; i<oLi.length; i++) {
+					oLi[i].index = i;     //索引值
+					oLi[i].onclick = function () {
+						num = this.index;   //每次点击的位置序号都为当前的索引值
+						fnTab (); //代码重用
+					};
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div id="pic">
+			<img src="" />
+		  	<span>数量正在加载中……</span>
+		  	<p>文字说明正在加载中……</p>
+		  	
+		  	<ul></ul>
+		</div>
+	</body>
+</html>
