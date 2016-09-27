@@ -26,12 +26,12 @@ window.onload = function (){
 		aH2[i].index = i;
 		aH2[i].onclick = function (){
 			
-//			for( var i=0; i<aH2.length; i++ ){
-//				if( i != this.index ){
-//					aUl[i].style.display = 'none';
-//					aH2[i].className = '';
-//				}
-//			}
+			for( var i=0; i<aH2.length; i++ ){
+				if( i != this.index ){
+					aUl[i].style.display = 'none';
+					aH2[i].className = '';
+				}
+			}
 			
 			if( this.className == '' ){
 				aUl[this.index].style.display = 'block';

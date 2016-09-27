@@ -48,6 +48,7 @@
 				var aH2 = oUl.getElementsByTagName("h2");
 				var aUl = oUl.getElementsByTagName("ul");
 				var aLi = null;//这
+				var arrLi = [];
 				
 				for (var i=0; i<aH2.length; i++) {
 					aH2[i].index = i;
@@ -60,23 +61,40 @@
 							this.className = '';  
 							aUl[this.index].style.display = 'none';
 						};
-						
 						//判断其他分组与当前的显示隐藏
 						for (var i=0; i<aH2.length; i++) {
-							if (i != this.index) {
+							if ( i != this.index ) {
 								aUl[i].style.display = 'none';
 								aH2[i].className = '';
-							}
-						}
-						
-						
+							};
+						};
+						//把所有小li都存在arrLi数组里方便操作
+						for (var i=0; i<aUl.length; i++) {
+							aLi = aUl[i].getElementsByTagName('li');
+							for (var j=0; j<aLi.length; j++) {
+								arrLi.push( aLi[j] );
+							};
+						};
+						//给小li加点击事件，判断状态添加class
+						for (var i=0; i<arrLi.length; i++) {
+							arrLi[i].onclick = function () {
+								//只能有一个li是被选中状态
+								for ( var i=0; i<arrLi.length; i++ ) {  //因为是在函数里所以可以还用i ，作用域换了
+									if ( arrLi[i] != this ) {  //this是当前选中的li
+										arrLi[i].className = '';
+									};
+								};
+								//给li判断高亮状态
+								if ( this.className == '' ) {
+									this.className = 'hover';
+								} else{
+									this.className = '';
+								};
+							};
+						};
 					};
-				}
-				
-				
-				
-				
-			}
+				};	
+			};
 		</script>
 	</head>
 	<body>
