@@ -2,8 +2,128 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>JS图片切换实例</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background-color: #333;
+			}
+			.pic{
+				width: 600px;
+				height: 320px;
+				margin-left: 300px;
+				
+				background: url(img/loader_ico.gif) no-repeat center rgba(255,255,255,.4);
+				position: relative;
+			}
+			.pic img{
+				width: 600px;
+				height: 320px;
+			}
+			
+			#pic1 ul{
+				width: 600px;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			#pic1 li{
+				width: 198px;
+				height: 40px;
+				display: inline-block;
+				background-color: rgba(0,0,0,.7);
+				color: white;
+				list-style: none;
+				text-align: center;
+				line-height: 40px;
+				border: 1px solid black;
+			}
+			#pic ul{
+				width: 100px;
+				/*只给ul定位*/
+				position: absolute;  
+				top: 0;
+				left: -101px;
+			}
+			#pic li{
+				width: 100px;
+				height: 79px;
+				text-align: center;
+				line-height: 80px;
+				color: white;
+				list-style: none;
+				background-color: #666;
+				border-bottom: 1px solid black;
+			}
+			.pic .active{
+				background-color: orange;
+			}
+			.pic .show{
+				background-color: deeppink;
+			}
+		</style>
+		<script>
+			window.onload = function () {
+				
+				picTab('pic',['img/tu1.jpg','img/tu2.jpg','img/tu3.jpg','img/tu4.jpg']);
+				
+				picTab('pic1',['img/tu1.jpg','img/tu2.jpg','img/tu3.jpg']);
+				
+			};
+			
+			function picTab (id,arrUrl) { //函数传参
+					var oDiv = document.getElementById(id);
+					var oImg = oDiv.getElementsByTagName('img')[0];
+					
+					
+					var oUl = oDiv.getElementsByTagName('ul')[0];
+					var oLi = oUl.getElementsByTagName('li');	//注意：这里li并没有给位置[]
+					
+					var aDiv = oDiv.getElementsByTagName('div')[0];
+					var aSpan = oUl.getElementsByTagName('span');	//注意：这里li并没有给位置[]
+					
+					var num = 0;
+					for (var i=0; i<arrUrl.length; i++) {
+						oUl.innerHTML += '<li>'+(i+1)+'</li>';		//innerHTML的用法
+					};
+					
+					//初始化
+					function fnTab () {
+						
+						oImg.src = arrUrl[num];
+						
+						for (var i=0; i<arrUrl.length; i++) {
+							oLi[i].className = '';			//先清空class
+						};
+						oLi[num].className = 'active';		//再添加class
+					}
+					fnTab ();
+					for (var i=0; i<oLi.length; i++) {
+						oLi[i].index = i;     //索引值
+						oLi[i].onmouseover = function () {  //给事件传参数时 由于会变 从.onclick 写成[evt]
+							num = this.index;   //每次点击的位置序号都为当前的索引值
+							fnTab (); //代码重用
+						};
+					};
+					
+					
+				};
+		</script>
 	</head>
 	<body>
+		<div id="pic" class="pic">
+			<img src="" />
+		  	<ul></ul>
+		  
+		</div>
+		
+		<div id="pic1" class="pic">
+			<img src="" />
+		  	<ul></ul>
+		
+		</div>
 	</body>
 </html>
