@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请输入QQ号码：<input type="text" value=""/>
+		<input type="button" value="判断" />
+		<span></span>
+		
+		<br />
+		1、有没有输入<br />
+		2、输入的是不是数字<br />
+		3、不能有0在前面<br />
+		4、不能是小数<br />
+		5、输入的数字必须在5位以上、10位以内<br />
+		
+		<script>
+			window.onload =function () {
+				var oBtn = document.getElementsByTagName('input');
+				var oSpan = document.getElementsByTagName('span')[0];
+				oBtn[1].onclick = function  () {
+					var val = oBtn[0].value;
+					if (val=='') {
+						oSpan.innerHTML = '您输入为空'
+					}
+// 好烦不做了 用正则表达式不就可以了吗！！
+//					else if( typeof parseFloat(val) == 'number'){
+//						oSpan.innerHTML = '您输入的'
+//						console.log(typeof val,11)
+//					} else {
+//						alert('恭喜');
+//						console.log(typeof val,22)
+//					}
+				};
+			}
+
+		</script>
+	</body>
+</html>
