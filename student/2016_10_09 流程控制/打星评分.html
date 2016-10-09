@@ -40,51 +40,87 @@
 			<p></p>
 		</div>
 		<script>
-			window.onload = function() {
+//			window.onload = function() {
+//				var oDiv = document.getElementsByTagName('div')[0];
+//				var aI = oDiv.getElementsByTagName('i');
+//				var oP = oDiv.getElementsByTagName('p')[0];
+//				var str = '';
+//				var indexccc = '';
+//				function start(count){
+//
+//						for(var j = 0; j < count + 1; j++) {
+//							aI[j].style.color = 'red';
+//						};
+//						for(var n = count + 1; n < aI.length; n++) {
+//							aI[n].style.color = 'yellow';
+//						};
+//					}
+//				for(var i = 0; i < aI.length; i++) {
+//					aI[i].index = i;
+//					aI[i].onmouseover = function() {
+//							start(this.index);
+//					};
+//					
+//					aI[i].onclick = function() {
+//						indexccc = this.index;
+//						console.log(indexccc);
+//						start(this.index);
+//
+//					};
+//				}
+//				oDiv.onmouseleave = function() {
+//						console.log(indexccc);
+//						if(indexccc==''){
+//							return;
+//						}else{
+//							
+//							for(var m = 0;m<=indexccc;m++){
+//								aI[m].style.color = 'red';
+//							}
+//							for(var m = indexccc+1;m<aI.length;m++){
+//								aI[m].style.color = 'yellow';
+//							}
+//						}						
+////
+//					};
+//			}
+
+		window.onload = function() {
 				var oDiv = document.getElementsByTagName('div')[0];
 				var aI = oDiv.getElementsByTagName('i');
 				var oP = oDiv.getElementsByTagName('p')[0];
 				var str = '';
-				var indexccc = '';
-				function start(count){
-//					if(count==){
-//						
-//					}
-						for(var j = 0; j < count + 1; j++) {
-							aI[j].style.color = 'red';
-						};
-						for(var n = count + 1; n < aI.length; n++) {
-							aI[n].style.color = 'yellow';
-						};
+				var indexccc = '';//存放点击的index
+				function clean(){//初始化函数
+						for(var j = 0; j <aI.length; j++) {
+							aI[j].style.color = 'yellow';
+						}
 					}
+				function start(count){
+					for (var i = 0; i <= count; i++) {
+						aI[i].style.color="red";
+					}
+				}
 				for(var i = 0; i < aI.length; i++) {
 					aI[i].index = i;
 					aI[i].onmouseover = function() {
-							start(this.index);
+							clean();
+						start(this.index);
 					};
 					
 					aI[i].onclick = function() {
 						indexccc = this.index;
-						console.log(indexccc);
-						start(this.index);
+						clean();
+						start(indexccc);
+
+					};
+					aI[i].onmouseout = function() {
+						clean();
+						if(indexccc==='')return;
+						start(indexccc);
 
 					};
 				}
-				oDiv.onmouseleave = function() {
-						console.log(indexccc);
-						if(indexccc==''){
-							return;
-						}else{
-							
-							for(var m = 0;m<=indexccc;m++){
-								aI[m].style.color = 'red';
-							}
-							for(var m = indexccc+1;m<aI.length;m++){
-								aI[m].style.color = 'yellow';
-							}
-						}						
-//
-					};
 			}
 		</script>
 	</body>
