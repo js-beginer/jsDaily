@@ -21,6 +21,10 @@
 				display: inline-block;
 			}
 			
+			.light {
+				color: red !important;
+			}
+			
 			i {
 				font-size: 30px;
 				color: yellow;
@@ -44,47 +48,38 @@
 				var oDiv = document.getElementsByTagName('div')[0];
 				var aI = oDiv.getElementsByTagName('i');
 				var oP = oDiv.getElementsByTagName('p')[0];
-				var str = '';
-				var indexccc = '';
-				function start(count){
-//					if(count==){
-//						
-//					}
-						for(var j = 0; j < count + 1; j++) {
-							aI[j].style.color = 'red';
-						};
-						for(var n = count + 1; n < aI.length; n++) {
-							aI[n].style.color = 'yellow';
-						};
+				var str = ''; //存放点击的位置
+				
+				function clean() { 		//初始化函数
+					for(var j = 0; j < aI.length; j++) {
+						aI[j].style.color = 'yellow';
 					}
+				}
+				function start(count) {		//'刷漆操作间'
+					for(var i = 0; i <= count; i++) {
+						aI[i].style.color = "red";
+					}
+				}
 				for(var i = 0; i < aI.length; i++) {
 					aI[i].index = i;
 					aI[i].onmouseover = function() {
-							start(this.index);
+						clean();				//初始化
+						start(this.index);		//传位置刷漆
 					};
-					
-					aI[i].onclick = function() {
-						indexccc = this.index;
-						console.log(indexccc);
-						start(this.index);
+
+					aI[i].onclick = function() {  
+						str = this.index;	//把位置保存进str
+						clean();
+						start(str);			//传记录的str位置刷漆
+
+					};
+					aI[i].onmouseout = function() {
+						clean();
+						if(str === '') return;		//如果什么都没操作，就直接返回
+						start(str);			//如果操作了就把位置传进刷漆操作间
 
 					};
 				}
-				oDiv.onmouseleave = function() {
-						console.log(indexccc);
-						if(indexccc==''){
-							return;
-						}else{
-							
-							for(var m = 0;m<=indexccc;m++){
-								aI[m].style.color = 'red';
-							}
-							for(var m = indexccc+1;m<aI.length;m++){
-								aI[m].style.color = 'yellow';
-							}
-						}						
-//
-					};
 			}
 		</script>
 	</body>
