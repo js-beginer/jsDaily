@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>淘宝商品广告效果</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#main{
+				width: 610px;
+				height: 410px;
+				border: 1px solid darkgray;
+				margin: 100px auto;
+				box-sizing: border-box;
+				box-shadow: 0 0 10px #8E98AA;	
+				position: relative;
+			}
+			#main img{
+				width: 400px;
+				height: 408px;
+				position: absolute;
+				left: 104px;
+				top: 0;
+			}
+			.left{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.right{
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			ul li{
+				list-style: none;
+				width: 100px;
+				height: 100px;
+				display: block;
+				border: 1px solid gainsboro;
+				font-size: 20px;
+				text-align: center;
+				line-height: 100px;
+			}
+			
+			.active{
+				background: rgba(224,175,108,.8);
+				color: white;
+				font-size: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<ul class="left">
+				<li>惊恐</li>
+				<li>鄙视</li>
+				<li>撩妹</li>
+				<li>委屈</li>
+			</ul>
+			<img />
+			<ul class="right">
+				<li>白眼</li>
+				<li>尴尬</li>
+				<li>睡觉</li>
+				<li>电脑</li>
+			</ul>
+		</div>
+		<script>
+			window.onload = function () {
+				var oDiv = document.getElementById('main');
+				var aLi = oDiv.getElementsByTagName('li');
+				var aImg = oDiv.getElementsByTagName('img')[0];
+				var arrUrl = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg'];
+				var num = 4;
+				//初始化
+				function fnTab () {
+					aImg.src = arrUrl[num];
+					for (var i=0; i<aLi.length; i++) {
+						aLi[i].className = '';
+					};
+					aLi[num].className = 'active';
+				};
+				fnTab ();
+			};
+		</script>
+	</body>
+</html>
