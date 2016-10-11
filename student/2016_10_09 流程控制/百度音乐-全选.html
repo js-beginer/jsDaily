@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度音乐-全选</title>
+		<style>
+			div{
+				width: 300px;
+				height: 600px;
+				padding: 10px;
+			}
+			li{
+				list-style: none;
+				height: 25px;
+				margin: 1px;
+			}
+			p{
+				margin-left: 40px;
+				border-top: 1px solid darkgray;
+				padding-top: 10px;
+			}
+			span:first-child{
+				margin-left: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li><input value="1" type="checkbox"/> 私奔-梁博</li>
+				<li><input value="1" type="checkbox"/> 北京北京-邓紫棋</li>
+				<li><input value="1" type="checkbox"/> 七里香-周杰伦</li>
+				<li><input value="1" type="checkbox"/> 青春纪念手册-TFboys</li>
+				<li><input value="1" type="checkbox"/> 胡歌-六月的雨</li>
+				<li><input value="1" type="checkbox"/> 匆匆那年-王菲</li>
+				<li><input value="1" type="checkbox"/> 五环之歌-岳云鹏</li>
+				<li><input value="1" type="checkbox"/> 美丽新世界-S.H.E</li>
+			</ul>
+			<p>
+				<input value="反选" type="checkbox"/>反选
+				<input value="全选" type="checkbox"/>全选
+				<span>收藏</span>
+				<span>添加</span>
+				<span>删除</span>
+			</p>
+		</div>
+		
+		<script>
+			window.onload = function () {
+				var aLi = document.getElementsByTagName('li');
+				var aInp = document.getElementsByTagName('input');
+				var arr = ['#A6E1EC','#66AFE9'];
+				var str = '';
+				var chec = [];
+				//设置隔行变色
+				 for (var i=0; i<aLi.length; i++) {
+				 	aLi[i].index = i;
+				 	aLi[i].style.background = arr[i%arr.length];	//使用取模%的方法设置颜色！
+				 	aLi[i].onmouseover = function () {
+				 		str = this.style.background;	//先把原来的颜色存进str
+				 		this.style.background = 'pink';
+				 	};
+				 	aLi[i].onmouseout = function () {
+				 	//	this.style.background = arr[this.index%arr.length];	//使用取模%的方法设置颜色！
+				 		this.style.background = str;
+				 	}
+				 };
+				 //反选
+				 aInp[aInp.length-2].onclick = function () {
+					for (var i=0; i<aInp.length-2; i++) {
+						aInp[i].checked = !aInp[i].checked;
+					}
+				};
+				//全选
+				aInp[aInp.length-1].onclick = function () {
+					for (var i=0; i<aInp.length-2; i++) {
+						aInp[i].checked == false ?	aInp[i].checked = true : aInp[i].checked = false;
+						chec.push( aInp[i].checked );
+						console.log(chec.length);
+					};
+					console.log(aInp.length-2,222222);
+						
+					
+				};
+				if (chec.length == aInp.length-2) {
+							aInp[aInp.length-1].checked = true;
+						} else{
+							aInp[aInp.length-1].checked = false;
+						};
+			};
+		</script>
+	</body>
+</html>

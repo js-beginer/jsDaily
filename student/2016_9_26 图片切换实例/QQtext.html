@@ -1,122 +1,149 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>QQ</title>
 		<style>
-			*{
+			* {
 				margin: 0;
 				padding: 0;
 				font-family: "微软雅黑";
 			}
-			li{
+			
+			li {
 				list-style: none;
 			}
-			#list{
+			
+			#list {
 				width: 240px;
 				border: 1px solid #333333;
 				margin: 20px auto;
 			}
-			#list .myli{
-				
-			}
-			#list h2{
+			
+			#list .myli {}
+			
+			#list h2 {
 				height: 30px;
 				line-height: 30px;
 				text-indent: 20px;
 				background: url(img/ico1.gif) no-repeat 5px center #039AE3;
 				font-size: 18px;
 			}
-			#list ul{
+			
+			#list ul {
 				display: none;
 			}
-			#list ul li{
-				line-height:28px;
+			
+			#list ul li {
+				line-height: 28px;
 				text-indent: 28px;
 				border-bottom: 1px solid silver;
 			}
-			#list .active{
+			
+			#list .active {
 				background: url(img/ico2.gif) no-repeat 5px center #0000FF;
 			}
-			#list .hover{
+			
+			#list .hover {
 				background: #C4E3F3;
 			}
 		</style>
 		<script>
-			window.onload =function () {
+			window.onload = function() {
 				var oUl = document.getElementById("list");
 				var aH2 = oUl.getElementsByTagName("h2");
 				var aUl = oUl.getElementsByTagName("ul");
-				var aLi = null;//这
-				
-				for (var i=0; i<aH2.length; i++) {
+				var aLi = null;
+				var arrLi = [];
+				for(var i = 0; i < aH2.length; i++) {
 					aH2[i].index = i;
-					aH2[i].onclick = function () {
+					aH2[i].onclick = function() {
 						//判断H2的高亮和详细菜单的显示
-						if (this.className == '') {     //判断用==或===表示比较；{里=表示赋值}！！
-							this.className = 'active';  //擅长使用this
-							aUl[this.index].style.display = 'block';   //aUl一定要用数组索引值的方式查找元素！！！
-						} else{
-							this.className = '';  
+						if(this.className == '') { //判断用==或===表示比较；{里=表示赋值}！！
+							this.className = 'active'; //擅长使用this
+							aUl[this.index].style.display = 'block'; //aUl一定要用数组索引值的方式查找元素！！！
+						} else {
+							this.className = '';
 							aUl[this.index].style.display = 'none';
 						};
-						
+
 						//判断其他分组与当前的显示隐藏
-						for (var i=0; i<aH2.length; i++) {
-							if (i != this.index) {
+						for(var i = 0; i < aH2.length; i++) {
+							if(i != this.index) {
 								aUl[i].style.display = 'none';
 								aH2[i].className = '';
 							};
 						};
-						
-						
+
 					};
-				}
-				
-				
-				
-				
-			}
+				};
+				for(var i = 0; i < aUl.length; i++) {
+					aLi = aUl[i].getElementsByTagName('li'); //获取三个组的li
+					for(var j = 0; j < aLi.length; j++) {
+						arrLi.push(aLi[j]); //把li分别存进数组
+					};
+				};
+				//添加列表li点击事件
+				for(var i = 0; i < arrLi.length; i++) {
+					arrLi[i].onclick = function() {
+						for(var i = 0; i < arrLi.length; i++) {
+							if(arrLi[i] != this) {
+								arrLi[i].className = ''; //给未选中的初始化
+							};
+						};
+					  this.className == ''? this.className = 'hover' : this.className = '';
+//						if(this.className == '') {
+//							this.className = 'hover';
+//						} else {
+//							this.className = '';
+//						};
+					};
+				};
+
+			};
 		</script>
 	</head>
+
 	<body>
 		<ul id="list">
 			<li class="myli">
-		  	<h2>我的好友</h2>
-		    <ul>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    	<li>张三</li>
-		    </ul>
-		    </li>
-		    
+				<h2>我的好友</h2>
+				<ul>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+				</ul>
+			</li>
+
 			<li class="myli">
-		  	<h2>企业好友</h2>
-		    <ul>
-		    	<li>李四</li>
-		    	<li>李四</li>
-		    	<li>李四</li>
-		    	<li>李四</li>
-		    	<li>李四</li>
-		    </ul>
-		    </li>
-		    
+				<h2>企业好友</h2>
+				<ul>
+					<li>李四</li>
+					<li>李四</li>
+					<li>李四</li>
+					<li>李四</li>
+					<li>李四</li>
+				</ul>
+			</li>
+
 			<li class="myli">
-		  	<h2>黑名单</h2>
-		    <ul>
-		    	<li>王小五</li>
-		    	<li>王小五</li>
-		    	<li>王小五</li>
-		    	<li>王小五</li>
-		    	<li>王小五</li>
-		    </ul>
-		    </li>
+				<h2>黑名单</h2>
+				<ul>
+					<li>王小五</li>
+					<li>王小五</li>
+					<li>王小五</li>
+					<li>王小五</li>
+					<li>王小五</li>
+				</ul>
+			</li>
 		</ul>
 	</body>
+
 </html>
 <!--只要是通过标签名获取的元素都要加[]选择具体位置的元素！-->

@@ -83,6 +83,24 @@
 					for (var i=0; i<arrP.length; i++) {
 						oUl.innerHTML += '<li>'+(i+1)+'</li>';		//innerHTML的用法
 					};
+///////////////////////////设置定时器/////////////////////////////////////////////
+					var timer = null;
+					function tabTime () {
+						timer = setInterval(function () {
+							num++;
+							num%=arrUrl.length;	//	取模循环
+							fnTab ();
+						},1000);
+					};
+					setTimeout(tabTime,2000);
+					
+					oDiv.onmouseover = function () {
+						clearInterval(timer);
+					};
+					oDiv.onmouseleave = function () {
+						tabTime ();
+					};
+//////////////////////////////////////////////////////////////////////////////					
 					//初始化
 					function fnTab () {
 						oSpan.innerHTML = num+1+'/'+arrP.length;
