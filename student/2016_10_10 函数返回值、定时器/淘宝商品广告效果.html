@@ -49,6 +49,7 @@
 				background: rgba(224,175,108,.8);
 				color: white;
 				font-size: 24px;
+				
 			}
 		</style>
 	</head>
@@ -74,7 +75,23 @@
 				var aLi = oDiv.getElementsByTagName('li');
 				var aImg = oDiv.getElementsByTagName('img')[0];
 				var arrUrl = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg'];
-				var num = 4;
+				var num = 0;
+				//设置定时器
+				var timer = null;
+				function tabTime () {
+					timer = setInterval(function () {
+						num++;
+						num%=aLi.length;
+						fnTab();
+					},2000);
+				};
+				setTimeout(tabTime,1000);
+				aImg.onmouseover = function () {
+					clearInterval(timer);
+				};
+				aImg.onmouseleave = function () {
+					tabTime();
+				}
 				//初始化
 				function fnTab () {
 					aImg.src = arrUrl[num];
@@ -84,6 +101,15 @@
 					aLi[num].className = 'active';
 				};
 				fnTab ();
+				for (var i=0; i<aLi.length; i++) {
+					aLi[i].index = i;
+					aLi[i].onmouseover = function () {
+//						clearInterval(timer);//点击的时候图片不动了，直到鼠标悬停到图片，再离开，图片才会接着循环
+						num = this.index;
+						this.style.cursor = 'pointer';
+						fnTab();
+					};
+				};
 			};
 		</script>
 	</body>

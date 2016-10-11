@@ -86,13 +86,13 @@
 ///////////////////////////设置定时器/////////////////////////////////////////////
 					var timer = null;
 					function tabTime () {
-						timer = setInterval(function () {
+						timer = setInterval(function () { //设置一个每隔2s就变化的定时器
 							num++;
 							num%=arrUrl.length;	//	取模循环
 							fnTab ();
 						},2000);
 					};
-					setTimeout(tabTime,2000);
+					setTimeout(tabTime,4000);//加载后4s开始运行
 					
 					oDiv.onmouseover = function () {
 						clearInterval(timer);
