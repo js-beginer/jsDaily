@@ -48,12 +48,23 @@
 			#list .hover {
 				background: #C4E3F3;
 			}
+			#title{
+				width: 240px;
+				height: 180px;
+				background: #8A6D3B;
+				position: absolute;
+				left: 180px;
+				top: 20px;
+				display: none;
+			}
 		</style>
 		<script>
 			window.onload = function() {
 				var oUl = document.getElementById("list");
 				var aH2 = oUl.getElementsByTagName("h2");
 				var aUl = oUl.getElementsByTagName("ul");
+				var oDiv = document.getElementById('title');
+				var timer = null;
 				var aLi = null;
 				var arrLi = [];
 				for(var i = 0; i < aH2.length; i++) {
@@ -93,13 +104,27 @@
 							};
 						};
 					  this.className == ''? this.className = 'hover' : this.className = '';
-//						if(this.className == '') {
-//							this.className = 'hover';
-//						} else {
-//							this.className = '';
-//						};
+					};
+					//鼠标悬停出现色块
+					arrLi[i].onmouseover = show;
+					arrLi[i].onmouseleave = hide;
+					
+					oDiv.onmouseover = show;
+					oDiv.onmouseleave = hide;
+					function show () {
+						clearInterval(timer);
+						oDiv.style.display = 'block';
+					};
+					function hide () {
+						timer = setTimeout(function () {
+							oDiv.style.display = 'none';
+						},200);
+						
 					};
 				};
+				
+				
+				
 
 			};
 		</script>
@@ -107,9 +132,10 @@
 
 	<body>
 		<ul id="list">
+			<div id="title"></div>
 			<li class="myli">
 				<h2>我的好友</h2>
-				<ul>
+				<ul  style="display: block;">
 					<li>张三</li>
 					<li>张三</li>
 					<li>张三</li>
@@ -143,6 +169,8 @@
 				</ul>
 			</li>
 		</ul>
+		
+		
 	</body>
 
 </html>
