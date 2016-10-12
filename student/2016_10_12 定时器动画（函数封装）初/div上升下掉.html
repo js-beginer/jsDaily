@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>div上升下掉</title>
+		<script src="运动封装函数.js"></script>
+		<style>
+			
+		</style>
+		<script>
+			window.onload = function () {
+				var len = 20;
+				var str = '';
+				var aDiv = document.getElementsByTagName('div');
+				var num = 0;
+				var timer = null;
+//				var dis = parseInt(getStyle(aDiv[num], 'top'));
+				//往页面添加div
+				for (var i=0; i<len; i++) {
+					str += '<div style="width:50px;height:50px;background:red;position:absolute;top:10px;left:'+i*60+'px;">'+i+'</div>'
+				}
+				document.body.innerHTML = str;
+				//添加点击事件
+				document.onclick = function () {
+					var dis = parseInt(getStyle(aDiv[0], 'top'));
+					
+					if (dis==10) {
+						clearInterval(timer);
+						timer = setInterval(function () {
+							move(aDiv[num],'top',23,500);
+							num++;
+							if (num===len) {
+								clearInterval(timer);
+							};
+						},100);
+					}else if(dis==500){
+						clearInterval(timer);
+						
+						timer = setInterval(function () {
+							alert(dis)
+							move(aDiv[num],'top',23,10);
+							num++;
+							if (num===len) {
+								clearInterval(timer);
+							};
+						},100);
+					};
+				};
+//				function getStyle (obj,attr) {
+//					return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+//				};
+			};
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

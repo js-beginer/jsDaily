@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>安静！吵到我学习了</title>
+		<script src="抖动封装函数.js"></script>
+		<style>
+			img{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				top: 200px;
+				left: 200px;
+			}
+			#img2{
+				left: 500px;
+			}
+		</style>
+		<script>
+			window.onload = function () {
+				var oImg = document.getElementById('img1');
+				var oImg2 = document.getElementById('img2');
+				oImg.onclick =fnShake;
+				oImg2.onclick = fnShake;
+				//复用
+				function fnShake () {
+					var _this = this;
+					shake (_this,'left',function () {
+						shake (_this,'top');
+					});
+				};
+				
+			};
+		</script>
+	</head>
+	<body>
+		<img src="1.jpg"  id="img1"/>
+		<img src="2.png" id="img2" />
+	</body>
+</html>
