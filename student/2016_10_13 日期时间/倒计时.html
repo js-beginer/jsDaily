@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>倒计时</title>
+		<style>
+			.t1 { width:400px; }
+		</style>
+		<script>
+			window.onload = function () {
+				var aInp = document.getElementsByTagName('input');
+				var iNow = null;
+				var iGol = null;
+				var t = 0;
+				
+				aInp[2].onclick = function () {
+					//数字形式：new Date(2016,12,12,5,23,56);
+					//字符串形式: nwe Date('June 10,2016 12:12:12')
+					iGol = new Date(aInp[0].value);//把字符串格式的数据传进去
+					
+				};
+			}
+		</script>
+	</head>
+	<body>
+		距离：<input class="t1" type="text" value="October 14,2016 ,22:3:0" /><br />
+		还剩：<input class="t1" type="button" /><br />
+		<input type="button" value="点击开始倒计时" />
+	</body>
+</html>
