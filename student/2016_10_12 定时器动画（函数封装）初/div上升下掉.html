@@ -36,8 +36,10 @@
 					}else if(dis==500){
 						clearInterval(timer);
 						
+						num = 0;
+						
 						timer = setInterval(function () {
-							alert(dis)
+							//alert(dis)
 							move(aDiv[num],'top',23,10);
 							num++;
 							if (num===len) {
