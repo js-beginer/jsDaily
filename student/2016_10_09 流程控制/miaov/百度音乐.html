@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>百度音乐</title>
+<style>
+*{ list-style:none; margin:0; padding:0; box-sizing:border-box}
+#box{ width:300px; height:300px; border:1px dashed #ccc}
+#box>ul{ width:100%; height:85%}
+#box>ul>li{ cursor:pointer;width:100%; height:30px; margin:5px 0; line-height:30px;}
+#box>ul>li>input{ display:inline-block; width:10%}
+#box>ul>li>span{display:inline-block;}
+#box>ul>li>span:nth-child(2){ width:30%; vertical-align:-8px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#box>ul>li>span:last-child{ width:60%; text-align:center; vertical-align:-9px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#box>p{ width:100%; height:15%;}
+#box>p>input{ display:block; float:left; width:10%}
+#box>p>span:nth-child(2){ width:30%; display:block; float:left;}
+#box>p>button{ width:30%; display:block;text-align:center; float:left; vertical-align:-3px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap; margin-left:22%; height:60%; bor}
+input{ width:20px; height:20px;}
+</style>
+</head>
+
+<body>
+<h1>百度音乐排行榜</h1>
+<div id="box">
+   <ul>
+      <li><input type="checkbox"><span>来不及</span><span>刘瑞琪</span></li>
+      <li><input type="checkbox"><span>Bad Romance</span><span>Vitamin String Quartet</span></li>
+      <li><input type="checkbox"><span>我想</span><span>余佳运</span></li>
+      <li><input type="checkbox"><span>美丽之物</span><span>Sound Horizon</span></li>
+      <li><input type="checkbox"><span>夏目友人帐</span><span>夏目友人帐 音楽集  </span></li>
+      <li><input type="checkbox"><span>反叛的鲁路修</span><span>反叛的鲁路修</span></li>
+      <li><input type="checkbox"><span>你是如此的难易忘记</span><span>梁朝伟</span></li>
+   </ul>
+   <p><input type="checkbox"><span>全选</span><button>删除</button></p>
+</div>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('box'),
+		aUl=oDiv.getElementsByTagName('ul')[0],
+	    aLi=oDiv.getElementsByTagName('li'),
+		aInput=oDiv.getElementsByTagName('input'),
+		oP=oDiv.getElementsByTagName('p')[0],
+		oButton=oP.getElementsByTagName('button')[0],
+		thab=[],
+		index=null;
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].id=i
+			aInput[i].id=i
+			aInput[i].flag=true
+			aLi[i].onmouseover=over
+			aLi[i].onmouseout=out
+				}
+		aInput[aInput.length-1].onclick=function(){
+			for(var i=0;i<aLi.length;i++){
+				if(this.checked){
+					aInput[i].checked=true
+					aLi[i].style.background='#33F0F0'
+					aInput[i].flag=false
+					thab.push(i)
+					}else{
+					aInput[i].checked=false
+					aLi[i].style.background='#fff'
+					aInput[i].flag=true
+					thab.splice(0,thab.length)
+					console.log(thab)
+						}
+				}
+			}
+//				oButton.onclick=function(){
+//						if(thab.length>0){
+//               for(var i=0;i<thab.length;i++){
+//				   console.log(thab[i])
+//					aInput[thab[i]].parentNode.parentNode.removeChild(aInput[thab[i]].parentNode)
+//					/*aInput[thab[i]].flag=''*/
+//					
+//				   }
+//				   }else{
+//					   alert('您还未选择其中任何一首歌曲！！！')
+//					   }
+//					   thab.splice(0,1)
+//			}
+		function over(){
+			this.style.background='#ccc'
+			var aa=aLi[this.id];
+			aInput[this.id].onclick=function(){
+			if(this.flag){
+				this.checked=true
+				aa.style.background='#33F0F0'
+				this.flag=false
+				if(thab.length!==aLi.length){
+					thab.push(this.id)
+					}
+					if(thab.length==aLi.length){
+						aInput[aInput.length-1].checked=true
+					}
+	
+					}else{
+						this.checked=false
+						aa.style.background='#ccc'
+						this.flag=true
+						thab.splice(0,1)
+//						alert(thab.length)
+						aInput[aInput.length-1].checked=false
+						}
+				}
+			}		
+		function out(){
+			var aa=aLi[this.id];
+			if(aInput[this.id].checked==true){
+				aa.style.background='#33F0F0'
+/*				alert('a')
+*/				}else{
+					this.style.background='#fff'
+					}
+			}
+
+							}
+</script>
+</body>
+</html>

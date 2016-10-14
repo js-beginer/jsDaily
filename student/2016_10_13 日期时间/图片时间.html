@@ -21,6 +21,7 @@
 				setInterval(fnTime,1000);
 				fnTime ();
 				function fnTime () {
+					
 					var myTime = new Date();
 					var iHours = myTime.getHours();
 					var iMin = myTime.getMinutes();
@@ -30,8 +31,7 @@
 //					oP.innerHTML = str;
 					//给图片传对应的数字
 					for (var i=0; i<str.length; i++) {
-						aImg[i].src = 'img/' + str.charAt(i) + '.jpg';
-						
+						aImg[i].src = 'img/' + str.charAt(i) + '.jpg';	
 						if (str.charAt(i)==':') {
 							aImg[i].src = 'img/colon.jpg';
 						};
@@ -41,7 +41,11 @@
 						return n<10?'0'+n:''+n;
 					};
 				};
+				
 			};
+			function sildeup(){
+				
+			}
 		</script>
 		
 		<div>
