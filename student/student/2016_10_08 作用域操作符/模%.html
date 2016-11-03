@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模除</title>
+		<style>
+			li{
+				list-style: none;
+				height: 25px;
+				margin: 1px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload = function () {
+				var aLi = document.getElementsByTagName('li');
+				var arr = ['#111','#222','#333'];
+				var str = '';
+				
+				 for (var i=0; i<aLi.length; i++) {
+				 	aLi[i].index = i;
+				 	aLi[i].style.background = arr[i%arr.length];	//使用取模%的方法设置颜色！
+				 	aLi[i].onmouseover = function () {
+				 		str = this.style.background;	//先把原来的颜色存进str
+				 		this.style.background = 'pink';
+				 	};
+				 	aLi[i].onmouseout = function () {
+				 	//	this.style.background = arr[this.index%arr.length];	//使用取模%的方法设置颜色！
+				 		this.style.background = str;
+				 	}
+				 }
+			}
+		</script>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

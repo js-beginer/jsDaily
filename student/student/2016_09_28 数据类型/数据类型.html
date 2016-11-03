@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>找到合适的值</title>
+	</head>
+	<body>
+	<script>
+	
+//		HTML标签类型:block,inline,inline-block,table...
+//		JS  数据类型:数字,字符串,布尔,未定义,函数,对象(obj,[],json,null)
+	
+		var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+		/*
+			1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+			2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5 
+			3、把转成数字以后，最大值判断出来：300
+			4、把 NaN 所在的位置找出来：1 14 17  19
+		*/
+		var a1 = [];
+		var a2 = [];
+		var a3 = [];
+		var a4 = [];
+		var a5 = [];
+		function myType(){
+			//字符串
+			for(var i=0; i<arr.length; i++){
+				if(typeof arr[i] == 'string'){
+					a1.push(arr[i]);
+				} else if( !isNaN( parseFloat(arr[i]) ) ){
+					a2.push(arr[i]);
+				}
+			};
+			//纯数字
+			for(var i=0; i<arr.length; i++){
+				if( !isNaN(parseFloat(arr[i]))&&!typeof arr[i] == 'number' ){
+					a2.push(arr[i]);
+				}
+			};
+			//可以转成数字的数字
+			for(var i=0; i<arr.length; i++){
+				if( !isNaN(parseFloat(arr[i])) ){
+					a3.push(arr[i]);
+				};
+			};
+			//全部转成数字
+			for(var i=0; i<a3.length; i++){
+				if(typeof a3[i] == 'number'){
+					a4.push(a3[i]);
+				}else{
+					a4.push(parseFloat(a3[i]));
+				};
+			};
+			//求最大值
+			var max = a4[0];
+			for( var i=1; i<a4.length; i++){
+				if(max < a4[i]){
+					max = a4[i];
+				};
+			};
+			//NaN 所在的位置
+			for(var i=0; i<arr.length; i++){
+				
+				if( isNaN(arr[i]) && typeof arr[i] == 'number' ){
+					a5.push(i);
+				}
+					
+					
+			};
+			console.log(arr.length,'字符串');
+			console.log(a1,'字符串');
+			console.log(a2,'纯数字');
+			console.log(a3,'可以转成数字的');
+			console.log(a4,'转成数字后的');
+			console.log(max,'最大值');
+			console.log(a5,'NaN所在位置');
+		};
+		myType();
+		
+
+
+	</script>
+	</body>
+</html>

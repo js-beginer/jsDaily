@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>arguments</title>
+		<style>
+			div{
+				width: 100px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div></div>
+		
+		
+		<script>
+			alert( sum(1,2,3) );//实参
+			alert( sum(10,2,3,4) );
+			function sum() {//形参（没写的话系统也会保存到arguments）
+				var sum = 0;
+				for (var i=1; i<arguments.length; i++) {
+//					sum = arguments[0]-arguments[1]-arguments[2]-arguments[3];
+//					sum = arguments[0]+arguments[1]+arguments[2]+arguments[3];
+					sum = arguments[0] -= arguments[i];
+				};
+				return sum;
+			};
+			
+			
+			alert( getStyle( document.getElementsByTagName('div')[0],'width') );
+			function getStyle ( obj,attr ) {
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+				//							兼容IE678				兼容标准浏览器(获取计算机计算后的样式)
+			}
+		</script>
+	</body>
+</html>

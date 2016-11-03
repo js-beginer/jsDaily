@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = new Array('a');
+			arr[2] = 123; //a,,123  第二个变成123
+//			alert(arr);
+			
+
+			var arr = [3,3,5,1,5,6,2,11,3,4,5];
+//			splice()方法查重
+			for (var i=0; i<arr.length; i++) {
+				for (var j=i+1; j<arr.length; j++) {	//写两循环意义你懂了吗？ 不就是为了与前一位数比较么！
+					if (arr[i]==arr[j]) {
+						arr.splice(j,1);
+						j--;		//因为每次查重都会删除一位数，那么j的位置都会顶替被删除的数的位置 所以-1
+					}
+				}
+			}
+		//	alert(arr);
+//			sort排序法
+			arr.sort(function (a,b) {
+				return a-b; //正序
+			});
+	//		alert(arr);
+			arr.sort(function (a,b) {
+				return b-a; //倒序
+			});
+	//		alert(arr);
+//			random随机排序法
+			arr.sort(function (a,b) {
+				return Math.random() - 0.5;
+			});
+//			alert(arr);
+//			求x~y之前的随机整数
+//			round函数:四舍五入
+			var x = 3;
+			var y = 55;
+//			alert(Math.round( Math.random()*(y-x)+x ));
+//			ceil向上取整(1~z)
+			var z = 8;
+			alert(Math.ceil( Math.random()*z ));
+		</script>
+	</body>
+</html>

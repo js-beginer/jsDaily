@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>random</title>
+    <script src="jquery-1.9.1.js"></script>
+</head>
+<body>
+<input type="text" class="start" placeholder="输入起始数字">
+<input type="text" class="end" placeholder="输入结束数字">
+<button>点我</button>
+    <script>
+
+		function randomNum(start,end) {
+			var sum = end - start + 1;
+			return Math.floor(Math.random()*sum+start);
+		}
+		var num = randomNum(10,20);
+		console.log(num);
+
+    </script>
+
+</body>
+</html>

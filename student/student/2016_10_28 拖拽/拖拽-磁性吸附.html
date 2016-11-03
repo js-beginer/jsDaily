@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽磁性吸附</title>
+		<style>
+			*{
+				padding: 0;margin: 0;
+			}
+			#div1 {width: 100px; height: 100px; background: red; position: absolute;}
+			#img1 { position: absolute;}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<img src="justGan.jpg" id="img1"/>
+		
+		<script>
+			window.onload = function () {
+				var oDiv = document.getElementById('div1');
+				var oImg = document.getElementById('img1');
+				
+				drag(oImg);
+				drag(oDiv);
+				function drag (obj) {
+					//按下
+					obj.onmousedown = function (ev) {
+						var ev = ev || event;
+						var disX = ev.clientX - this.offsetLeft;
+						var disY = ev.clientY - this.offsetTop;
+						//阻止拖拽文字移动默认事件（非标准浏览器）:设置div的全局捕获
+						if (obj.setCapture) {
+							obj.setCapture();
+						}
+						//移动
+						document.onmousemove = function (ev) {
+							var L = ev.clientX - disX;
+							var T = ev.clientY - disY;
+							//磁性吸附、限定范围
+							if (L < 20) {
+								L = 0;
+							} else if (L>document.documentElement.clientWidth - obj.offsetWidth-20) {
+								L = document.documentElement.clientWidth - obj.offsetWidth;
+							};
+							if ( T < 20 ) {
+								T = 0;
+							} else if ( T > document.documentElement.clientHeight - obj.offsetHeight-20 ) {
+								T = document.documentElement.clientHeight - obj.offsetHeight;
+							};
+							obj.style.left = L + 'px';
+							obj.style.top = T + 'px';
+							
+						};
+						//抬起
+						document.onmouseup = function () {
+							
+							document.onmousemove = null;
+							//释放全局捕获
+							if (obj.releaseCapture) {
+								obj.releaseCapture();
+							}
+						};
+						//阻止拖拽的文字移动默认事件（标准浏览器）
+						return false;
+					};
+				};
+			}
+		</script>
+	</body>
+</html>
+<!--物体.鼠标按下{文档.鼠标移动--文档.鼠标抬起}-->

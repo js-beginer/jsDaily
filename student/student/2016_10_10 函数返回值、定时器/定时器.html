@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器</title>
+		<style>
+			div{
+				width: 800px;
+				height: 500px;
+				box-shadow: 0 0 10px gray;
+				border: 1px solid gray;
+				margin: 5px;
+				background: no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="换背景" />
+		<input type="button" value="停" />
+		<div></div>
+		
+		<script>
+			var aInp = document.getElementsByTagName('input');
+			var aDiv = document.getElementsByTagName('div')[0];
+			var arr = ['img/tu1.jpg','img/tu2.jpg','img/tu3.jpg','img/tu4.jpg'];
+			var num = 0;
+			var timer = null;
+			aInp[0].onclick = function () {
+				clearInterval(timer);	//先关后开 this is 套路 (不然会一直打开新定时器)
+				timer = setInterval(function () {
+					aDiv.style.background = 'url('+arr[num]+')';
+					num++;
+					num%=arr.length;//用模除表示循环，省事！！！
+				},1000);
+			};
+			aInp[1].onclick = function () {
+				clearInterval(timer);
+			};
+		</script>
+	</body>
+</html>

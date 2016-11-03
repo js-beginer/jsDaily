@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js基本数据类型</title>
+		<script>
+		
+		
+//		HTML标签类型:block,inline,inline-block,table...
+//		JS  数据类型:数字,字符串,布尔,未定义,函数,对象(obj,[],json,null)
+		
+		
+		
+		
+		
+		//基本数据类型 简单
+//			var String = "iutiuyiu";	//字符串
+//			var num = 1;				//数字
+//			var bool = true;			//布尔型
+//			var undef = undefined;		//未定义
+
+//     复杂
+//			var obj = {};				//对象
+//			var obj = {
+//			name:"zj",
+//			age:24,
+//			living:false
+//			}
+//			var obi2 = new Object();	
+//			var func = function(){};    //函数
+
+//	继承自对象
+//			var nu = null;				//空
+//			var arr = [];               //数组
+//			var arr = ["a","b","c"];
+//			var date = new Date();
+
+			//定义函数
+//			var func =function(){};
+//			function func(){};
+			//回调函数
+			var funname1 = function(){
+				console.log("abc");
+			};
+			var funname2 = function(){
+				console.log("dfg");
+			};
+			
+//			function dosome(dodo){
+//				setTimeout(dodo,1000);
+//				
+//			}
+			function dosome(dodo){
+				setTimeout(function() {
+					dodo();
+				},1000);
+				
+			}
+			
+			dosome(funname2);
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	
+		
+	</body>
+</html>

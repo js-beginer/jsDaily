@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li class="box">1111111</li>
+			<li>222222</li>
+			<li class="box">3333333</li>
+			<li class="box1">444444</li>
+		</ul>
+		<p class="box">ppppppp</p>
+		
+		<script>
+			window.onload = function () {
+				var oUl1 = document.getElementById('ul1');
+				var aLi = getClassName( oUl1,'li','box')
+				for (var i=0; i<aLi.length; i++) {
+					aLi[i].style.background = 'red';
+				}
+				function getClassName ( parent,tagName,className) {
+					var aEles = parent.getElementsByTagName(tagName);
+					var arr = [];
+					for (var i=0; i<aEles.length; i++) {
+						var arrClassName = aEles[i].className.split(' ');
+						
+						for (var j=0; j<arrClassName.length; j++) {
+							if (arrClassName[j]==className) {
+								arr.push(aEles[i]);
+								break;//确保一组找到就撤
+							}
+						}
+					}
+					return arr;
+				}
+				
+			}
+		</script>
+	</body>
+</html>

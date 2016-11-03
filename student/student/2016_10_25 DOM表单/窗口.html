@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>窗口</title>
+	</head>
+	<body style="height: 2000px;">
+		<script>
+			window.onload = function () {
+				 //可视区的尺寸:
+				 document.documentElement.clientWidth
+				 document.documentElement.clientHeight
+				 
+				 //滚动距离:(滚动屏幕之后,文档顶端与窗口顶端的距离)
+				 document.documentElement.scrollTop //scrollLeft
+				 document.body.scrollTop   //兼容IE
+//				 var scrollTop = document.documentElement.scrollTop ||document.body.scrollTop;  //(只要有一种情况有值,就弹出)
+//				 alert(scrollTop);
+				 
+				 //内容高度：
+				 document.getElementById('div1').scrollHeight;
+				 //文档高度:
+				 document.documentElement.offsetHeight;
+				 document.body.offsetHeight;
+				 
+				 //窗口事件
+				 onscroll:当滚动条滚动的时候触发
+				 onresize:当窗口大小发生改变的时候触发
+				 
+				 
+				 
+				// jQuery窗口:
+				
+//				$(document).height()：整个网页的高度
+//
+//				$(window).height()：浏览器可视窗口的高度
+//				
+//				$(window).scrollTop()：浏览器可视窗口顶端距离网页顶端的高度（垂直偏移）
+//				
+//				用一句话理解就是：当网页滚动条拉到最低端时，$(document).height() == $(window).height() + $(window).scrollTop()。
+//				
+//				当网页高度不足浏览器窗口时$(document).height()返回的是$(window).height()。
+//				
+//				不建议使用$("html").height()、$("body").height()这样的高度。
+//				
+//				原因：
+//				
+//				$("body").height()：body可能会有边框，获取的高度会比$(document).height()小；
+//				
+//				$("html").height()：在不同的浏览器上获取的高度的意义会有差异，说白了就是浏览器不兼容。
+//				
+//				$(window).height()值有问题，返回的不是浏览器窗口的高度
+			}
+			
+			
+		</script>
+		
+		<div id="div1" style="width: 100px; height: 100px;border: 1px solid red; padding: 10px; margin: 10px;">
+			<div style="width: 100px;height: 200px;background: blue;"></div>
+		</div>
+	</body>
+</html>
+<!--青媚狐，骨生花，九号公馆，要抱抱，啪啪啪，极乐鸳鸯，请不要挑逗我，朱雀鸣鸾，带枪出巡，我是你的谁，本色，圈圈点点圈圈点点圈圈点点，至爱，Lolipop Luxury,Give More,Dirty Kiss
+-->

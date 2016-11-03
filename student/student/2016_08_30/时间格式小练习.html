@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>日期格式转换小练习</title>
+		<script type="text/javascript" src="jquery-1.9.1.js"></script>
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			$(function() {
+				var date1 = new Date();
+				var myYear = date1.getFullYear();
+				var myMonth = date1.getMonth();
+				var myDate = date1.getDate();
+				var myDay = date1.getDay();
+				var aa = "";
+				switch(myDay) {
+					case 1:
+						aa = "一";
+						break;
+					case 2:
+						aa = "二";
+						break;
+					case 3:
+						aa = "三";
+						break;
+					case 4:
+						aa = "四";
+						break;
+					case 5:
+						aa = "五";
+						break;
+					case 6:
+						aa = "六";
+						break;
+					default:
+						aa = "日";
+						break;
+				}
+				time = myYear + "-" + (myMonth + 1) + "-" + myDate + "/星期" + aa;
+				alert(time);
+			})
+		</script>
+		
+	</body>
+
+</html>

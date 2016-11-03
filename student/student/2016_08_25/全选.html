@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全选</title>
+		<script src="jquery.js"></script>
+		<!--<script src="jquery-1.9.1.js"></script>-->
+		<script type="text/javascript">
+			$(function() {
+				var $len = $('[name=items]:checkbox');
+				//全选和全不选
+				$("#CheckedAll").click(function() {
+					$len.attr("checked", this.checked);
+				});
+				//联动起来
+				$len.click(function() {	
+					//筛选正被选中的与所有的进行长度比较
+					$("#CheckedAll").attr("checked", $len.length == $len.filter(":checked").length);
+				})
+				//反选
+				$("#CheckedRev").click(function() {
+					$len.each(function () {
+						this.checked = !this.checked;
+					})
+				});
+				//输出值
+				$("#send").click(function() {
+					var str = "你选中的是：\r\n";
+					$('[name=items]:checkbox:checked').each(function() {
+						str += $(this).val() + "\r\n";
+					})
+					alert(str);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form method="post" action="">
+			你爱好的运动是？<input type="checkbox" id="CheckedAll" />全选/全不选<br/>
+			<input type="checkbox" name="items" value="足球" />足球
+			<input type="checkbox" name="items" value="篮球" />篮球
+			<input type="checkbox" name="items" value="羽毛球" />羽毛球
+			<input type="checkbox" name="items" value="乒乓球" />乒乓球<br/>
+			<input type="button" id="CheckedRev" value="反　选"/> 
+			<input type="button" id="send" value="提　交" />
+		</form>
+	</body>
+</html>

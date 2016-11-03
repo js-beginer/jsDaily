@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function fn1 (a) {
+				console.log(11111)
+				a();
+				console.log(22222)
+			};
+			var cb = function () {
+				console.log(3445);
+			};
+			
+			fn1(cb);
+//cb();
+		</script>
+	</body>
+</html>

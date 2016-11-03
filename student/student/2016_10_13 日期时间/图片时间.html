@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片时间</title>
+		<style>
+			.wrapper {
+				width: 1035px;
+				height: 172px;
+				border: 1px solid gainsboro;
+				margin: 50px auto;
+				box-shadow: 5px 5px 20px 5px #122B40;	
+				position:relative;	
+				overflow:hidden;
+			}
+			.wrapper > div {
+				width:122px;
+				height:344px;
+				position:absolute;
+				top:0;
+				display:inline-block;
+			}
+			.wrapper > div > img {
+				position:absolute;
+				left:0
+			}
+			
+			.wrapper > div > .img1 {
+				top:0
+			}
+			.wrapper > div > .img2 {
+				top:172px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<p id="time" style="font-size:60px;"></p>
+			<div class="time" style="left:0">
+				<img class="img1" src="img/0.JPG" />
+				<img class="img2" src="img/1.JPG" />
+			</div>
+			<div class="time" style="left:125px">
+				<img class="img1" src="img/0.JPG" />
+				<img class="img2" src="img/1.JPG" />
+			</div>
+			<div style="left:250px">
+				<img src="img/colon.JPG" />
+			</div>
+			<div class="time" style="left:375px">
+				<img class="img1" src="img/0.JPG" />
+				<img class="img2" src="img/1.JPG" />
+			</div>
+			<div class="time" style="left:500px">
+				<img class="img1" src="img/0.JPG" />
+				<img class="img2" src="img/1.JPG" />
+			</div>
+			<div style="left:625px">
+				<img src="img/colon.JPG" />
+			</div>
+			<div class="time" style="left:750px;">
+				<img class="img1" src="img/0.JPG" />
+				<img class="img2" src="img/1.JPG" />
+			</div>
+			<div class="time" style="left:875px;">
+				<img class="img1" src="img/0.JPG" />
+				<img class="img2" src="img/1.JPG" />
+			</div>
+		</div>
+		<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			var $time = $('.wrapper .time');
+			var timeStr = "";
+			var prevTimeStr = "000000";
+			setInterval(fnTime,1000);
+			fnTime ();
+			function fnTime () {
+				var myTime = new Date();
+				var iHours = myTime.getHours();
+				var iMin = myTime.getMinutes();
+				var iSec = myTime.getSeconds();
+				timeStr = toTwo(iHours)+''+toTwo(iMin)+toTwo(iSec);
+				//给图片传对应的数字
+				for (var i=0; i<timeStr.length; i++) {
+					sildeup(i,timeStr.charAt(i));
+				};
+				prevTimeStr = timeStr;
+				//如果是个位数就加个0	
+				function toTwo (n) {
+					return n<10?'0'+n:''+n;
+				};
+			};
+			function sildeup(index,str){
+				if(prevTimeStr.charAt(index) === str) return;
+				var $timeItem = $time.eq(index);			
+				var $img1 = $timeItem.find(".img1");
+				var $img2 = $timeItem.find(".img2");
+				var imgSrc = 'img/' + str + '.jpg';
+				$img2.attr("src",imgSrc);//把下一张改成当前时间
+				$timeItem.animate({top:"-172px"},500,function(){//整体向上172px，0.5秒后 整体回到原来的位置 并且把上一张改成当前时间
+					$timeItem.css({"top":0});
+					$img1.attr("src",imgSrc);
+				})
+			}
+		</script>
+	</body>
+</html>
+<!--子选择器 ">"仅是指它的直接后代(第一代后代);而后代选择器 " " 是作用于所有(所有！)子后代元素-->

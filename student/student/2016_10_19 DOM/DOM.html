@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				padding: 40px 50px;
+			}
+			
+			#div1 {
+				background: red;
+				position: relative;
+			}
+			
+			#div2 {
+				background: green;
+				position: relative;
+			}
+			
+			#div3 {
+				background: orange;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body id="body1">
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+
+		<script>
+			window.onload = function() {
+				var oDiv3 = document.getElementById('div3');
+				
+				var p = getPos( oDiv3 );
+				alert(p.left);
+				
+				function getPos(obj) {
+					var pos = {left: 0,top: 0};
+					while( obj ) {
+						pos.left += obj.offsetLeft;
+						pos.top += obj.offsetTop;
+						obj = obj.offsetParent;
+					};
+					return pos;
+				};
+			}
+		</script>
+	</body>
+
+</html>

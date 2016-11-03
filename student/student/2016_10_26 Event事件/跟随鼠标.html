@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跟随鼠标</title>
+		<style>
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<div id="div1"></div>
+		
+		<script>
+			window.onload = function () {
+				//onmousemove:当鼠标在一个元素上移动的时候触发
+				//触发频率不是像素，而是时间间隔，在一个指定的时间内（很短），如果鼠标的位置和上一次的位置发生了变化，那么就会触发一次
+				
+				var oDiv = document.getElementById('div1');
+				document.onmousemove = function () {
+					var ev = ev||event;
+					
+					var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+					oDiv.style.left = ev.clientX + 'px';
+					oDiv.style.top = ev.clientY + scrollTop + 'px';  //   可视区鼠标位置+滚动距离
+					
+				}
+				
+				
+			};
+		</script>
+	</body>
+</html>

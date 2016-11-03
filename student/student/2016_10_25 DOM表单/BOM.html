@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="打开新窗口" />
+		<input type="button" value="关闭窗口(不支持)" />
+		<input type="button" value="关闭新窗口" />
+		
+		<script>
+			window.onload = function () {
+				var aInput = document.getElementsByTagName('input');
+				aInput[0].onclick = function () {
+//					window.open( 'http://www.baidu.com','_self');
+					opener = window.open( 'http://www.baidu.com');
+				}
+				aInput[1].onclick = function () {
+					window.close();
+				}
+				aInput[2].onclick = function () {
+					opener.close();
+				}
+				
+				
+//				window.navigator.userAgent   // 浏览器信息
+//				window.location.href     // url地址
+//				window.location.search    //url问号后面的内容
+//				window.location.hash      //url#后面的内容
+			}
+		</script>
+	</body>
+</html>

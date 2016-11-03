@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			给一个对象绑定事件处理函数 方法一:<br />
+			obj.onclick = fn;
+			<hr />	
+				
+				
+			给一个对象绑定事件处理函数 方法二:<br />
+			
+			IE: obj.attachEvent(事件名称,时间函数);<br />
+				例子:document.attachEvent('onclick',function () {
+				  	fn1.call(document);  //用call改变指向
+				 });
+					1.没有捕获
+					2.事件名称有on
+					3.事件函数执行顺序: 标准: 正序  ;非标准:倒序
+					4.this指向window<br /><br />
+				
+			标准: obj.addEventListener(事件名称,事件函数,是否捕获)      默认是:false冒泡, true:捕获<br />
+				例子: document.addEventListener('click',fn1,false);
+					1.有捕获
+					2.事件名称无on
+					3.事件函数执行顺序: 正序  
+					4.this指向触发该事件的对象
+				
+			<hr />	
+			
+			事件取消：<br />
+			
+			IE： obj.detachEvent(事件名称，时间函数);<br />
+			标准： obj.removeEventListener(事件名称，事件函数，是否捕获)
+			
+			<hr />
+			call() 函数下的一个方法: 第一个参数可改变函数执行过程中的内部this指向
+								第二个参数开始 是原来函数参数的列表
+			fn1() == fn1.call()  只不过能传参 改this指向
+		</div>
+		<script>
+
+			function fn1 () {
+				alert(this);
+			}
+			function fn2 () {
+				alert(2)
+			}
+			
+			
+			//封装绑定事件
+			function bind(obj,evname,fn){
+				if (obj.addEventListener) {
+					obj.addEventListener(evname,fn,false);
+				} else{
+					obj.attachEvent('on'+evname,function () {
+						fn.call(obj);
+					});
+				};
+			};
+			
+			bind(document,'click',fn1);
+			bind(document,'click',fn2);
+		</script>
+	</body>
+</html>

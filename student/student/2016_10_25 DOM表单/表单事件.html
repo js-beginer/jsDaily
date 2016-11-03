@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单事件</title>
+	</head>
+	<body>
+		<form id="form1" action="http://www.baidu.com">
+			<input type="text" name="text1" placeholder="在哪儿输入"/>
+			<input type="text" name="text2" placeholder="在这输入"/>
+			<input type="text" name="text3" placeholder="就不输入"/>
+			<input type="reset" name="doreset" value="重置"/>
+			<input type="submit" name="dosubmit" value="提交"/>
+			
+		</form>
+		
+		<script>
+			window.onload = function () {
+				var oForm = document.getElementById('form1');
+				oForm.onsubmit = function () {
+					if (this.text1.value == '') {
+						alert('请输入东西啊');
+						return false;
+					}
+				}
+				oForm.onreset = function () {
+					return confirm('你确定重置？')
+				}
+			}
+		</script>
+	</body>
+</html>

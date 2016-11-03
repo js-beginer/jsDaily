@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+			//字符串转数组
+			var a = ",1,2,3,4,5";
+			
+			var b = a.split(",");//按有，的地方切  ["1","2","3"]
+			var b1 = a.split("");//有嘛切嘛  全分割  ["1",",","2",",","3"]
+			var b2 = a.split(" ");//整体算一个切  ["1,2,3"]
+			var b3 = a.replace(/\W/g,'').split(",");//把符号全都剔除 ["12345"]
+			console.log(b,"aaaaaa");
+			console.log(b1,"bbb");
+			console.log(b2,"ccccc");
+			console.log(b3,"ddddddd");
+			
+			
+			var a1 = "12345";
+			var ab = a1.split(",");//按有，的地方切  ["12345"]
+			var ab1 = a1.split("");//有嘛切嘛  全分割  ["1","2","3"]
+			var ab2 = a1.split(" ");//整体算一个切  ["12345"]
+			console.log(ab,"aaaaaa");
+			console.log(ab1,"bbb");
+			console.log(ab2,"ccccc");
+			
+			//数组转换成字符串
+			var arr = [9,8,7,6];
+			
+			var str = arr.join("");  //"9876"
+			var str1 = arr.join(" ");  //"9 8 7 6"
+			var str2 = arr.join(",");  //"9,8,7,6"
+			console.log(str);
+			console.log(str1);
+			console.log(str2);
+			//另一种方法
+			var d = arr.toString();  //"9,8,7,6"
+			console.log(d);
+			
+
+			
+			
+//			var myDate=new Date();
+////			var ab = myDate.setDate(myDate.getDate()+5);
+//			
+//			var ab = myDate.setFullYear();
+//			console.log(ab)
+
+			//获取开始和结束时间，从而得到函数执行时间
+			function aa () {
+				alert("aaa");
+			}
+			var start = Date.now();
+			aa();
+			var stop = Date.now();
+			result = stop-start;
+			console.log(result);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义右键</title>
+		<style>
+			#div1 {width:100px; height: 200px; border: 1px solid red; position: absolute; display: none;}
+		</style>
+	</head>
+	<body>
+		事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情
+		怎么阻止？
+		当前这个行为是什么事件触发的，然后在这个事件的处理函数中使用return false;
+		<div id="div1">
+			<input type="button" value="点击"/>
+			<span><a href="javascript:;">刷新</a></span>
+		</div>
+		<script>
+			window.onload = function () {
+				var oDiv = document.getElementById('div1');
+				document.oncontextmenu = function () {
+					var ev = ev||event;
+					oDiv.style.display = 'block';
+					oDiv.style.left = ev.clientX + 'px';
+					oDiv.style.top = ev.clientY + 'px';
+					return false; //阻止默认行为
+				}
+				document.onclick = function () {
+					oDiv.style.display = 'none';
+				}
+			}
+		</script>
+	</body>
+</html>

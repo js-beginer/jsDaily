@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>百度评分功能</title>
+<style>
+*{ list-style:none; margin:0; padding:0;}
+.wenku{ height:40px; width:590px;}
+.wenku>ul{ float:left;margin-top:10px; cursor:pointer; height:21px;width:155px}
+.wenku>ul>li{ width:21px; transition:all 0.2s;-webkit-transition:all 0.2s; height:100%; margin:0 5px; float:left;background:url(img/1.jpg) no-repeat center}
+.wenku>p{ float:left;}
+.wenku>p:first-child{ margin-top:10px;  font-weight:600; font-size:20px;}
+.wenku>p:last-child{ padding-top:10px;transition:all 0.5s;-webkit-transition:all 0.5s; height:40px; width:241px; background:url(img/4.jpg) no-repeat center}
+</style>
+</head>
+
+<body>
+<div id="wenku" class="wenku">
+   <p>*总体评价:</p>
+   <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
+   <p></p>
+</div>
+<div id="wenkua" class="wenku">
+   <p>*总体评价:</p>
+   <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
+   <p></p>
+</div>
+<div id="wenkub" class="wenku">
+   <p>*总体评价:</p>
+   <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+   </ul>
+   <p></p>
+</div>
+</body> 
+<script>
+window.onload=function(){
+	
+	qwj('wenku')
+	qwj('wenkua')
+	qwj('wenkub')
+	function qwj(obj){
+	var oText=document.getElementById(obj),
+	    aP=oText.getElementsByTagName('p'),
+		 oUl=oText.getElementsByTagName('ul')[0],
+		 aLi=oText.getElementsByTagName('li'),
+		 aTest=['很差','较差','还行','推荐','力荐'];
+		 oUl.onmouseover=function(){
+			aP[1].style.background='none'
+			 }
+		 oUl.onmouseout=function(){
+			aP[1].style.background='url(img/4.jpg) no-repeat center'
+			aP[1].innerHTML=''
+			 }
+		 for(var i=0;i<aLi.length;i++){
+			aLi[i].id=i
+			aLi[i].onmouseover=function(){
+			
+				var oLn=parseInt(this.id)
+				if(oLn==0){
+					aP[1].innerHTML=aTest[oLn]
+					}else if(oLn==1){
+						aP[1].innerHTML=aTest[oLn]
+						}else if(oLn==2){
+								aP[1].innerHTML=aTest[oLn]
+							}else if(oLn==3){
+								aP[1].innerHTML=aTest[oLn]
+							}else if(oLn==4){
+								aP[1].innerHTML=aTest[oLn]
+							}
+				var j=0;			
+				while(j<=oLn){
+					aLi[j].style.background='url(img/2.jpg) no-repeat center'
+					j++
+					}
+			     }
+         aLi[i].onmouseout=function(){
+			for(var i=0;i<aLi.length;i++){
+				 if(aLi[i].that=='judge'){
+					aLi[i].style.background='url(img/3.jpg) no-repeat center' 
+					 }else{
+				aLi[i].style.background='url(img/1.jpg) no-repeat center'
+						 }
+				}
+			 }	
+			 aLi[i].onclick=function(){
+				 for(var j=0;j<aLi.length;j++){
+					 aLi[j].that=''
+					 }
+				var oLn=parseInt(this.id)
+				var j=0;			
+				while(j<=oLn){
+					aLi[j].that='judge'
+					aLi[j].style.background='url(img/3.jpg) no-repeat center'
+					j++
+				 oUl.onmouseout=function(){
+					aP[1].style.background='none'
+					 }
+					}
+				 }	
+			 }		 
+		}
+			 
+	}
+</script>
+</html>

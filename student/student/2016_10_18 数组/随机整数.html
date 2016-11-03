@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				text-indent: 40px;
+				font-size: 30px;
+				font-family: "微软雅黑";
+			}
+		</style>
+	</head>
+	<body>
+		<p>随机产生n个x~y之间不重复的整数</p>
+		<script>
+			window.onload = function() {　　
+				var x = 11;
+				var y = 19;
+				var arr = [];　　
+				var str = '';　　
+				for(var i = 0; i < 4; i++) {　　 /*思路：先把随机数追加到数组尾部*/ 　　
+					arr.push(Math.round( Math.random()*(y-x)+x ));　　 /*然后再拿这个数组最后一个与之前的数一一比较*/
+					for(var j = i+1; j < arr.length; j++) {　　　　
+						if(arr[i] == arr[j]) {　　　　
+							arr.splice(j, 1); //运用splice(数组去重，从第j位，去除1个数)
+							j--; //为了保证数组数量有效比较
+						};　
+					};
+				};
+				for(var i = 0; i < 4; i++) {　　
+					str += '<div>' + (i < 9 ? ('0' + (i + 1)) : (i + 1)) + '.&nbsp;' + arr[i] + '</div>'　　
+				};
+				　　
+				document.body.innerHTML = str;
+			};
+		</script>
+	</body>
+
+</html>

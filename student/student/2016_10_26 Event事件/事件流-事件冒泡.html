@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 500px;
+				background: red;
+				position: absolute;
+				left: -95px;
+				top: 100px;
+			}
+			#div2{
+				width: 30px;
+				height: 60px;
+				color: white;
+				background: black;
+				position: absolute;
+				right: -30px;
+				top: 70px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<p>事件冒泡</p>
+		<div id="div1">
+			<div id="div2">分享到
+			</div>
+		</div>
+		
+		<script>
+			window.onload = function () {
+				var oDiv1 = document.getElementById('div1');
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				alert(scrollTop)
+//				document.onmousemove = function () {
+//					oDiv1.style.top = 
+//				}
+				 
+				
+				//利用冒泡机制 简写代码
+				oDiv1.onmouseover = function () {
+					this.style.left = '0px';
+				};
+				oDiv1.onmouseout = function () {
+					this.style.left = '-95px';
+				};
+			}
+		</script>
+	</body>
+</html>
+<!--事件冒泡:当一个元素接收到事件的时候,会把他收到的所有 传播给他的父级,直到window-->
+<!--	取消冒泡：ev.cancelBubble = true  -->

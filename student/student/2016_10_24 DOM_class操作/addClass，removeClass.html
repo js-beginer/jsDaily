@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>addClass</title>
+		<style>
+			.box1{
+				border: 1px solid red;
+			}
+			.box{
+				font-family: "微软雅黑";
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1" class="box box1">这是div</div>
+		<span id="span1" class="box">这是span</span>
+		<script>
+			window.onload = function () {
+				var oDiv = document.getElementById('div1');
+				var oSpan = document.getElementById('span1');
+				//添加
+				addClass(oDiv,'box1');
+				addClass(oSpan,'box1');
+				//移除
+				removeClass(oDiv,'box');
+				
+				
+				//添加
+				function addClass (obj,className) {
+					//原来没有class
+					if (obj.className == '') {
+						obj.className = className;
+					} else{
+					//原来有class
+						var arrClassName = obj.className.split(' ');
+						
+						var _index = arrIndexOf(arrClassName,className);
+						//要添加的class是新的
+						if (_index == -1) {
+							obj.className += ' ' + className;
+						}//要添加的class已存在，不操作
+					}
+				}
+				//移除
+				function removeClass (obj,className) {
+					//原来有class
+					if (obj.className != '') {
+						var arrClassName = obj.className.split(' ');
+						var _index = arrIndexOf(arrClassName,className);
+						//如果有 要移除的class
+						if (_index != -1) {
+							arrClassName.splice(_index,1);
+							obj.className = arrClassName.join(' ');
+						} //没有要移除的 不操作
+					} //原来就没有class 不操作
+				}
+				
+			}
+			//小函数：判断要添加的与原来的是否重复
+			function arrIndexOf (arr,v) {
+				for (var i=0; i<arr.length; i++) {
+					if (arr[i] == v) {
+						return i;
+					}
+				}
+				return -1;
+			}
+		</script>
+	</body>
+</html>
+<!--删除：目标.splice(起始位置,删除的个数);-->
