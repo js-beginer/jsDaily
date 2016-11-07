@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>简书</title>
+		<link rel="stylesheet" href="css/Jian.css" />
+		<script type="text/javascript" src="js/jquery-1.9.1.js" ></script>
+		<script type="text/javascript" src="js/handlebars-v4.0.5.js"></script>
+		<script type="text/javascript" src="js/data.js" ></script>
+		<script type="text/javascript" src="js/Jian.js" ></script>
+	</head>
+	<body>
+		<div id="main">
+			<!--大分类-->
+			<div class="category">
+				<div class="category-nav category-nav-active" data-code-id="one"><a href="javascript:;" >热门文章</a></div>
+				<div class="category-nav" data-code-id="two"><a href="javascript:;" >今日看点</a></div>
+				<div class="category-nav" data-code-id="three"><a href="javascript:;" >我的订阅</a></div>
+			</div>
+			<!--分类内容-->
+			<div class="article">
+				
+				<!--1.热门文章-->
+				<div class="category-article article-hot">
+					<!--文章分类-->
+					<div class="article-navbar">
+						<div class="article-nav article-nav-active"><a href="javascript:;">当前热门</a></div>
+						<div class="article-nav"><a href="javascript:;">七日热门</a></div>
+						<div class="article-nav"><a href="javascript:;">三十日热门</a></div>
+					</div>
+					
+					<!--文章内容-->
+					<div class="list-container"  id="one">
+						<ul class="myul" data-arr-id="1_1"></ul>
+						<ul class="myul" data-arr-id="1_2" style="display: none;"></ul>
+						<ul class="myul" data-arr-id="1_3" style="display: none;"></ul>
+					</div>
+				</div>
+				
+				<!--2.今日看点-->
+				<div class="category-article article-highlight" style="display: none;">
+					<!--文章分类-->
+					<div class="article-navbar">
+						<div class="article-nav article-nav-active"><a href="javascript:;">今日看点</a></div>
+						<div class="article-nav"><a href="javascript:;">本期看点</a></div>
+						<div class="article-nav"><a href="javascript:;">经典段子</a></div>
+						<div class="article-nav"><a href="javascript:;">深度看点</a></div>
+					</div>
+					
+					<!--文章内容-->					
+					<div class="list-container"  id="two">
+						<ul class="myul" data-arr-id="2_1"></ul>
+						<ul class="myul" data-arr-id="2_2" style="display: none;"></ul>
+						<ul class="myul" data-arr-id="2_3" style="display: none;"></ul>
+						<ul class="myul" data-arr-id="2_4" style="display: none;"></ul>
+					</div>
+				</div>
+				
+				<!--3.我的订阅-->
+				<div class="category-article article-subscribe" style="display: none;">
+					<!--文章分类-->
+					<div class="article-navbar">
+						<div class="article-nav article-nav-active"><a href="javascript:;">订阅文章</a></div>
+						<div class="article-nav"><a href="javascript:;">订阅心情</a></div>
+						<div class="article-nav"><a href="javascript:;">订阅小故事</a></div>
+					</div>
+					
+					<!--文章内容-->
+					<div class="list-container"  id="three">
+						<ul class="myul" data-arr-id="3_1"></ul>
+						<ul class="myul" data-arr-id="3_2" style="display: none;"></ul>
+						<ul class="myul" data-arr-id="3_3" style="display: none;"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script id="hanle" type="text/x-handlebars-template">
+			{{#each this}}
+				<li class="list-articles">
+					<a href="{{author_id}}" class="cover">
+						<img src="{{wrap_img}}"/>
+					</a>
+					<div class="article-text">
+						<p class="list-top">
+							<a class="author-name blue-link" href="{{article_id}}">
+								{{author}}
+							</a>
+							<em>
+		                        ·
+		                    </em>
+		                    <span class="time">
+		                        {{timestamp}}
+		                    </span>
+						</p>
+						<h4 class="title">
+							<a href="article_id">
+								{{title}}
+							</a>
+						</h4>
+						<a class="avatar maleskine-author" href="{{author_id}}">
+							<img src="{{avatar}}" />
+						</a>
+						<div class="list-footer">
+							<a href="{{article_id}}">阅读{{read}}</a>
+							<a href="{{article_id}}">· 评论{{comment}}</a>
+								· 喜欢{{like}}
+						</div>
+					</div>
+				</li>
+			{{/each}}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,221 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+}
+#main{
+	width: 900px;
+	min-height: 500px;
+	height: auto;
+	margin: 0 auto;
+}
+/*大分类*/
+.category{
+	width: 900px;
+	height: 50px;
+	box-sizing: border-box;
+	position: fixed;
+	top:0px;
+	padding-left: 60px;
+	border-bottom: 2px solid #D9D9D9;
+	font-size: 12px;
+	background: white;
+	z-index: 99;
+}
+.category-nav{
+    width: 80px;
+    height: 50px;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    line-height: 52px;
+    padding-bottom: -2px;
+    margin-right: -5px;
+}
+.category-nav-active{
+	border-bottom: 2px solid #555;
+}
+.category-nav a{
+	width: 80px;
+    height: 48px;
+    display: inline-block;
+    transition: all .05s;
+}
+.category-nav a:link{
+	color: #999;
+}
+.category-nav a:visited{
+	color: #999;
+}
+.category-nav a:hover{
+	background-color: #eeeeee;
+    color: #555;
+}
+.category-nav a:active{
+	color: #999999;
+}
+/*分类内容*/
+/*-----文章分类*/
+#list-container1{
+	z-index: -1;
+	margin-left: 20px;
+}
+.article-navbar{
+	width: 900px;
+	height: 60px;
+	position: absolute;
+	top: 50px;
+	line-height: 20px;
+	margin-left: 20px;
+}
+.article-nav{
+  float: left;
+  margin: 15px 15px 5px 0;
+  list-style: none;
+  line-height: 20px;
+}
+.article-nav a{
+	width: auto;
+	height: 30px;
+	border-radius: 12px;
+    display: inline-block;
+}
+.article-nav a{
+	padding: 5px 10px;
+  	border: 1px solid #d9d9d9;
+	border-radius: 14px;
+    box-sizing: border-box;
+    font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.5;
+    text-decoration: none;
+    color: #555;
+}
+.article-nav-active a{
+	color: white;
+    border-color: #e78170;
+    background: #e78170;
+}
+/*-----文章内容*/
+.list-articles{
+	position: relative;
+	top: 120px;
+    width: 900px;
+    height: 110px;
+    padding-bottom: 12px;
+    margin: 0 0 15px;
+    border-bottom: 1px dashed #d9d9d9;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    display: inline-block;
+}
+.list-articles:last-child{
+	border: none;
+}
+.cover img{
+	width: 80px;
+	height: 80px;
+	border-radius: 4px;
+}
+.list-articles .article-text{
+	height: 100px;
+	margin-top: 10px;
+	margin-left: 5px;
+	display: inline-block;
+}
+.list-articles .list-top{
+    margin-bottom: 7px;
+    font-size: 12px	
+}
+.list-top a{
+	color: #717171
+}
+.list-articles .list-top .time {
+    margin-left: 3px;
+    color: #717171
+}
+.list-articles .title {
+    padding-right: 40px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    margin-left: 0;
+    display: inherit;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5
+}
+.list-articles .title a:link{
+	color: #555
+}
+.list-articles .title a:visited{
+	color: #555
+}
+.list-articles .title a:hover{
+	color: orange
+}
+.list-articles .title a:active{
+	color: #555
+}
+.list-articles .title a:empty::before {
+    content: "你个泼猴竟然不写标题拉黑";
+    display: inline-block;
+    font-style: italic;
+    text-decoration: line-through
+}
+.list-articles .avatar {
+    position: absolute;
+    top: 28px;
+    right: 1px;
+    width: 32px;
+    height: 32px
+}
+.list-articles .list-footer {
+    padding: 1px 0;
+    overflow: hidden;
+    color: #999999;
+    font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px
+}
+.list-articles .list-footer a {
+    color: #999999
+}
+.list-articles .list-footer a:hover {
+    color: #717171
+}
+.list-articles .have-img::before {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.list-articles .have-img::after {
+    clear: both
+}
+
+.list-articles .have-img .wrap-img {
+    float: left
+}
+.list-articles .have-img .wrap-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    border: 1px solid #eeeeee
+}
+.list-articles .have-img>div {
+    padding-left: 95px
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  margin-top: 15px;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+
+
+
