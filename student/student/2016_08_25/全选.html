@@ -10,6 +10,7 @@
 				var $len = $('[name=items]:checkbox');
 				//全选和全不选
 				$("#CheckedAll").click(function() {
+					console.log($len.length);
 					$len.attr("checked", this.checked);
 				});
 				//联动起来

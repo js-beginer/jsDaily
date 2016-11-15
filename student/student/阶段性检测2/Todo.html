@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Todos</title>
+		<link rel="stylesheet" href="css/Todo.css" />
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/Todo.js" ></script>
+	</head>
+	<body>
+		<section class="todoapp">
+			<!--头部输入框-->
+			<header class="header">
+				<h1>todos</h1>
+				<div class="create-todo">
+					<input type="text" id="newTodo" class="new-todo" placeholder="What needs to be done?" autofocus/>
+				</div>
+			</header>
+			<!--列表部分-->
+			<section class="main" style="display: block;">
+				<input class="toggle-all" type="checkbox" id="toggle-all"/>
+				<label for="toggle-all">Mark all as comlete</label>
+				<ul class="todo-list" id="todoList">
+					
+				</ul>
+			</section>
+			<!--尾部功能部分-->
+			<footer class="footer">
+				<div class="todo-stats">
+					<span class="todo-count">
+						<strong class="number" id="number">0</strong>
+						<span class="word">items</span> 
+					</span>
+					<ul class="filters">
+						<li>
+							<a class="selected" href="#/">All</a>
+						</li>
+						<li>
+							<a class="active" href="#/active">Active</a>
+						</li>
+						<li>
+							<a class="completed" href="#/completed">Completed</a>
+						</li>
+					</ul>
+					<span class="todo-clear">
+						<button class="clear-completed" id="clear-completed">Clear completed</button>
+					</span>
+				</div>
+			</footer>
+		</section>
+	</body>
+</html>
