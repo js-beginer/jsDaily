@@ -115,6 +115,7 @@ $(function() {
 					Todo.Count();
 				})
 			},
+			
 			init: function() {
 				this.Add();
 				this.Del();
