@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<meta charset="UTF-8">
+		<title>tab</title>
+		<link rel="stylesheet" href="css/bootstrap-3.0.0/css/bootstrap.css">
+	    <script src="js/angular-1.3.0.js"></script>
+	    <script src="Tab.js"></script>
+	    <style>
+	    	.ng-invalid.ng-dirty{
+	    		border-color: #FA787E;
+	    	}
+	    	.ng-valid.ng-dirty{
+	    		border-color: #78FA89;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<!--初始化第一页-->
+		<section ng-init="tab = 1">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active:tab ===1 }">
+					<a href ng-click="tab = 1">描述</a>
+				</li>
+				<li ng-class="{ active:tab ===2 }">
+					<a href ng-click="tab = 2">信息</a>
+				</li>
+				<li ng-class="{ active:tab ===3 }">
+					<a href ng-click="tab = 3">评价</a>
+				</li>
+			</ul>
+		</section>
+		
+		<div class="panel" ng-show="tab === 1">
+			<h3>描述</h3>
+			<p>{{product.description}}</p>
+		</div>
+		<div class="panel" ng-show="tab === 2">
+			<h3>信息</h3>
+			<blockquote>大钻石！</blockquote>
+		</div>
+		<div class="panel" ng-show="tab === 3">
+			<h3>评价</h3>
+			<blockquote>
+				Here is a long quotation here is a long quotation here is a long quotation 
+				here is a long quotation here is a long quotation here is a long quotation 
+				here is a long quotation here is a long quotation here is a long quotation.
+			</blockquote>
+		</div>
+		
+		
+		<hr />
+		
+		<h1>评论区</h1>
+		
+		
+		<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && addReview()" novalidate>
+			<div ng-repeat="xcom in reviews track by $index">
+				<blockquote>
+					<b>{{xcom.stars}}星：</b>
+					{{xcom.body}}
+					<cite>by:{{xcom.author}}</cite>
+				</blockquote>
+			</div>
+			
+			<select ng-model="review.stars" required>
+				<option value="1">1 ❤</option>
+				<option value="2">2 ❤</option>
+				<option value="3">3 ❤</option>
+				<option value="4">4 ❤</option>
+			</select>
+			<textarea ng-model="review.body"required></textarea>
+			<label>by:</label>
+			<input name="author" ng-model="review.author" type="email" required/>
+			<div>reviewForm is {{reviewForm.$valid}}</div>
+			<input type="submit" value="提交" />
+		</form>
+		
+		
+		
+		
+		<!--<section ng-controller="PanelController as panel">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active:panel.isSelected(1) }">
+					<a href ng-click="panel.selectTab(1)">描述</a>
+				</li>
+				<li ng-class="{ active:panel.isSelected(2) }">
+					<a href ng-click="panel.selectTab(2)">信息</a>
+				</li>
+				<li ng-class="{ active:panel.isSelected(3) }">
+					<a href ng-click="panel.selectTab(3)">评价</a>
+				</li>
+			</ul>
+		</section>-->
+		<!--<div class="panel" ng-show="panel.isSelected(1)">
+			<h4>描述</h4>
+			<p>{{product.description}}</p>
+		</div>
+		<div class="panel" ng-show="panel.isSelected(2)">
+			<h4>信息</h4>
+			<blockquote>大钻石！</blockquote>
+		</div>
+		<div class="panel" ng-show="panel.isSelected(3)">
+			<h4>评价</h4>
+			<blockquote>尚未开放</blockquote>
+		</div>-->
+	</body>
+</html>
