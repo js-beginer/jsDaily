@@ -1,0 +1,31 @@
+<style>
+    /*设置ngDialog的宽，为必填项（不设置将导致.ngdialog-content宽度为屏幕宽度）*/
+    .ngdialog.ngdialog-theme-default .ngdialog-content{
+        width:600px;
+    }
+
+</style>
+
+<div ng-controller="ListController">
+	<header data-am-widget="header" class="am-header am-header-default">
+      
+
+      
+    </header>
+
+	
+	<div class="gemDialog">
+		<select class="gemRe" ng-model="review.stars" required>
+			<option value="1">1 ❤</option>
+			<option value="2">2 ❤</option>
+			<option value="3">3 ❤</option>
+			<option value="4">4 ❤</option>
+		</select>
+		<textarea class="gemRe" ng-model="review.body" required></textarea>
+		<label>by:</label>
+		<input class="gemRe" name="author" ng-model="review.author" type="email" required/>
+		
+		
+		<input class="am-btn am-btn-primary am-radius gemReview gemReBu" type="button" value="确定" ng-click="reviseText()" style="height: 36px;"/>
+	</div>
+</div>

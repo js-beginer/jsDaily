@@ -1,0 +1,129 @@
+<!--商品页面-->
+<div ng-controller="ReviewController" class="main">
+	<header class="am-topbar gemHead">
+		<h1 class="am-topbar-brand">
+		    <a href="#" style="color: #E0E5E8;">GemHouse</a>
+		</h1>
+		<div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+			<ul class="am-nav am-nav-pills am-topbar-nav">
+				<li class="gemNav">
+					<a href="#">首页</a>
+				</li>
+				<li class="am-active">
+					<a href="#">商品</a>
+				</li>
+			</ul>
+
+			<form class="am-topbar-form am-topbar-left am-form-inline" role="search">
+				<div class="am-form-group">
+					<input type="text" class="am-form-field am-input-sm" placeholder="搜索">
+				</div>
+			</form>
+			<div class="am-topbar-right">
+				<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
+			</div>
+		</div>
+	</header>
+
+	<!--面包屑导航-->
+	<ol class="am-breadcrumb">
+		<li>
+			<a href="#" class="am-icon-home">首页</a>
+		</li>
+		<li>
+			<a href="#">商品</a>
+		</li>
+		<li class="am-active">信息</li>
+	</ol>
+	<div>
+		<h2 class="gemTitle">钻石</h2>
+		<div class="gemImg">
+			<img class="am-radius" alt="280*200" ng-src="img/gem.jpg" width="280" height="200" />
+		</div>
+
+		<section ng-init="tab = 1">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active:tab === 1 }">
+					<a href ng-click="tab = 1">描述</a>
+				</li>
+				<li ng-class="{ active:tab === 2 }">
+					<a href ng-click="tab = 2">信息</a>
+				</li>
+				<li ng-class="{ active:tab === 3 }">
+					<a href ng-click="tab = 3">认证</a>
+				</li>
+			</ul>
+		</section>
+
+		<div class="panel" ng-show="tab === 1">
+			<p>钻石是指经过琢磨的金刚石，金刚石是一种天然矿物，是钻石的原石。 简单地讲，钻石是在地球深部高压、高温条件下形成的一种由碳元素组成的单质晶体。 是爱情和忠贞的象征。
+			</p>
+		</div>
+		<div class="panel" ng-show="tab === 2">
+			<p>卡，或译克拉、克拉（Carat），是钻石的质量单位。一卡相等于200毫克， 相传早期钻石商人称量钻石所用的砝码为稻子豆树（carob）果实，一粒这样的果实大约就重200毫克。 因为钻石的密度基本上相同，因此越重的钻石体积越大。越大的钻石越稀有，每卡的价值亦越高。
+			</p>
+		</div>
+		<div class="panel" ng-show="tab === 3">
+			<p>
+				Here is a long quotation here is a long quotation here is a long quotation here is a long quotation here is a long quotation here is a long quotation here is a long quotation here is a long quotation here is a long quotation.
+			</p>
+		</div>
+
+	</div>
+
+	<div>
+		<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
+		<h1>评论区</h1>
+
+		<form name="reviewForm" ng-submit="reviewForm.$valid && addReview()" novalidate>
+			<div ng-repeat="xcom in reviews track by $index">
+				<blockquote>
+
+					<b class="gemReview">{{xcom.stars}}星：</b> 
+					<span class="gemReview">{{xcom.body}}</span>
+					<small>
+						<span class="gemReview">by:{{xcom.author}}</span>
+						<button ng-click="editor($index)" class="am-btn am-btn-primary am-radius gemReview gemReBu">编辑</button>
+					</small>
+					
+
+				</blockquote>
+			</div>
+
+			<select class="gemRe" ng-model="review.stars" required>
+				<option value="1">1 ❤</option>
+				<option value="2">2 ❤</option>
+				<option value="3">3 ❤</option>
+				<option value="4">4 ❤</option>
+			</select>
+			<textarea class="gemRe" ng-model="review.body" required></textarea>
+			<label>by:</label>
+			<input class="gemRe" name="author" ng-model="review.author" type="email" required/>
+
+			<input type="submit" class="am-btn am-btn-danger am-radius" value="提交" />
+		</form>
+	</div>
+
+	<!--footer-->
+	
+
+</div>
+<footer data-am-widget="footer" class="am-footer am-footer-default gemFoot" data-am-footer="{  }">
+		<div class="am-footer-switch">
+			<span class="am-footer-ysp" data-rel="mobile" data-am-modal="{target: '#am-switch-mode'}">
+		                云适配版
+		    </span>
+			<span class="am-footer-divider"> | </span>
+			<a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+				电脑版
+			</a>
+		</div>
+		<div class="am-footer-miscs ">
+
+			<p>由
+				<a href="#" title="诺亚方舟" target="_blank" class="">诺亚方舟</a>
+				提供技术支持</p>
+			<p>CopyRight©2014 AllMobilize Inc.</p>
+			<p>京ICP备13033158</p>
+		</div>
+	</footer>

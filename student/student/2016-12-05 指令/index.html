@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app='expanderModule'>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script src="js/angular-1.3.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="ExpanderSimple.css"/>
+    </head>
+    <body>
+        <div ng-controller='SomeController'>
+            <expander class='expander' expander-title='title'>
+                {{text}}
+            </expander>
+        </div>
+    </body>
+    <script src="ExpanderSimple.js"></script>
+</html>
