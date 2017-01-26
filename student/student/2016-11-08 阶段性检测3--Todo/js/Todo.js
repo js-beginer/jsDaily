@@ -60,7 +60,6 @@ $(function() {
 					$(".toggle").parent("li").find("label").toggleClass("selectLabel");
 					Todo.Count();
 				});
-
 			},
 			//全选联动
 			selectLitte: function() {
