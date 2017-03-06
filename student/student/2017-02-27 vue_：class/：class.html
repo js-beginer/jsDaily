@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style>
+			body{
+				width: 100%;
+				background: ghostwhite;
+				background-image: url(2016-05-23_22-25-12-000.jpg);
+				background-repeat: no-repeat;
+				background-size: 100% 200px;
+			}
+			.active{
+				color: red;
+				
+			}
+			.text-danger{
+				font-family: "微软雅黑";
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div v-bind:class="classObject">这里</div>
+			<div>
+			  <span v-for="n in 10">{{ n }}</span>
+			</div>
+			
+		</div>
+		
+		<div id="demo">{{ fullName }}</div>
+		
+		<ul id="myli">
+			<li v-for="n in even(numbers)">{{ n }}</li>
+		</ul>
+		
+		
+		<div id="em1">
+			<button v-on:click='greet'>增加1</button>
+			<p>{{count}}</p>
+		</div>
+		
+		<fieldset>
+			<legend>内联处理器方法</legend>
+			<div id="example-3">
+			  <button v-on:click="say('hi')">Say hi！</button>
+			  <button v-on:click="say('what')">Say what！</button>
+			  <p>
+			  	
+			  </p>
+			</div>
+		</fieldset>
+		
+		
+	</body>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+//			data:{
+//				classObject:{
+//					active:false,
+//					'text-danger': true //原来带-的需要引号
+//				}
+//			}
+			data: {
+			  isActive: true,
+			  error: null
+			},
+			computed: {
+			  classObject: function () {
+			    return {
+			      active: this.isActive && !this.error,
+			      'text-danger': this.error && this.error.type === 'fatal',
+			    }
+			  }
+			}
+
+		})
+		
+		var vm = new Vue({
+			el:"#demo",
+			data:{
+				firstName:'Fooffa',
+				lastName:'Ba22r'
+			},
+//			computed:{
+//				fullName:function () {
+//					return this.firstName+ ' ' + this.lastName
+//				}
+//			}
+			computed: {
+			  fullName: {
+			    // getter
+			    get: function () {
+			      return this.firstName + ' ' + this.lastName
+			    },
+			    // setter
+			    set: function (newValue) {
+			      var names = newValue.split(' ')
+			      this.firstName = names[0]
+			      this.lastName = names[names.length - 1]
+			      
+			    }
+			  }
+			}
+		})
+		
+		
+		var vm = new Vue({
+			el:'#myli',
+			data: {
+			  numbers: [ 1, 2, 3, 4, 5 , 6, 7, 8, 9, 10]
+			},
+			methods: {
+			  even: function (numbers) {
+			    return numbers.filter(function (number) {
+			      return number % 2 === 0
+			    })
+			  }
+			}
+		})
+		
+		var em1 = new Vue({
+			el:'#em1',
+			data:{
+				count:0,
+				name:'赵婧'
+			},
+			methods:{
+				greet:function (event) {
+					var newNum = this.count += 1;
+					alert(newNum);
+				}
+			}
+		})
+//		em1.greet();
+		
+		
+		
+		var example3 = new Vue({
+			el:"#example-3",
+			methods:{
+				say:function (event) {
+					alert(event)
+				}
+			}
+		})
+	</script>
+</html>

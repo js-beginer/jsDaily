@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+		
+		<style>
+			.pagination {
+			    display: inline-block;
+			    padding-left: 0;
+			    margin: 21px 0;
+			    border-radius: 3px;
+			}
+			.pagination .active {
+			    color: #fff;
+			    background-color: #009a61;
+			    border-left: none;
+			    border-right: none;
+			}
+			.pagination > li > a {
+			    position: relative;
+			    float: left;
+			    padding: 6px 12px;
+			    line-height: 1.5;
+			    text-decoration: none;
+			    color: #009a61;
+			    background-color: #fff;
+			    border: 1px solid #ddd;
+			    margin-left: -1px;
+			    list-style: none;
+			}
+			.pagination > li {
+			    display: inline;
+			}
+			.active{
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		 <div id="app">
+            <ul class="pagination">
+                <li v-for="n in pageCount">
+                    <a href="javascripit:;" v-bind:class="activeNumber === n  ? 'active' : '' ">{{ n }}</a>
+                </li>
+            </ul>
+            <input type="text" v-model="message" />
+           <button v-on:click="greet">Greet</button>
+           <button v-on:click="say('Hi')">HI</button>
+        </div>
+        
+        <fieldset>
+        	<legend>你好</legend>
+        </fieldset>
+	</body>
+	
+	<script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                activeNumber: 1,
+                pageCount: 10
+            },
+            methods:{
+            	greet:function  () {
+            		alert(this.message)
+            	},
+            	say:function  (msn) {
+            		alert(msn);
+            	}
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<!--多选-->
+		<div id="ex1">
+			<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+			<label for="jack">Jack</label>
+			<input type="checkbox" id="john" value="John" v-model="checkedNames">
+			<label for="john">John</label>
+			<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+			<label for="mike">Mike</label>
+			<br>
+			<span>Checked names: {{ checkedNames }}</span>
+		</div>
+		<!--单选-->
+		<div id="ex2">
+			<input type="checkbox" id="checkbox" v-model="checked">
+			<label for="checkbox">{{ checked }}</label>
+		</div>
+		
+		<div id="ex3">
+			<input type="radio" value="One" id="one" v-model="picked"/>
+			<label for="one">One</label>
+			<input type="radio" value="Two" id="two" v-model="picked"/>
+			<label for="two">Two</label>
+			<br />
+			<span>结果：{{picked}}</span>
+		</div>
+		
+		<!--选择列表-->
+		<div id="ex4">
+			<select  v-model="selected" >
+				<option v-for="option in options" :value="option.value">{{option.text}}</option>
+				
+			</select>
+			<span>结果：{{selected}}</span>
+			<input v-model.number="age" type="number">
+			<input v-model.trim="msg">
+		</div>
+		
+		<!--<div id="ex5">
+			<input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+		</div>-->
+	</body>
+	
+	<script>
+			new Vue({
+			  el: '#ex1',
+			  data: {
+			    checkedNames: []
+			  }
+			})
+//			单选
+			new Vue({
+			  el: '#ex2',
+			  data: {
+			  	checked:false
+			  }
+			})
+			new Vue({
+				el:"#ex3",
+				data:{
+					picked:''
+				}
+			})
+//			选择列表
+			new Vue({
+				el:"#ex4",
+				data:{
+					selected:'A',
+					options:[
+						{value:'A',text:'one'},
+						{value:'B',text:'two'},
+						{value:'C',text:'three'},
+						{value:'D',text:'four'}
+					],
+					age:'23',
+					msg:''
+				}
+			})
+//			var vm = new Vue({
+//				el:"#ex5",
+//				data:{
+//					vm.toggle === vm.a
+//				}
+//			})
+	</script>
+</html>

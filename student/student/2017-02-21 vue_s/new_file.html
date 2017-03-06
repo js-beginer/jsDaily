@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<fieldset>
+				<legend>创建</legend>
+				<div>
+					<label>姓名：</label>
+					<input type="text" v-model="newPs.name" />
+				</div>
+				<div>
+					<label>年龄：</label>
+					<input type="text" v-model="newPs.age" />
+				</div>
+				<div>
+					<label>性别：</label>
+					<select v-model="newPs.sex">
+						<option value="man">男</option>
+						<option value="woman">女</option>
+					</select>
+				</div>
+				<div>
+					<button @click="creatPs">创建</button>
+				</div>
+			</fieldset>
+			
+			<table>
+				<thead>
+					 <tr>
+	                    <th>Name</th>
+	                    <th>Age</th>
+	                    <th>Sex</th>
+	                    <th>Delete</th>
+	                </tr>
+				</thead>
+				<tbody>
+					<tr v-for="(ps,index) in people"> <!--修改原po 把index放里面不会报错-->
+						<td>{{ ps.name }}</td>
+						<td>{{ ps.age }}</td>
+		                <td>{{ ps.sex }}</td>
+		                <td :class="'text-center'"><button @click="deletePs(index)">删除</button></td> <!--原po这里参数写的是$index报错了-->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+	
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				newPs:{
+					name:"",
+					age:1,
+					sex:"man"
+				},
+				people:[{
+					name: 'Jack',
+                    age: 30,
+                    sex: 'Male'
+				},{
+					name: 'Bill',
+                    age: 26,
+                    sex: 'Male'
+				},{
+					 name: 'Tracy',
+                    age: 22,
+                    sex: 'Female'
+				},{
+					name: 'Chris',
+                    age: 36,
+                    sex: 'Male'
+				}]
+			},
+			methods:{
+				creatPs:function () {
+					this.people.push(this.newPs);
+					this.newPs = {
+						name:"",
+						age:1,
+						sex:"man"
+					}
+				},
+				deletePs:function (index) {
+					this.people.splice(index,1)
+				}
+			}
+		})
+	</script>
+</html>

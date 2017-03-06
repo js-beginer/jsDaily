@@ -37,7 +37,7 @@ h2{
 	text-indent: 2em;
 	font-size: 14px;
 }
-#page_navigation{
+.page_navigation{
 	position: absolute;
 	bottom: 0px;
 	left: 100px;
@@ -48,7 +48,7 @@ h2{
 	color: #B7B7B9!important;
 	cursor: not-allowed!important;
 }
-#page_navigation a,#page_navigation span{
+.page_navigation a,.page_navigation span{
 	border: 1px solid #4D95C4;
 	margin: 5px;
 	padding: 5px 10px;

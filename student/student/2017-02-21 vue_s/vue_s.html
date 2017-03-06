@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div class="app">
+			<p>{{messageText}}</p>
+			<input type="text" v-model='messageText' />
+			
+			<h1>v-if演示:不会被渲染到html</h1>
+			<h3 v-if='yes'>Yes!</h3>
+			<h3 v-if='no'>No!</h3>
+			<h3 v-if='age>=25'>Age：{{age}}</h3>
+			<h3 v-if="name.indexOf('jack')>=0">Name:{{name}}</h3>
+			
+			<h1>v-show演示:只改样式</h1>
+			<h3 v-show='yes'>Yes!</h3>
+			<h3 v-show='no'>No!</h3>
+			<h3 v-show='age>=25'>Age：{{age}}</h3>
+			<h3 v-show="name.indexOf('jack')>=0">Name:{{name}}</h3>
+			
+			<h1>v-else演示:</h1>
+			<h1 v-if='age>=25'>Age：{{age}}</h1>
+			<h1 v-else>Name:{{name}}</h1>
+			<p>---------分割线---------</p>
+			<h1 v-show="name.indexOf('keep')>=0"> Name:{{name}}</h1>
+			<h1 v-else>Sex:{{sex}}</h1>
+			
+			<div v-if="Math.random() > 0.5">
+			  Now you see me
+			</div>
+			<div v-else>
+			  不见了
+			</div>
+			
+		</div>
+		<script src="vue.js"></script>
+		
+		<script>
+//			var ex = {
+//				messageText:'你好！'
+//			}
+			
+			var vm = new Vue({
+				el:'.app',
+				data:{
+					messageText:"你好",
+					yes:true,
+					no:false,
+					age:22,
+					name:'keep8',
+					sex:'Male'
+				}
+			})
+		</script>
+	</body>
+</html>
