@@ -1,0 +1,23 @@
+{
+	"status":1,
+	"result":{
+		"totalM":59,
+		"list":[
+		       {
+		    	   "productId":"123421312",
+		    	   "productName":"黑鹰",
+		    	   "productPrice":20,
+		    	   "productQuentity":1,
+		    	   "productImage":"img/1.jpg"
+		       },
+		       {
+		    	   "productId":"123422311",
+		    	   "productName":"天使",
+		    	   "productPrice":10,
+		    	   "productQuentity":3,
+		    	   "productImage":"img/2.jpg" 
+		       }
+		 ]
+	},
+	"message":""
+}

@@ -11,12 +11,13 @@
 	<script>
 		// 创建构造器
 		var Profile = Vue.extend({
-		  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+		  template: '<h1>{{firstName}} {{lastName}}  aka {{alias}}  {{abcName}}</h1>',
 		  data: function () {
 		    return {
 		      firstName: 'Walter',
 		      lastName: 'White',
-		      alias: 'Heisenberg'
+		      alias: 'Heisenberg',
+		      abcName: '测试'
 		    }
 		  }
 		})

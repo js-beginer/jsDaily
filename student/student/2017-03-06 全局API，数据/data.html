@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../2017-02-27 vue_：class/vue.js"></script>
+	</head>
+	<body>
+		<div id="example1">
+			<simple-counter></simple-counter>
+			<simple-counter></simple-counter>
+			<simple-counter></simple-counter>
+		</div>
+		<hr />
+		<div id="ex1">
+			<input v-model="parentMsg">
+			<br />
+			<child :message="parentMsg"></child>
+		</div>
+	</body>
+	<script>
+		var data = {
+			counter: 0
+		}
+		Vue.component('simple-counter',{
+			template:' <button v-on:click=" counter += 1 ">{{counter}}</button> ',
+			data:function(){
+				return {
+					counter: 0
+				}
+			}
+		})
+		new Vue({
+			el:'#example1'
+		})
+		
+		
+		Vue.component('child', {
+		  props: ['message'],
+		  template: '<span>{{ message }}</span>'
+		})
+		new Vue ({
+			el:'#ex1',
+			data:{
+				parentMsg:'你好'
+			}
+		})
+		
+		
+		
+	</script>
+</html>

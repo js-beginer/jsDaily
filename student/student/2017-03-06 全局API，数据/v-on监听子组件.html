@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../2017-02-27 vue_：class/vue.js"></script>
+	</head>
+	<!--<body>
+		<div id="counter-event-example">
+			<h3>使用 $on(eventName) 监听事件</h3>
+			<h3>使用 $emit(eventName) 触发事件</h3>
+			
+			<p>{{total}}</p>
+			
+			<my-counter v-on:inc="incrementTotal"></my-counter>
+			<my-counter v-on:inc="incrementTotal"></my-counter>
+		</div>
+	</body>-->
+	
+	<!--<script>
+		Vue.component('my-counter',{
+			template:'<button v-on:click="increment">{{counter}}</button>',
+			data:function(){
+				return {
+					counter: 0
+				}
+			},
+			methods:{
+				increment:function () {
+					this.counter += 0.5,
+					this.$emit('inc')
+				}
+			},
+		})
+		
+		new Vue({
+			el:"#counter-event-example",
+			data:{
+				total:0
+			},
+			methods:{
+				incrementTotal:function () {
+					this.total += 1
+				}
+			}
+		})
+	</script>-->
+	
+	<body>
+		<div id="ex-47">
+			<h3>使用 $on(eventName) 监听事件</h3>
+			<h3>使用 $emit(eventName) 触发事件</h3>
+			<p>{{total}}</p>
+			<my-btn v-on:inc="litleCream"></my-btn>
+			<my-btn v-on:inc="litleCream"></my-btn>
+		</div>
+	</body>
+	<script>
+		Vue.component('my-btn',{
+			template:'<button v-on:click="cream">{{count}}</button>',
+			data:function () {
+				return {
+					count:0
+				}
+			},
+			methods:{
+				cream:function () {
+					this.count += 1,
+					this.$emit('inc')
+				}
+			}
+		})
+		new Vue({
+			el:"#ex-47",
+			data:{
+				total:0
+			},
+			methods:{
+				litleCream:function () {
+					this.total += 1
+				}
+			}
+		})
+	</script>
+</html>
