@@ -1,0 +1,243 @@
+body{
+	padding: 0;
+	margin: 0;
+	background-image: url(../img/bg-bowen.jpg);
+	background-repeat:round ;
+}
+a:link{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+.seperator{
+	clear: both;
+	height: 6px;
+}
+#main-head{
+	/*padding: 0px 10px 0px 10px;*/
+	background-color: transparent;
+}
+
+.dropdown-menu{
+	background-color: #222222;
+	/*font-family: "微软雅黑";*/
+	color: #BEC0C4;
+}
+.dropdown-menu button{
+	width: 170px;
+	height: 34px;
+	background-color: #098DC9;	
+}
+.dropdown-menu li a:link{
+	background-color: #222222;
+	color: red;
+}
+.dropdown-menu li a:hover{
+	background-color: #4D5864;
+	color:white;
+}
+.dropdown-menu li a:link{
+	background-color:#222222;
+	color: #E5E3E3;
+}
+
+#ad img{
+	width: 100%;
+	height: 30%;
+	max-height: 550px;
+}
+/*内容三新闻开始*/
+.main1{
+	/*background-color: #F0EDF2;*/
+	background-image: url(../img/index-bg-5.jpg);
+	min-height: 800px;
+	border-top: 1px solid floralwhite;
+	border-bottom: 1px solid floralwhite;
+}
+ .main1-top-btn{
+ 	width: 280px;
+ 	margin-top: 15px;
+ 	 height: 56px;
+ 	 font-size: 28px;
+ 	 font-weight: bold;
+ 	 font-family: "微软雅黑";
+ 	 background-color: #F7921C;
+ }
+.main1-top-img1{
+	opacity: 1;
+	position: absolute;
+	z-index: 99;
+	left:0 ;
+	top: -80px;
+	height: auto;
+}
+.main1-top-img2{
+	opacity: 1;
+	position: absolute;
+	z-index: 99;
+	right:0 ;
+	top: -80px;
+	width: 200px;
+	height: auto;
+}
+.main1-bottom{
+	padding: 50px;
+}
+.main1-bottom span{
+	display: block;
+	font-size: 300%;
+	font-family: "微软雅黑";
+	margin: 40px;
+	/*padding-top: 40px;*/
+}
+.main1-bottom-news{
+	overflow: hidden;
+}
+.main1-bottom-border a{
+	/*display: inline-block;*/
+	/*border: 1px solid #DDDDDD;*/
+	transform: 0.3s;
+	
+}
+.main1-bottom-border:hover{
+	box-shadow: 2px 4px 12px 1px rgba(0,0,0,0.5),2px 6px 20px 1px rgba(0,0,0,0.3);
+}
+.content{
+	position: relative;
+	bottom: 0;
+	top: -48px;
+	width: 100%;
+	background-color: rgba(0,0,0,0.70);
+	padding: 0px 0px 0 15px;
+	box-sizing: border-box;
+	overflow: hidden;
+	font-size: 20px;
+	
+}
+.content .title{
+	text-transform: uppercase;
+	color: #F0EDF2;
+	font-size: 16px;
+	overflow: hidden;
+}
+.content .title a:link{
+	color: #F0EDF2;
+}
+.content .title a:hover{
+	color: #F7921C;
+}
+.content .title a:visited{
+	color: #F0EDF2;
+}
+
+
+/*足部开始*/
+/*足部一开始*/
+.footer1{
+	background-image: url(../img/bg-bowen.jpg);
+	height: auto;
+	border-bottom: 1px solid #414141;
+}
+.footer1 .container{
+	font-family: "微软雅黑";
+	padding: 30px 0;
+	width: 90%;
+	margin: 0 auto;
+	color: #FAF0D3;
+}
+.footer1  button{
+	width: 210px;
+	height: 52px;
+	color: black;
+	background-color: #FF9C00;
+	font-size: 30px;
+	
+	letter-spacing: 1px;
+	line-height: 40px;
+}
+.footer1 p{
+	margin: 20px 0;
+	font-size: 13px;
+}
+.footer1 .footer2-or{
+	color: #FFC70E;
+	font-weight: bold;
+}
+.footer2-or a:link{
+	text-decoration: underline;
+	color: #FFC70E;
+}
+.footer2-or a:hover{
+	text-decoration: underline;
+	color: #FFC70E;
+}
+.footer2-or a:visited{
+	text-decoration: underline;
+	color: #FFC70E;
+}
+.footer1-join{
+	width: 140px;
+	height: 38px;
+	color: #FFC70E;
+	background-color:transparent;
+	font-size: 18px;
+	border: 2px solid #FFC70E;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	padding: 5px 0;
+	/*line-height: 24px;*/
+}
+a .footer1-join:link{
+	color: #FFC70E;
+}
+a .footer1-join:hover{
+	color: #FAF0D3;
+	border: 2px solid #FAF0D3;
+}
+a .footer1-join:link{
+	color: #FFC70E;
+}
+/*足部二开始*/
+.footer2-top{
+	margin: 40px;
+	color: #CCCCCC;
+	font-family: "微软雅黑";
+	
+}
+.footer2-top a:link{
+	color: #CCCCCC;
+}
+.footer2-top a:hover{
+	color: white;
+}
+.footer2-top a:visited{
+	color: #CCCCCC;
+}
+.footer2-top span{
+	color: #08A2DE;
+	margin-right:5px ;
+
+}
+.footer2-moddle span{
+	margin: 10px 10px 10px 0;
+}
+.footer2-moddle span a:link{
+	color: white;
+}
+.footer2-moddle span a:hover{
+	color: #0AB5DA;
+}
+.footer2-moddle span a:visited{
+	color: white;
+}
+.footer2-moddle-span{
+	margin-bottom: 20px;
+}
+.footer2-moddle p{
+	color: #8F8F8F;
+	font-size: 10px;
+}
+.footer2 .container{
+	border-bottom: 1px solid #8F8F8F;
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<title>开辟之光-游戏电商网站-游戏特色</title>
+	<!-- STYLES -->
+	<link rel="stylesheet" href="css/shop.css" />
+	<link rel="stylesheet" href="css/index.css" media="screen">
+	<link rel="stylesheet" href="css/zlight.menu.css" media="screen">
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	<script src="js/jquery.zlight.menu.1.0.min.js"></script>
+	
+	<style>
+		.btn-check,.btn-check:focus{
+			color: gray;
+		}
+		.check,.check:focus{
+			color: orangered;
+		}
+		
+	</style>
+</head>
+<body id="body">
+<!--头部开始-->
+		<div id="main-head">
+			
+			<div style="z-index: 99999;width: 100%;">
+				<div>
+					
+					<nav class="navbar navbar-inverse" style="margin: 0; padding: 0;" style="z-index: 99999;">
+						<div class="container">	
+							<div class="navbar-header">
+								<button class="navbar-toggle" data-toggle="collapse" data-target="#aa">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a href="index.html" class="navbar-brand">首页</a>
+							</div>
+							
+							<div class="collapse navbar-collapse" id="aa">
+								<ul class="nav navbar-nav pull-left">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											游戏
+											<span class="caret"></span>
+										</a>
+											<ul class="dropdown-menu">
+												<li><a href="#" style="color: white;">魔兽</a></li>
+												<li><a href="#" style="color: white;">炉石传说</a></li>
+												<li><a href="#" style="color: white;">风暴英雄</a></li>
+											</ul>
+									</li>
+									<li class="dropdown  pull-right">
+										<a>商城</a>
+									</li>
+										
+								</ul>
+								<ul class="nav navbar-nav pull-right">
+									
+									<li class="dropdown pull-right">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											您的通行证
+											<span class="caret"></span>
+										</a>
+										
+											<ul class="dropdown-menu">
+												<li><a href="login.html" target="_blank"> <button class="btn btn-info">登录</button> </a></li>
+												<li><a href="regist.html" target="_blank" style="color: white;">注册</a></li>
+											</ul>
+									</li>
+									<li class="dropdown  pull-right">
+										<a href="shop.html" style="color: orange;">购物车<i class="glyphicon glyphicon-shopping-cart"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		
+<!--头部结束-->
+<!--正文开始-->
+	<div class="container">
+		<div id="shopApp">
+			<!--单选反选盒子-->
+			<div class="xuan">
+				<a href="javascript:;" class="btn-check" id="qx" :class="{'check':checkAllFlag}" @click="checkAll(true)">
+					<i class="glyphicon glyphicon-ok-sign"></i>
+				</a>
+				<label for="qx">全选</label>
+				<a href="javascript:;" class="btn-check" id="qxno" @click="checkAll(false)">
+					<i class="glyphicon glyphicon-ok-sign"></i>
+				</a>
+				<label for="qxno">取消全选</label>
+			</div>
+			<!--表格开始-->
+			<table class="col-xs-12">
+				<tr id="first_tr">
+						<td colspan="2" class="text-center">商品</td>
+						<td>单价</td>
+						<td>数量</td>
+						<td>小计</td>
+						<td>操作</td>
+				</tr>
+				<tr class="shop-line" v-for="item in productList">
+					<td>
+						<a href="javascript:;" class="btn-check" v-bind:class="{'check':item.checked}" @click="selectedProduct(item)">
+							<i class="glyphicon glyphicon-ok-sign"></i>
+						</a>
+					</td>
+					<td><a href="hero.html"><img v-bind:src="item.productImage" /></a>
+						<b><span style="margin:5px 10px;">{{item.productName}}</span>{{item.productType}}</b>
+					</td>
+					<td>{{item.productPrice | formatMoney}}</td>
+					<td class="numbox">
+						<input type="button" value="-" class="subb" @click="changeMoney(item,-1)"/>
+						<input type="text" class="num" disabled v-model="item.productQuentity"/>
+						<input type="button"  value="+" class="addd" @click="changeMoney(item,1)"/>
+					</td>
+					<td><div class="price"/>{{item.productQuentity*item.productPrice | formatMoney}}</div>
+					<td>
+						<button class="btn btn-info" @click="delConfirm(item)">删除</button>
+					</td>
+				</tr>
+
+				
+			</table>
+			<!--去结算的小盒子-->
+			<div class="gojx">
+				<button class="btn btn-danger pull-right"><a href="pay.html" style="color: white;">去结算</a></button>
+				<p class="pull-right">总价<a id="zongjia" disabled style="text-align: center;">{{totalMoney | formatMoney}}</a></p>
+			</div>
+			
+			<!--确认删除遮罩层-->
+			<div class="modal" v-bind:class="{'md-show':delFlag}">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" data-dismiss="modal" @click="delFlag=false">&times;</button>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group has-feedback text-center">
+									<h3 style="font-family: '微软雅黑';">确认删除此商品？</h3>
+								</div>
+								<div class="form-group text-center">
+									<div class="col-md-8 col-md-offset-2">
+										<a href="javascript:;" class="tan1 btn col-md-4 col-md-offset-1" role="button" @click="delProduct">
+											删除
+			               				</a>
+			               				<a href="javascript:;" class="tan2 btn col-md-4 col-md-offset-2" role="button" @click="delFlag=false">
+											取消
+			               				</a>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<div class="text-center">
+								开辟之光
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="md-overlay" v-if="delFlag"></div>
+			
+			
+			
+			
+		</div>
+		<div class="seperator"></div>
+				
+				
+	</div>
+
+<!--正文结束-->
+
+
+<!--足部开始	-->
+		<footer>
+			<!--足1开始-->
+			<div class="footer1">
+				<div class="container text-center">
+					<a href="hero.html">
+						<button class="btn btn-warning text-center">立即购买</button>
+					</a>
+					<p class="text-center">
+						<span class="footer2-or"><i class=" glyphicon glyphicon-cog"></i>游戏安装提醒：</span> 安装游戏需要64位的 Windows® 7/Windows® 8/Windows® 10操作系统 (不支持Mac系统)
+						<span class="footer2-or">
+									<a href="#">查看详情>></a>
+								</span>
+					</p>
+					<a href="#" class="text-center">
+						<div class="footer1-join text-center">
+							加入我们
+						</div>
+					</a>
+
+				</div>
+			</div>
+			<!--足2开始-->
+			<div class="footer2">
+				<div class="container">
+					<div class="pull-left">
+						<div class="footer2-top"><span class="glyphicon glyphicon-headphones">&nbsp;</span>
+							<a href="#">在线客服</a>
+						</div>
+					</div>
+					<div class="pull-left">
+						<div class="footer2-top"><span class="glyphicon glyphicon-ok"></span>
+							<a href="#">反馈</a>
+						</div>
+
+					</div>
+					<div class="pull-left">
+						<div class="footer2-top"><span class="glyphicon glyphicon-lock"></span>
+							<a href="#">加入我们</a>
+						</div>
+					</div>
+					<div class="seperator"></div>
+					<div class="footer2-moddle text-center col-md-4 ">
+						<img src="img/logo-img.png"  style="width: 140px;"/>
+						
+					</div>
+					<div class="footer2-moddle col-md-8 ">
+						<div class="footer2-moddle-span">
+							<span><a href="#">隐私</a></span>|
+							<span><a href="#">法律条款</a></span>|
+							<span><a href="#">API</a></span>
+						</div>
+
+						<p>
+							2016开辟之光股份有限公司版权所有 客户端网络科技发展有限公司运营  000号
+						</p>
+						<p>
+							编号[2016]0000号 编号[2014]0001-000号 增值电信业务经营许可证编号：000－20000000
+						</p>
+						<p>
+							一系列的举报电话：0000-2809000000 000100203000号
+						</p>
+					</div>
+				</div>
+
+				<div class="container text-center" style="font-size: 6px; padding: 5px;">
+					菜鸟练习，如有雷同，纯属巧合 谢谢~
+				</div>
+			</div>
+		</footer>
+<!--足部结束-->
+	<script src="js/shop.js"></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript" src="js/vue-resource.min.js" ></script>
+	<script type="text/javascript" src="js/cart.js"></script>
+</body>
+</html>
