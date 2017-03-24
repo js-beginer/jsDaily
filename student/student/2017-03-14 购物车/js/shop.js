@@ -30,7 +30,7 @@ function checka() {
         }
     }
 }
-//			购物车增加
+//购物车增加
 $(".addd").click(function () {
     //var index = $(".addd").index($(this));
 

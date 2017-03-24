@@ -1,0 +1,60 @@
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+}
+body{
+	background: url(../image/bg2.jpg);
+	background-size:cover;
+}
+.login{
+	width: 450px;
+	height: 400px;
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.6);
+	box-shadow: 2px 4px 12px 1px rgba(0,0,0,0.3);
+	font-family: "微软雅黑";
+	position: absolute;
+	text-align: center;
+	left:50%;
+    top: 50%;
+    margin-left: -225px;
+    margin-top: -200px;
+}
+.login h1{
+	text-align: center;
+	margin: 60px auto 20px;
+	letter-spacing:22px;
+	color: #3E3E3B;
+	font-size: 30px;
+}
+.login-row{
+	width: 380px;
+	height: 60px;
+	line-height: 60px;
+	margin: 10px auto;
+}
+.login-row label{
+	font-size: 14px;
+	color: #434340;
+	margin: 10px ;
+}
+.login-row input{
+	font-size: 14px;
+	width: 280px;
+	height:40px;
+	line-height: 40px;
+	padding: 0 15px;
+	box-sizing: border-box;
+}
+.login button{
+	height: 40px;
+	width: 200px;
+	margin: 40px 125px;
+}
+.login button a{
+	text-decoration: none;
+	color: white;
+}
+
