@@ -175,7 +175,25 @@ a:hover{
 }
 .modal-dialog{
 	padding-top: 200px;
+}
+.md-show{
+	display: block;
+}
+.md-overlay{
+	width: auto;
+	height: auto;
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    overflow: hidden;
+    outline: 0;
+    background: rgba(0,0,0,0.6);
 }*/
+
+
 .md-show{
 	display: block;
 }
@@ -192,36 +210,24 @@ a:hover{
     outline: 0;
     background: rgba(0,0,0,0.6);
 }
-.modal-header{
-	background: #4AAEEA;
-	height: 60px;
-	margin-top: -20px;
-	border-radius: 6px 6px 0 0px;
+.modal-content{
+	width: 500px;
 }
-.modal-header span{
-	display: block;
-	height: 20px;
+.modal-header{
+	height: 60px;
+	background: #4AAEEA;
+	margin-top: -20px;
+	border-radius: 6px 6px 0 0;
+}
+.modal-header div{
 	line-height: 30px;
-	font-family: "微软雅黑";
-	font-size: 16px;
-	color: white;
+	font-size: 20px;
+	color: #FEFEFC;
+	margin-left: 20px;
 }
 .close{
 	position: relative;
-	top: -14px;
-}
-.form-group{
-	border: 1px solid gray;
-}
-.tan1{
-	background-color: #DE4D4B;
-	font-size: 20px;
-	font-family: "微软雅黑";
-	color: #fff;
-}
-
-a:hover{
-	color: #333;
+	top: -25px;
 }
 .modal-content{
 	padding-top: 15px;
@@ -229,3 +235,71 @@ a:hover{
 .modal-dialog{
 	padding-top: 200px;
 }
+.order-time,.order-text{
+	width: 400px;
+	border:1px dashed #CACACB;
+	border-radius: 6px;
+	margin:10px auto;
+}
+.order-time{
+	height: 80px;
+}
+.order-box{
+	width: 50%;
+	height: 78px;
+	float: left;
+	font-family: "微软雅黑";
+}
+.order-box:nth-child(1){
+	border-right:1px dashed #CACACB;
+}
+.order-box h1{
+	font-size: 18px;
+	text-align: center;
+	color: #98BDD1;
+}
+.order-box select{
+	font-size: 14px;
+	border:none;
+	color: #484A4C;
+	outline:medium;
+}
+.order-text{
+	height: 140px;
+	margin-bottom: 30px;
+}
+.order-text div:nth-child(1){
+	height: 45px;
+	line-height: 45px;
+	border-bottom:1px dashed #CACACB;
+}
+.order-text div:nth-child(2){
+	height：95px;
+	line-height: 95px;
+}
+.order-text input{
+	width: 90%;
+	border:none;
+	font-size: 18px;
+	outline:medium;
+}
+.order-peaple{
+	height: 40px;
+	line-height: 40px;
+}
+.order-content{
+	height：90px;
+	line-height: 90px;
+}
+.order-ok{
+	width: 100px;
+	background-color: #DE4D4B;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	color: #fff;
+	position: absolute;
+	bottom: -10px;
+	right: -30px;
+}
+
+

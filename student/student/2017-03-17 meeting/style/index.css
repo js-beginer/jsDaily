@@ -12,9 +12,7 @@ body{
         background-size:cover;
     }
 }
-#meet{
-	
-}
+
 /*导航栏*/
 .navbar{
 	background: rgba(255,255,255,0.4)!important;
@@ -125,7 +123,7 @@ body{
 	cursor: pointer;
 	color: #F0BC36;
 }*/
-.instBtn-box button{
+.instBtn-box input{
 	width: 100px;
 	height: 35px;
 	background: rgba(255,206,80,.6);
@@ -133,12 +131,12 @@ body{
 	border: 1px solid #EDB724;
 	color: #292929;
 	font-weight: bold;
+	outline:medium;
 }
-.instBtn-box button:hover{
+.instBtn-box input:hover{
 	background: rgba(247,219,142,.8);
 	color: #585855;
 	border: 1px solid #F5C94D;
-	
 }
 /*显示区*/
 .order{
@@ -151,7 +149,6 @@ body{
 	color: white;
 	text-shadow: 2px 2px 3px rgba(0,0,0,.6);
 	font-family:raavi;
-	/*font-family:tunga;*/
 	font-size: 200%;
 	letter-spacing:4px;
 	float: right;
@@ -263,6 +260,117 @@ body{
 .Room5>li:last-child{
 	background: rgba(6,83,129,0.8);
 }
+/*添加预约弹出框*/
+.md-show{
+	display: block;
+}
+.md-overlay{
+	width: auto;
+	height: auto;
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    overflow: hidden;
+    outline: 0;
+    background: rgba(0,0,0,0.8);
+}
+.modal-content{
+	width: 500px;
+}
+.modal-header{
+	height: 60px;
+	background: #4AAEEA;
+	margin-top: -20px;
+	border-radius: 6px 6px 0 0;
+}
+.modal-header div{
+	line-height: 30px;
+	font-size: 20px;
+	color: #FEFEFC;
+	margin-left: 20px;
+}
+.close{
+	position: relative;
+	top: -25px;
+}
+.modal-content{
+	padding-top: 15px;
+}
+.modal-dialog{
+	padding-top: 200px;
+}
+.order-time,.order-text{
+	width: 400px;
+	border:1px dashed #CACACB;
+	border-radius: 6px;
+	margin:10px auto;
+}
+.order-time{
+	height: 80px;
+}
+.order-box{
+	width: 50%;
+	height: 78px;
+	float: left;
+	font-family: "微软雅黑";
+}
+.order-box:nth-child(1){
+	border-right:1px dashed #CACACB;
+}
+.order-box h1{
+	font-size: 18px;
+	text-align: center;
+	color: #98BDD1;
+}
+.order-box select{
+	font-size: 14px;
+	border:none;
+	color: #484A4C;
+	outline:medium;
+}
+.order-text{
+	height: 140px;
+	margin-bottom: 30px;
+}
+.order-text div:nth-child(1){
+	height: 45px;
+	line-height: 45px;
+	border-bottom:1px dashed #CACACB;
+}
+.order-text div:nth-child(2){
+	height：95px;
+	line-height: 95px;
+}
+.order-text input{
+	width: 90%;
+	border:none;
+	font-size: 18px;
+	outline:medium;
+}
+.order-peaple{
+	height: 40px;
+	line-height: 40px;
+}
+.order-content{
+	height：90px;
+	line-height: 90px;
+}
+.order-ok{
+	width: 100px;
+	background-color: #DE4D4B;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #fff;
+	position: absolute;
+	bottom: -10px;
+	right: -30px;
+}
+
+
+
 /*时间区域*/
 .move{
 	height: 90px;
