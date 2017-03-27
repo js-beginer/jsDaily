@@ -135,7 +135,7 @@ table button{
 	height: 100%
 }
 /*弹出框*/
-/*.md-show{
+.md-show{
 	display: block;
 }
 .md-overlay{
@@ -168,59 +168,7 @@ table button{
 	color: #fff;
 }
 a:hover{
-	color: #333;
-}
-.modal-content{
-	padding-top: 15px;
-}
-.modal-dialog{
-	padding-top: 200px;
-}*/
-.md-show{
-	display: block;
-}
-.md-overlay{
-	width: auto;
-	height: auto;
-	position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    overflow: hidden;
-    outline: 0;
-    background: rgba(0,0,0,0.6);
-}
-.modal-header{
-	background: #4AAEEA;
-	height: 60px;
-	margin-top: -20px;
-	border-radius: 6px 6px 0 0px;
-}
-.modal-header span{
-	display: block;
-	height: 20px;
-	line-height: 30px;
-	font-family: "微软雅黑";
-	font-size: 16px;
-	color: white;
-}
-.close{
-	position: relative;
-	top: -14px;
-}
-.form-group{
-	border: 1px solid gray;
-}
-.tan1{
-	background-color: #DE4D4B;
-	font-size: 20px;
-	font-family: "微软雅黑";
-	color: #fff;
-}
-
-a:hover{
+	/*background-color: #DDDDD1;*/
 	color: #333;
 }
 .modal-content{
