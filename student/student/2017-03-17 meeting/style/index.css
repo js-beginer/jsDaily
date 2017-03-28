@@ -128,10 +128,11 @@ body{
 	height: 35px;
 	background: rgba(255,206,80,.6);
 	box-shadow:-2px 3px 5px rgba(0,0,0,0.2);
-	border: 1px solid #EDB724;
+	/*border: 1px solid #EDB724;*/
 	color: #292929;
 	font-weight: bold;
-	outline:medium;
+	border:none;
+    outline:medium;
 }
 .instBtn-box input:hover{
 	background: rgba(247,219,142,.8);
@@ -146,13 +147,16 @@ body{
 	background: rgba(232,219,216,.8);
 }
 .order-date{
+	width: 200px;
 	color: white;
 	text-shadow: 2px 2px 3px rgba(0,0,0,.6);
 	font-family:raavi;
+	background-color: transparent;
+	border: none;
 	font-size: 200%;
 	letter-spacing:4px;
 	float: right;
-	margin: 40px 50px 10px;
+	margin: 40px 40px 10px;
 }
 #orderTable{
 	margin: 90px auto;
@@ -358,6 +362,23 @@ body{
 	height：90px;
 	line-height: 90px;
 }
+.roomChoose{
+	width: 150px;
+	height: 30px;
+	
+	color: #4AAEEA;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	position: absolute;
+	bottom: 40px;
+	left: 40px;
+	
+}
+.roomChoose select{
+	border:none;
+	outline:medium;
+	color: #484A4C;
+} 
 .order-ok{
 	width: 100px;
 	background-color: #DE4D4B;
