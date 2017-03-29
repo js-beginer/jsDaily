@@ -51,7 +51,9 @@
 						</table>
 						<div class="instBtn">
 							<div class="instBtn-box">
-								<input type="button" class="btn" value="回到今日">
+								<!--<input type="button" class="btn ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all" data-handler="today" data-event="click" value="回到今日">-->
+									<!--<button type="button" class="ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all" data-handler="today" data-event="click">今天</button>-->
+									<input type="button" class="btn" id="gotoToday" value="回到今日" />
 							</div>
 							<div class="instBtn-box">
 								<input type="button" class="btn" @click="addConfirm" value="添加预约">
@@ -62,8 +64,7 @@
 				<div class="box meet-right">
 					<div class="zone order">
 						<input class="order-date" id="alternate" disabled="disabled">
-							2017-03-21
-						</input>
+							
 						<!--行程表格-->
 						<div id="orderTable">
 							<ul class="order-thead">
@@ -87,43 +88,15 @@
 							</ul>
 							<div id="liBoxClass"></div>
 	
+							<div class="orderBox"  v-for="item in orderList">
+								<div class="move" v-bind:style="orderStyle(item.conf_name,item.Appointment_begin_time,item.Appointment_end_time)">
+									<span>{{item.Appointment_begin_time}}</span>
+									<span>~</span>
+									<span>{{item.Appointment_end_time}}</span>
+									<span>{{item.user_name}}</span>
+								</div>
+							</div>
 							
-							<div class="move order1">
-								<span>10:30</span>
-								<span>~</span>
-								<span>10:50</span>
-								<span>前端小组</span>
-							</div>
-							<div class="move order2">
-								<span>8:30</span>
-								<span>~</span>
-								<span>9:10</span>
-								<span>赵小婧</span>
-							</div>
-							<div class="move order3">
-								<span>14:00</span>
-								<span>~</span>
-								<span>17:00</span>
-								<span>研发二组技术调研</span>
-							</div>
-							<div class="move order4">
-								<span>10:00</span>
-								<span>~</span>
-								<span>11:30</span>
-								<span>设计部1</span>
-							</div>
-							<div class="move order5">
-								<span>9:30</span>
-								<span>~</span>
-								<span>10:00</span>
-								<span>潘浩</span>
-							</div>
-							<div class="move order6">
-								<span>10:00</span>
-								<span>~</span>
-								<span>10:30</span>
-								<span>测试组小队测试组</span>
-							</div>
 						</div>
 						
 					</div>

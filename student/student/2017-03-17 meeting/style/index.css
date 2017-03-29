@@ -85,6 +85,9 @@ body{
 	border: 1px solid #295F95;
 	background: rgba(98,131,162,.4);
 }
+#datepicker button[data-handler=today]{
+	display: none;
+}
 /*说明区*/
 .instruct{
 	width: 100%;
@@ -422,24 +425,4 @@ body{
 	width: 11.6%; /*(5.8*(结束-开始)*2)%  */
 	top: 50px;  /*(50+100*(会议室-1))px  */
 	left: 10%;  /*((开始-8.5)*2*5.8+10)%  */
-}
-.order3{
-	width: 34.8%;
-	top: 450px;  
-	left: 62.2%;  
-}
-.order4{
-	width: 17.4%;
-	top: 350px;  
-	left: 27.4%;  
-}
-.order5{
-	width: 5.8%;
-	top: 50px;  
-	left: 21.6%;  
-}
-.order6{
-	width: 5.8%;
-	top: 50px;  
-	left: 27.4%;  
 }
