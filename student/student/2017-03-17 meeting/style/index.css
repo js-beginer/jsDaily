@@ -6,12 +6,6 @@ body{
 	background: url(../image/bg2.jpg);
 	background-size:cover;
 }
-@media screen and (max-width: 100px) and (max-width: 400px) {
-    body{
-        background: url(../image/bg1.jpg);
-        background-size:cover;
-    }
-}
 
 /*导航栏*/
 .navbar{
@@ -76,7 +70,6 @@ body{
 .meet-right{
 	width: 80%;
 	height: 700px;
-	
 }
 /*日历区*/
 .date{
@@ -102,10 +95,6 @@ body{
 	color: #0A0A0A;
 	font-size: 16px;
 	font-family: "微软雅黑";
-}
-.instruct table tr td{
-	/*border: 1px solid red;*/
-	/*margin: 20px;*/
 }
 .instruct table tr td div{
 	width: 25px;
@@ -172,7 +161,7 @@ body{
 	width: 100%;
 }
 .order-thead>li{
-	width: 5.8%;
+	width: 5.26%;
 	height: 40px;
 	line-height: 40px;
 	float: left;
@@ -183,7 +172,7 @@ body{
 }
 .order-thead>li:first-child{
 	border-left: none;
-	width: 7%;
+	width: 4.9%;
 }
 .room{
 	width: 100%;
@@ -191,9 +180,9 @@ body{
 .room li{
 	margin-top: 10px;
 	height: 90px;
-	width: 5.8%;
+	width: 5.29%;
 	line-height: 90px;
-	border-left: 1px dashed rgba(173,173,170,.4);
+	border-left: 1px dashed rgba(173,173,170,.7);
 	border-radius: 2px;
 	float: left;
 	list-style: none;
@@ -201,7 +190,7 @@ body{
 	font-size: 10px;
 }
 .room>li:first-child{
-	width: 10%;
+	width: 7.5%;
 	line-height: 90px;
 	border-left: none;
 	border-radius: 10px 0 0 10px;
@@ -216,55 +205,43 @@ body{
 	border-left: none;
 	border-radius: 0 10px 10px 0;
 	box-shadow:2px 2px 2px rgba(0,0,0,0.3);
-	width: 3%;
+	width: 2.5%;
 	line-height: 90px;
 	font-size: 14px;
 	background: gray;
 }
 
-.Room1 li{
-	background: rgba(245,245,245,0.6);
+.room li{
+	background: rgba(245,245,245,0.4);
 }
-.Room2 li{
-	background: rgba(245,245,245,0.6);
-}
-.Room3 li{
-	background: rgba(245,245,245,0.6);
-}
-.Room4 li{
-	background: rgba(245,245,245,0.6);
-}
-.Room5 li{
-	background: rgba(245,245,245,0.6);
-}
-.Room1>li:first-child{
+#liBoxClass ul:nth-child(1)>li:first-child{
 	background: rgba(132,88,113,0.8);
 }
-.Room2>li:first-child{
+#liBoxClass ul:nth-child(2)>li:first-child{
 	background: rgba(146,160,143,0.8);
 }
-.Room3>li:first-child{
+#liBoxClass ul:nth-child(3)>li:first-child{
 	background: rgba(252,154,63,0.8);
 }
-.Room4>li:first-child{
+#liBoxClass ul:nth-child(4)>li:first-child{
 	background: rgba(227,72,86,0.8);
 }
-.Room5>li:first-child{
+#liBoxClass ul:nth-child(5)>li:first-child{
 	background: rgba(6,83,129,0.8);
 }
-.Room1>li:last-child{
+#liBoxClass ul:nth-child(1)>li:last-child{
 	background: rgba(132,88,113,0.8);
 }
-.Room2>li:last-child{
+#liBoxClass ul:nth-child(2)>li:last-child{
 	background: rgba(146,160,143,0.8);
 }
-.Room3>li:last-child{
+#liBoxClass ul:nth-child(3)>li:last-child{
 	background: rgba(252,154,63,0.8);
 }
-.Room4>li:last-child{
+#liBoxClass ul:nth-child(4)>li:last-child{
 	background: rgba(227,72,86,0.8);
 }
-.Room5>li:last-child{
+#liBoxClass ul:nth-child(5)>li:last-child{
 	background: rgba(6,83,129,0.8);
 }
 /*添加预约弹出框*/
@@ -279,7 +256,7 @@ body{
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1040;
+    z-index: 40;
     overflow: hidden;
     outline: 0;
     background: rgba(0,0,0,0.8);
@@ -307,13 +284,20 @@ body{
 	padding-top: 15px;
 }
 .modal-dialog{
-	padding-top: 200px;
+	margin: 0 auto;
+	position: absolute;
+	text-align: center;
+	left:50%;
+    top: 50%;
+    margin-left: -225px;
+    margin-top: -200px;
 }
 .order-time,.order-text{
 	width: 400px;
 	border:1px dashed #CACACB;
 	border-radius: 6px;
 	margin:10px auto;
+	
 }
 .order-time{
 	height: 80px;
@@ -354,7 +338,8 @@ body{
 .order-text input{
 	width: 90%;
 	border:none;
-	font-size: 18px;
+	font-size: 14px;
+	font-family: "微软雅黑";
 	outline:medium;
 }
 .order-peaple{
@@ -392,14 +377,11 @@ body{
 	bottom: -10px;
 	right: -30px;
 }
-
-
-
 /*时间区域*/
 .move{
 	height: 90px;
 	border-left: 1px solid #F0F0F0;
-	background: rgba(165,165,165,.3);
+	background: rgba(211,211,211,.8);
 	padding: 10px 0;
 	margin: 0 auto;
 	position: absolute;
@@ -410,19 +392,8 @@ body{
 	display: block;
 	margin-bottom: -5px;
 	color: #525252;
-	
 }
 .move span:last-child{
 	margin-top: 8px;
 	font-weight: bold;
-}
-.order1{
-	width: 5.8%;
-	top: 150px;
-	left: 33.2%;
-}
-.order2{
-	width: 11.6%; /*(5.8*(结束-开始)*2)%  */
-	top: 50px;  /*(50+100*(会议室-1))px  */
-	left: 10%;  /*((开始-8.5)*2*5.8+10)%  */
 }
