@@ -1,9 +1,7 @@
 {
-    "list":[
-        {
-            "result":{
-               "chooseDate":"2017-03-27",
-               "list":[
+	"status":1,
+	"result":{
+			"list":[
 				{
 					"Appointment_begin_time": "2017-03-29 08:30",
 					"Appointment_end_time": "2017-03-29 09:00",
@@ -95,8 +93,5 @@
 					"user_name": "测试姓名"
 				}
 			]
-            },
-            "status":1
-        }
-    ]
+	}
 }

@@ -1,115 +1,136 @@
-$(function () {
-//	行程表格
-//	var roomNum = 5;
-//	var liNum = 18;
-//	var liHtml;
-//	var allText = '';
-//	var arrText = ['第1会议室','第2会议室','第3会议室','第4会议室','第5会议室'];
-//	var liBox = $('#liBoxClass');
-//	for(var i = 1; i <= roomNum ;i++){
-//		var htmlStr = '';
-//		var ul = '<ul class ="room"><li>'+ arrText[i-1] + '</li>';
-//		liHtml = '';
-//		for(var j = 1;j <= liNum;j++){
-//			liHtml += '<li></li>';
-//		}
-//		htmlStr = ul + liHtml +'</ul>';
-//		allText =  allText + htmlStr;
-//		liBox.html(allText);
-//	}
-//	日期插件
-	$( "#datepicker" ).datepicker({
+$(function() {
+	//	日期插件
+	$("#datepicker").datepicker({
 		altField: "#alternate",
 		altFormat: "yy-mm-dd",
-		showButtonPanel:true,
+		showButtonPanel: true,
 		onSelect: vm.gotoDate
 	});
-	$('#gotoToday').click(function(){
+	$('#gotoToday').click(function() {
 		$('#datepicker button[data-handler=today]').click()
 	});
 })
 
 var vm = new Vue({
-	el:"#meetApp",
-	data:{
-		orderList:[],
+	el: "#meetApp",
+	data: {
+		orderList: [
+			{
+				"Appointment_date":''
+			}
+		],
 		addFlag: false,
 		resFlag: false,
-		roomNum : 5,
-		liNum : 18,
+		roomNum: 5,
+		liNum: 18,
 		liHtml: '',
-		allText : '',
-		arrText : ['第1会议室','第2会议室','第3会议室','第4会议室','第5会议室'],
+		allText: '',
+		arrText: ['第1会议室', '第2会议室', '第3会议室', '第4会议室', '第5会议室'],
 		startTime: '',
 		endTime: '',
 		userName: '',
 		content: '',
-		meetRoom: ''
+		meetRoom: '',
+		startTimeNew : '',
+		endTimeNew : '',
+		userNameNew : '',
+		contentNew : '',
+		meetRoomNew : '',
+		myDate:''
 	},
-	 filters: {
-	    timeSort: function (value) {	
-	      if (!value) return ''
-	      value = value.toString();
-	      return value.substr(11,5);
-	    }
-    },
-	mounted: function () {
-		this.$nextTick(function () {
-			this.cartView();
+	filters: {
+		timeSort: function(value) {
+			if(!value) return ''
+			value = value.toString();
+			return value.substr(11, 5);
+		}
+	},
+	mounted: function() {
+		this.$nextTick(function() {
+			this.orderView();
 			this.addLi();
 		});
 	},
-	methods:{
-		addLi: function(){
-			for(var i = 1; i <= this.roomNum ;i++){
+	methods: {
+		//	行程表格
+		addLi: function() {
+			for(var i = 1; i <= this.roomNum; i++) {
 				var htmlStr = '';
-				var ul = '<ul class="room"><li>'+ this.arrText[i-1] + '</li>';
+				var ul = '<ul class="room"><li>' + this.arrText[i - 1] + '</li>';
 				this.liHtml = '';
-				for(var j = 1;j <= this.liNum;j++){
+				for(var j = 1; j <= this.liNum; j++) {
 					this.liHtml += '<li></li>';
 				}
-				htmlStr = ul + this.liHtml +'</ul>';
-				this.allText =  this.allText + htmlStr;
+				htmlStr = ul + this.liHtml + '</ul>';
+				this.allText = this.allText + htmlStr;
 			}
 		},
-		orderStyle : function(confName,BeginTime,EndTime){
-			abc_str = "2017-03-29 08:30";  
-			var abc_date = new Date(abc_str);  
-			var end_date = new Date(EndTime);
-			var sta_date = new Date(BeginTime);  
-			var sta_num = (sta_date-abc_date)/(1000*3600); 
-			var end_num = (end_date-sta_date)/(1000*3600); 
+		//  order定位
+		orderStyle: function(confName, BeginTime, EndTime) {
+			var begin_str = "2017-03-29 08:30";
+			var bengin_date = moment(begin_str);
+			var end_date = moment(EndTime);
+			var sta_date = moment(BeginTime);
+			var sta_num = (sta_date - bengin_date) / (1000 * 3600);
+			var end_num = (end_date - sta_date) / (1000 * 3600);
 			return {
-				width : (5.29*Number(end_num)*2) + "%",
-				top : (50+100*(Number(confName)-1)) + 'px',
-				left : (Number(sta_num)*2*5.29+7.5) +"%"
+				width: (5.29 * Number(end_num) * 2) + "%",
+				top: (50 + 100 * (Number(confName) - 1)) + 'px',
+				left: (Number(sta_num) * 2 * 5.29 + 7.5) + "%"
 			};
 		},
-		cartView: function () {
-			let _this = this;
-			this.$http.get("../../data/meetingData.json",{"id":123}).then(res=> {
-				this.orderList = res.body.result.list;
+		orderView: function() {
+			this.$http.get("../..//data/meetingData.json").then(function(res) {
+//				this.orderList = res.body.list[0].result.list;
+				this.orderList = res.body.list[0].result;
+				
 			});
 		},
-		addConfirm: function () {
+		addOrder: function() {
+			this.startTimeNew = this.myDate + ' ' + this.startTimeNew;
+			this.$http.post("BespeakAction!applyConferenceRoom.do", {
+				"Appointment_begin_time": this.startTimeNew,
+				"Appointment_end_time": this.endTimeNew,
+				"content": this.userNameNew,
+				"conf_name": this.contentNew,
+				"user_name": this.meetRoomNew
+				
+//				startTimeNew : this.Appointment_begin_time,
+//				endTimeNew : this.Appointment_end_time,
+//				userNameNew : this.user_name,
+//				contentNew : this.content,
+//				meetRoomNew : this.conf_name,
+				
+			}).then(function(res) {
+				alert(res);
+//				this.orderList = res.body.result.list;
+			})
+			.catch(function(err){
+				console.log(err);
+			});
+			
+			
+		},
+		addConfirm: function() {
 			this.addFlag = true;
 		},
-		resConfirm: function(item){
+		resConfirm: function(item) {
 			this.resFlag = true;
-			this.startTime = item.Appointment_begin_time.substr(11,5);
-			this.endTime =  item.Appointment_end_time.substr(11,5);
+			this.startTime = item.Appointment_begin_time.substr(11, 5);
+			this.endTime = item.Appointment_end_time.substr(11, 5);
 			this.userName = item.user_name;
 			this.content = item.content;
 			this.meetRoom = item.conf_name;
-//			alert(item.content)
-			
 		},
-		
-		gotoDate : function(ev){
-			this.$http.post("<%=path%>/BespeakAction!LoginBespeak.do",{"id":123,"date":ev}).then(function(res){
-				this.orderList = res.body.result.list;
+
+		gotoDate: function(ev) {
+			this.$http.post("BespeakAction!LoginBespeak.do", { "date": ev }).then(function(res) {
+//				this.orderList = res.body.result.list;
+this.orderList = res.body.list[0].result;
+//				console.log(orderList);
 			});
-		alert(ev);
+			this.myDate = ev;
+			
 		}
 	}
 });

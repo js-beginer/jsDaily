@@ -54,14 +54,19 @@
 								<input type="button" class="btn" id="gotoToday" value="回到今日" />
 							</div>
 							<div class="instBtn-box">
-								<input type="button" class="btn" @click="addConfirm" value="添加预约">
+								<!--<input type="button" class="btn" @click="addConfirm" value="添加预约">@click="addOrder"-->
+								<input type="button" class="btn" @click="addOrder" value="添加预约">
+							
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="box meet-right">
 					<div class="zone order">
-						<input class="order-date" id="alternate" disabled="disabled">
+						
+						<!--<div class="order-date" id="alternate">{{orderList[0].Appointment_date}}</div>-->
+						<div class="order-date" id="alternate">{{orderList.chooseDate}}</div>
+						<div></div>
 						<!--行程表格-->
 						<div id="orderTable">
 							<ul class="order-thead">
@@ -87,7 +92,7 @@
 							</ul>
 							<div id="liBoxClass" v-html="this.allText"></div>
 	
-							<div class="orderBox"  v-for="item in orderList">
+							<div class="orderBox"  v-for="item in orderList.list">
 								<div class="move"   v-on:click="resConfirm(item)"  v-bind:style="orderStyle(item.conf_name,item.Appointment_begin_time,item.Appointment_end_time)">
 									<span>{{item.Appointment_begin_time | timeSort}}</span>
 									<span>~</span>
@@ -111,35 +116,65 @@
 								<form class="form-horizontal">
 									<div class="form-group has-feedback text-center">
 										<div class="order-time">
-											<div class="order-box">
+											<div class="order-box">{{myDate}}
 												<h1>开始时间</h1>
-												<select>
-													<option value="1">今天 13:00</option>
-													<option value="2">今天 14:00</option>
-													<option value="3">今天 15:00</option>
+												<select v-model="startTimeNew">
+													<option value="08:30">08:30</option>
+													<option value="09:00">09:00</option>
+													<option value="09:30">09:30</option>
+													<option value="10:00">10:00</option>
+													<option value="10:30">10:30</option>
+													<option value="11:00">11:00</option>
+													<option value="11:30">11:30</option>
+													<option value="12:00">12:00</option>
+													<option value="12:30">12:30</option>
+													<option value="13:00">13:00</option>
+													<option value="13:30">13:30</option>
+													<option value="14:00">14:00</option>
+													<option value="14:30">14:30</option>
+													<option value="15:00">15:00</option>
+													<option value="15:30">15:30</option>
+													<option value="16:00">16:00</option>
+													<option value="16:30">16:30</option>
+													<option value="17:00">17:00</option>
 												</select>
 											</div>
 											<div class="order-box">
 												<h1>结束时间</h1>
-												<select>
-													<option value="1">今天 13:40</option>
-													<option value="2">今天 14:40</option>
-													<option value="3">今天 15:40</option>
+												<select v-model="endTimeNew">
+													<option value="08:30">08:30</option>
+													<option value="09:00">09:00</option>
+													<option value="09:30">09:30</option>
+													<option value="10:00">10:00</option>
+													<option value="10:30">10:30</option>
+													<option value="11:00">11:00</option>
+													<option value="11:30">11:30</option>
+													<option value="12:00">12:00</option>
+													<option value="12:30">12:30</option>
+													<option value="13:00">13:00</option>
+													<option value="13:30">13:30</option>
+													<option value="14:00">14:00</option>
+													<option value="14:30">14:30</option>
+													<option value="15:00">15:00</option>
+													<option value="15:30">15:30</option>
+													<option value="16:00">16:00</option>
+													<option value="16:30">16:30</option>
+													<option value="17:00">17:00</option>
 												</select>
 											</div>
 										</div>
 										<div class="order-text">
 											<div>
-												<input type="text" class="order-peaple" placeholder="预约人">
+												<input type="text" class="order-peaple" v-model="userNameNew" placeholder="预约人">
 											</div>
 											<div>
-												<input type="text" class="order-content"  placeholder="会议内容">
+												<input type="text" class="order-content" v-model="contentNew"  placeholder="会议内容">
 											</div>
 										</div>
 									</div>
 									<div class="form-group text-center">
 										<div class="roomChoose">第
-											<select>
+											<select  v-model="meetRoomNew">
 												<option value="1">一</option>
 												<option value="2">二</option>
 												<option value="3">三</option>
@@ -148,15 +183,14 @@
 											</select>
 											会议室
 										</div>
-										<div class="col-md-8 col-md-offset-2">
-				               				<button class="order-ok btn col-md-4 col-md-offset-2">
+										<div class="btnChoose">
+				               				<button class="order-ok btn btn-success" @click="addOrder">
 												确定
 				               				</button>
 										</div>
 									</div>
 								</form>
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -240,11 +274,11 @@
 											</select>
 											会议室
 										</div>
-										<div class="col-md-8 col-md-offset-2">
-											<button class="order-ok btn col-md-4 col-md-offset-2">
+										<div class="btnChoose">
+											<button class="order-del btn btn-danger">
 												删除
 				               				</button>
-				               				<button class="order-ok btn col-md-4 col-md-offset-2">
+				               				<button class="order-ok btn btn-success">
 												确定
 				               				</button>
 										</div>
@@ -258,9 +292,10 @@
 			</div>
 		</div>
 	</body>
-	
-	<script src="../../script/vendor/vue.js"></script>
-	<script src="../../script/vendor/vue-resource.min.js"></script>
-	<script src="../../script/index.js"></script>
+
+<script src="../../script/vendor/moment.js"></script>
+<script src="../../script/vendor/vue.js"></script>
+<script src="../../script/vendor/vue-resource.min.js"></script>
+<script src="../../script/index.js"></script>
 </html>
 
