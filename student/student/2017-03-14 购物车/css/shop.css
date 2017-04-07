@@ -135,7 +135,7 @@ table button{
 	height: 100%
 }
 /*弹出框*/
-/*.md-show{
+.md-show{
 	display: block;
 }
 .md-overlay{
@@ -191,10 +191,10 @@ a:hover{
     overflow: hidden;
     outline: 0;
     background: rgba(0,0,0,0.6);
-}*/
+}
 
 
-.md-show{
+/*.md-show{
 	display: block;
 }
 .md-overlay{
@@ -300,6 +300,6 @@ a:hover{
 	position: absolute;
 	bottom: -10px;
 	right: -30px;
-}
+}*/
 
 

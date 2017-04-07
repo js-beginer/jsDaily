@@ -1,0 +1,39 @@
+{
+    "list":[
+        {
+            "result":{
+                "chooseDate":"2017-04-05",
+                "list":[
+                    {
+                        "content":"随便定个会议室耍耍",
+                        "user_name":"啊啊啊",
+                        "status":"SUCCESSFUL",
+                        "Appointment_end_time":"2017-03-29 13:30",
+                        "conf_id":"1",
+                        "Appointment_begin_time":"2017-03-29 13:00",
+                        "Appointment_date":"2017-04-05"
+                    },
+                    {
+                        "content":"测试环境",
+                        "user_name":"测试12",
+                        "status":"SUCCESSFUL",
+                        "Appointment_end_time":"2017-03-29 14:30",
+                        "conf_id":"2",
+                        "Appointment_begin_time":"2017-03-29 14:00",
+                        "Appointment_date":"2017-04-05"
+                    },
+                    {
+                        "content":"测试环境2221",
+                        "user_name":"嗷嗷",
+                        "status":"SUCCESSFUL",
+                        "Appointment_end_time":"2017-03-29 16:30",
+                        "conf_id":"4",
+                        "Appointment_begin_time":"2017-03-29 14:00",
+                        "Appointment_date":"2017-04-05"
+                    }
+                ]
+            },
+            "status":1
+        }
+    ]
+}

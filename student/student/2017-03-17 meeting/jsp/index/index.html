@@ -51,11 +51,10 @@
 						</table>
 						<div class="instBtn">
 							<div class="instBtn-box">
-								<input type="button" class="btn" id="gotoToday" value="回到今日" />
+								<input type="button" class="btn"  value="回到今日" />
 							</div>
 							<div class="instBtn-box">
-								<!--<input type="button" class="btn" @click="addConfirm" value="添加预约">@click="addOrder"-->
-								<input type="button" class="btn" @click="addOrder" value="添加预约">
+								<input type="button" class="btn" @click="addConfirm" value="添加预约">
 							
 							</div>
 						</div>
@@ -63,7 +62,6 @@
 				</div>
 				<div class="box meet-right">
 					<div class="zone order">
-						
 						<!--<div class="order-date" id="alternate">{{orderList[0].Appointment_date}}</div>-->
 						<div class="order-date" id="alternate">{{orderList.chooseDate}}</div>
 						<div></div>
@@ -93,7 +91,7 @@
 							<div id="liBoxClass" v-html="this.allText"></div>
 	
 							<div class="orderBox"  v-for="item in orderList.list">
-								<div class="move"   v-on:click="resConfirm(item)"  v-bind:style="orderStyle(item.conf_name,item.Appointment_begin_time,item.Appointment_end_time)">
+								<div class="move"   v-on:click="resConfirm(item)"  v-bind:style="orderStyle(item.conf_id,item.Appointment_begin_time,item.Appointment_end_time)">
 									<span>{{item.Appointment_begin_time | timeSort}}</span>
 									<span>~</span>
 									<span>{{item.Appointment_end_time | timeSort}}</span>
@@ -259,7 +257,7 @@
 												<input type="text" class="order-peaple" v-model="userName" placeholder="预约人">
 											</div>
 											<div>
-												<input type="text" class="order-content" v-model="content"  placeholder="会议内容">
+												<input type="textare" class="order-content" v-model="content"  placeholder="会议内容">
 											</div>
 										</div>
 									</div>
@@ -275,7 +273,7 @@
 											会议室
 										</div>
 										<div class="btnChoose">
-											<button class="order-del btn btn-danger">
+											<button class="order-del btn btn-danger" @click="delConfirm">
 												删除
 				               				</button>
 				               				<button class="order-ok btn btn-success">
@@ -292,7 +290,7 @@
 			</div>
 		</div>
 	</body>
-
+<script src="../../script/vendor/jquery.placeholder.js"></script>
 <script src="../../script/vendor/moment.js"></script>
 <script src="../../script/vendor/vue.js"></script>
 <script src="../../script/vendor/vue-resource.min.js"></script>

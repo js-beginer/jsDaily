@@ -16,7 +16,7 @@ var vm = new Vue({
 	data: {
 		orderList: [
 			{
-				"Appointment_date":''
+				"appointment_date":''
 			}
 		],
 		addFlag: false,
@@ -36,6 +36,7 @@ var vm = new Vue({
 		userNameNew : '',
 		contentNew : '',
 		meetRoomNew : '',
+		nowDate : '',
 		myDate:''
 	},
 	filters: {
@@ -65,6 +66,15 @@ var vm = new Vue({
 				this.allText = this.allText + htmlStr;
 			}
 		},
+		//	获取预约信息
+		orderView: function() {
+			this.nowDate = moment().format('YYYY-MM-DD');
+			this.$http.get("BespeakAction!LoginBespeak.do", { 
+				params:{"date": this.nowDate }
+			}).then(function(res) {
+				this.orderList = res.body.list[0].result;
+			});
+		},	
 		//  order定位
 		orderStyle: function(confName, BeginTime, EndTime) {
 			var begin_str = "2017-03-29 08:30";
@@ -79,62 +89,51 @@ var vm = new Vue({
 				left: (Number(sta_num) * 2 * 5.29 + 7.5) + "%"
 			};
 		},
-		orderView: function() {
-			this.$http.get("../..//data/meetingData.json").then(function(res) {
-//				this.orderList = res.body.list[0].result.list;
-				this.orderList = res.body.list[0].result;
-				
-			});
-		},
 		addOrder: function() {
-			this.startTimeNew = this.myDate + ' ' + this.startTimeNew;
+			if( this.myDate == '' ){
+				this.startTimeNew = this.nowDate + ' ' + this.startTimeNew;
+				this.endTimeNew = this.nowDate + ' ' + this.endTimeNew;
+			}else{
+				this.startTimeNew = this.myDate + ' ' + this.startTimeNew;
+				this.endTimeNew = this.myDate + ' ' + this.endTimeNew;
+			};
 			this.$http.post("BespeakAction!applyConferenceRoom.do", {
-				"Appointment_begin_time": this.startTimeNew,
-				"Appointment_end_time": this.endTimeNew,
-				"content": this.userNameNew,
-				"conf_name": this.contentNew,
-				"user_name": this.meetRoomNew
+				"appointment_begin_time": this.startTimeNew,
+				"appointment_end_time": this.endTimeNew,
+				"content": this.contentNew,
+				"conf_id": this.meetRoomNew,
+				"user_name": this.userNameNew
 				
-//				startTimeNew : this.Appointment_begin_time,
-//				endTimeNew : this.Appointment_end_time,
-//				userNameNew : this.user_name,
-//				contentNew : this.content,
-//				meetRoomNew : this.conf_name,
-				
-			}).then(function(res) {
-				alert(res);
-//				this.orderList = res.body.result.list;
-			})
-			.catch(function(err){
-				console.log(err);
+			}).then(function(result) {
+				this.addFlag = false;
+			},function(result) {
+				alert("添加失败！");
 			});
-			
-			
 		},
 		addConfirm: function() {
 			this.addFlag = true;
 		},
 		resConfirm: function(item) {
 			this.resFlag = true;
-			this.startTime = item.Appointment_begin_time.substr(11, 5);
-			this.endTime = item.Appointment_end_time.substr(11, 5);
+			this.startTime = item.appointment_begin_time.substr(11, 5);
+			this.endTime = item.appointment_end_time.substr(11, 5);
 			this.userName = item.user_name;
 			this.content = item.content;
-			this.meetRoom = item.conf_name;
+			this.meetRoom = item.conf_id;
 		},
-
+		//删除预约
+		delConfirm: function() {
+			alert(1)
+		},
+		//查询日期
 		gotoDate: function(ev) {
-			this.$http.post("BespeakAction!LoginBespeak.do", { "date": ev }).then(function(res) {
-//				this.orderList = res.body.result.list;
-this.orderList = res.body.list[0].result;
-//				console.log(orderList);
+			this.$http.get("BespeakAction!LoginBespeak.do",{ 
+				params:{"date": ev }
+			
+			}).then(function(res) {
+				this.orderList = res.body.list[0].result;
 			});
 			this.myDate = ev;
-			
 		}
 	}
 });
-
-//		width: 11.6%; /*(5.8*(结束-开始)*2)%  */
-//		top: 50px;  /*(50+100*(会议室-1))px  */
-//		left: 10%;  /*((开始-8.5)*2*5.8+10)%  */
