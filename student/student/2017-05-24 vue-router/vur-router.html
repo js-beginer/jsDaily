@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.inp {
+			width: 100px;
+			height: 40px;
+			border: 1px solid gray;
+			background: gainsboro;
+		}
+	</style>
+
+	<body>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+		<div id="app">
+			<h1>Hello App!</h1>
+			<p>
+				<router-link to="/user/foo如果" class="inp">按钮Foo</router-link>
+				<router-link to="/user/bar" class="inp">按钮Bar</router-link>
+			</p>
+			<router-view></router-view>
+		</div>
+	</body>
+
+	<script>
+		const User = {
+			template: `<div>User的 {{ $route.params.id2 }}</div>`
+		}
+		const router = new VueRouter({
+			routes: [{
+				path: '/user/:id2',
+				component: User
+			}]
+		})
+		const app = new Vue({
+			router
+		}).$mount('#app')
+		
+		
+		//		// 1. 定义（路由）组件。
+		//		const Foo = {
+		//			template: '<div>foo各种内容啊啊啊啊啊啊啊</div>'
+		//		}
+		//		const Bar = {
+		//			template: '<div>bar对就这里，了<h4>ABC</h4></div>'
+		//		}
+		//		// 2. 定义路由
+		//		const routes = [{
+		//				path: '/foo1',
+		//				component: Foo
+		//			},
+		//			{
+		//				path: '/bar',
+		//				component: Bar
+		//			}
+		//		]
+		//		// 3. 创建 router 实例，
+		//		const router = new VueRouter({
+		//			routes 
+		//		})
+		//		// 4. 创建和挂载根实例。
+		//		const app = new Vue({
+		//			router
+		//		}).$mount('#app')
+	</script>
+
+</html>

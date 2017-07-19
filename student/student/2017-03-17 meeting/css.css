@@ -3,14 +3,19 @@
 	margin: 0;
 	text-decoration: none;
 }
-.el-form-item__error{
+.login form {
+    margin-top: 40px!important;
+    
+}
+/*.el-form-item__error{
 	position: absolute!important;
 	top: 8px!important;
 	left: -68px!important;
 	font-size: 20px!important;
-}	
+}	*/
 .el-form-item.is-required .el-form-item__label:before {
     content: ''!important;
+    
 }
 .el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-textarea__inner {
     border-color: #ADB9C4!important;
@@ -44,43 +49,35 @@ body{
 	display: block;
 }
 .intr{
-	width: 350px;
-	height: 100px;
-	position: absolute;
-	top: 10%;
-	left: 28%;
-	margin-left: -175px;
-    margin-top: -50px;
-	font-family: "Microsoft YaHei";
-	font-size: 20px;
-	color: #646464;
-	text-shadow: 2px 2px 4px  rgba(255,255,255,0.5);
-}
-.intr span{
-	margin: 10px;
-	font-size: 28px;
+	color:#7E8181;
+	font-size: 16px;
+	text-align: left;
+	font-family: "微软雅黑";
+	margin: 20px;
 }
 .login{
-	width: 450px;
-	height: 400px;
+	width: 400px;
+	height: 350px;
 	border: 1px solid #DBDBD8;
 	border-radius: 10px;
-	background: rgba(255,255,255,0.7);
-	box-shadow: 2px 4px 8px 1px rgba(0,0,0,0.2);
+	background: rgba(255,255,255,0.5);
+	box-shadow: 2px 4px 8px 1px rgba(0,0,0,0.1);
 	font-family: "Microsoft YaHei";
 	position: absolute;
 	text-align: center;
 	left:50%;
     top: 50%;
-    margin-left: -225px;
-    margin-top: -200px;
+    margin-left: -200px;
+    margin-top: -175px;
 }
 .login h1{
 	text-align: center;
-	margin: 60px auto 20px;
-	letter-spacing:22px;
+	margin: 30px auto 20px;
+	
 	color: #3E3E3B;
-	font-size: 30px;
+	font-family: "微软雅黑";
+	font-size: 22px;
+	
 }
 .login form{
 	display: block;
@@ -90,7 +87,7 @@ body{
 .login-box{
 	width: 400px;
 	height: 60px;
-	margin-left:25px;
+	margin-left:-6px;
 }
 .login-box input{
 	margin-left: 10px;
@@ -115,12 +112,15 @@ body{
 	box-sizing: border-box;
 }
 .login button{
-	height: 40px;
+	height: 35px;
 	width: 200px;
-	margin: 20px 60px 20px 100px;
+	margin: 0px 60px 20px 100px;
 }
 .login button a{
 	text-decoration: none;
 	color: white;
 }
-
+#authImage{
+	width: 70px;
+	margin-right: 15px;
+}

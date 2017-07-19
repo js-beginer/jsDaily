@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<style>
+			.aa {
+				position: relative;
+				width: 200px;
+				height: 80px;
+				
+			}
+			
+			.errors p {
+				position: absolute;
+				right: 0;
+				top: 10px;
+			}
+			
+			.kong {
+				color: green;
+			}
+			.fa{
+				color: red;
+			}
+		</style>
+
+		<div id="app">
+			<form @submit.prevent="validateBeforeSubmit">
+			    
+				
+	        <label class="label">Name</label>
+	        <p class="control">
+	            <input name="name" v-model="name" v-validate:name.initial="'required|max:6'" type="text" placeholder="Name">
+	            <i v-show="errors.has('name')" class="fa">×</i>
+	        </p>
+	       
+	            <button type="submit">Submit</button>
+			       
+			    
+			</form>
+			
+		</div>
+		
+		<script src="script/vendor/vue.js"></script>
+		<script src="script/vendor/vee-validate.js"></script>
+
+		<script type="text/javascript">
+			console.log(moment().format("YYYY-MM-DD HH:mm:ss")); //当前时间 
+console.log(moment().subtract(10, "days").format("YYYY-MM-DD")); //当前时间的前10天时间 
+			
+			Vue.use(VeeValidate);
+			new Vue({
+				el: '#app',
+				data:{
+					email: '',
+			        name: '',
+			        phone: '',
+			        url: ''
+				},
+				methods: {
+			        validateBeforeSubmit() {
+			            this.$validator.validateAll().then(() => {
+			                // eslint-disable-next-line
+			                alert('From Submitted!');
+			            }).catch(() => {
+			                // eslint-disable-next-line
+			                alert('Correct them errors!');
+			            });
+			        }
+			    }
+				
+			});
+		</script>
+		
+	</body>
+	
+</html>
+	</body>
+</html>

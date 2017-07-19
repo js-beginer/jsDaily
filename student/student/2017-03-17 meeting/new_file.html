@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<script src="script/vendor/vue.js"></script>
+	<script src="script/vendor/vue-validator.js"></script>-->
+
+		<script src="script/vendor/jquery-3.2.0.min.js"></script>
+		<script src="script/vendor/jquery.placeholder.js"></script>
+		<script src="script/vendor/moment.js"></script>
+		<style>
+			.aa {
+				position: relative;
+				width: 200px;
+				height: 80px;
+			}
+			
+			.errors p {
+				position: absolute;
+				right: 0;
+				top: 10px;
+			}
+			
+			.kong {
+				color: green;
+			}
+			.cha{
+				color: red;
+			}
+		</style>
+
+		<div id="app">
+			<iframe width="420" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&py=hebeiqu&num=1"></iframe>
+			<validator name="validation">
+				<!--<form>-->
+					<div class="username-field aa">
+						<label >celect:</label>
+						<select  v-model="meetRoomNew" v-validate:celect="{ required:true }">
+							<option value="1">一</option>
+							<option value="2">二</option>
+							<option value="3">三</option>
+							<option value="4">四</option>
+							<option value="5">五</option>
+						</select>
+						
+						<div class="errors">
+							<p v-if="!$validation.celect.required" class="kong">√</p>
+						</div>
+					</div>
+					<div class="username-field aa">
+						<label>username:</label>
+						<input type="text" placeholder="1-5字预约人姓名" v-validate:username="{ required:true,minlength: 1, maxlength: 5 }" />
+						<div class="errors">
+							<p v-if="!$validation.username.required && !$validation.username.maxlength" class="kong">&radic;</p>
+							<p v-if="$validation.username.maxlength" class="cha">&times;</p>
+						</div>
+					</div>
+					<div class="comment-filed aa">
+						<label for="comment">comment:</label>
+						<input type="text" placeholder="1-10字预约内容" v-validate:content="{ required:true, minlength: 1, maxlength: 10 }" />
+						<div class="errors">
+							<p v-if="!$validation.content.required && !$validation.content.maxlength" class="kong">√</p>
+							<p v-if="$validation.content.maxlength" class="cha">×</p>
+						</div>
+					</div>
+					<input type="button" value="send" :disabled="!$validation.valid" />
+			<!--	</form>-->
+			</validator>
+		</div>
+		<script src="//cdn.bootcss.com/vue/1.0.24/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdn.bootcss.com/vue-validator/2.1.3/vue-validator.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				$('input,textarea').placeholder();
+				console.log(moment().format("YYYY-MM-DD HH:mm")); //当前时间 
+				console.log(moment('2017-10-20').isBefore(moment().format("YYYY-MM-DD HH:mm"))); //当前时间的前10天时间 
+			})
+			new Vue({
+				el: '#app',
+				data:{
+					meetRoomNew:''
+				}
+				
+			});
+		</script>
+
+	</body>
+
+</html>

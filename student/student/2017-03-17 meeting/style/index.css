@@ -5,11 +5,14 @@
 body{
 	background: url(../image/bg2.jpg);
 	background-size:cover;
+	
 }
 /*导航栏*/
 .navbar{
+	display: inline-block;
 	background: rgba(255,255,255,0.4)!important;
 	margin-bottom: 0!important;
+	
 }
 .nav-header {
 	padding: 5px 40px;
@@ -69,6 +72,13 @@ body{
 .meet-right{
 	width: 80%;
 	height: 700px;
+}
+.el-form-item__error{
+	position: absolute;
+	top: 10px;
+	left: 300px;
+	color: green;
+	font-size: 30px;
 }
 /*日历区*/
 .date{
@@ -289,17 +299,23 @@ body{
 	width: 400px;
 	border:1px dashed #CACACB;
 	border-radius: 6px;
-	margin:10px auto;
+	margin: 5px auto;
 }
 .order-time{
-	height: 80px;
+	border:none;
+	height: 100px;
+	margin: 0 auto;
 }
 .order-box{
+	border:1px dashed #CACACB;
 	width: 50%;
-	height: 78px;
+	height: 95px;
 	float: left;
 	font-family: "微软雅黑";
 }
+/*.or-time{
+	width: 50px;
+}*/
 .order-box:nth-child(1){
 	border-right:1px dashed #CACACB;
 }
@@ -308,41 +324,44 @@ body{
 	text-align: center;
 	color: #98BDD1;
 }
-.order-box select{
+/*.order-box select{
 	font-size: 14px;
 	border:none;
 	color: #484A4C;
 	outline:medium;
-}
+}*/
 .order-text{
-	height: 140px;
-	margin-bottom: 30px;
+	height: 120px;
+	margin-bottom: 70px;
 }
-.order-text div:nth-child(1){
-	height: 45px;
-	line-height: 45px;
+/*.order-text div:nth-child(1){
+	height: 55px;
+	line-height: 55px;
 	border-bottom:1px dashed #CACACB;
 }
 .order-text div:nth-child(2){
-	height：95px;
-	line-height: 95px;
-}
+	border-bottom:1px dashed red;
+	height：75px;
+	line-height:45px;
+}*/
 .order-text input{
 	display: inline-block;
-	width: 90%;
+	width: 100%;
 	border:none;
 	font-size: 14px;
 	font-family: "微软雅黑";
 	outline:medium;
 }
 .order-peaple{
-	line-height: 20px;
-	height: 40px;
+	line-height: 50px;
+	height: 50px;
+	border-bottom:1px dashed #CACACB;
 }
 .order-content{
-	line-height: 20px;
-	height: 40px;
-	border: 1px solid red;
+	
+	/*line-height: 40px;
+	height: 80px;
+	border: 1px solid red;*/
 }
 .roomChoose{
 	width: 150px;
@@ -351,13 +370,15 @@ body{
 	font-size: 14px;
 	font-family: "微软雅黑";
 	position: absolute;
-	bottom: 40px;
-	left: 40px;
+	bottom: 45px;
+	left: 50px;
 }
 .roomChoose select{
-	border:none;
+	/*border:none;
 	outline:medium;
 	color: #484A4C;
+	padding-left: 50px;*/
+	
 }
 .btnChoose button{
 	width: 80px;
@@ -365,7 +386,7 @@ body{
 	font-family: "微软雅黑";
 	color: #fff;
 	position: absolute;
-	bottom: 20px;
+	bottom: -10px;
 } 
 .order-del{
 	right: 140px;

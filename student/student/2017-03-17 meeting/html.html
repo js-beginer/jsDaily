@@ -1,0 +1,71 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+ <!-- 触发JS刷新-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>会议室预约系统</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+		<link rel="stylesheet" href="<%=path%>/style/login.css" />	
+		<link rel="stylesheet" href="<%=path%>/style/vendor/bootstrap.css"/>
+		<link rel="stylesheet" href="<%=path%>/style/vendor/element-ui.css"/>
+		
+  </head>
+  
+  <body>
+		<div id="login" class="container">
+			<div class="login">
+				<h1>会议室预约系统</h1>
+				<el-form :model="ruleForm" :rules="rules" ref="ruleForm" @keydown.enter.native="login('ruleForm')">
+					<div class="login-box">
+						<el-form-item label-width="100px" class="demo-ruleForm" label="用户名" prop="userName" style="display: inline-block;">
+						    <el-input v-model="ruleForm.userName"  placeholder="请输入您的用户名" style="display: inline-block;"></el-input>
+						</el-form-item>
+					</div>
+					<div class="login-box">
+						<el-form-item label-width="100px" class="demo-ruleForm" label="密    码" prop="password" style="display: inline-block;">
+						    <el-input type="password" v-model="ruleForm.password"  auto-complete="off" placeholder="请输入您的密码" style="display: inline-block;"></el-input>
+						</el-form-item>		
+					</div>
+					<!-- 验证码 -->
+					<div class="login-box">
+						<el-form-item label-width="100px" class="demo-ruleForm" label="验证码 " prop="verifyCode" style="display: inline-block;">
+							<el-input v-model="ruleForm.verifyCode" placeholder="验证码" id="authImage" name="authImage" style="display: inline-block;"></el-input>
+						</el-form-item>	
+						<img id="img" src="authImage"  @click="changeImg()"/>
+	  				</div>
+					<div  class="login-erro" v-bind:class="{'login-show':loginErro}">用户名密码错误^-^</div>
+					<div  class="login-erro" v-bind:class="{'login-show':loginErro1}">验证码错误</div>
+					<el-form-item>
+						<el-button type="primary"  class="btn btn-danger"  @click="login('ruleForm')">确定</el-button>
+					</el-form-item>
+				</el-form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var path = "<%=basePath%>";
+	</script>
+	<script src="<%=path%>/script/vendor/jquery-1.11.1.js"></script>
+	<script src="<%=path%>/script/vendor/promise.js"></script>
+	<script src="<%=path%>/script/vendor/vue.js"></script>
+	<script src="<%=path%>/script/vendor/vue-resource.min.js"></script>
+	<script src="<%=path%>/script/vendor/element-ui.js"></script>
+	<script src="<%=path%>/script/login.js"></script>
+	<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<!--背景图片自动更换-->
+<script src="js/supersized.3.2.7.min.js"></script>
+<script src="js/supersized-init.js"></script>
+	<script type="text/javascript">
+	     
+	</script>
+</html>

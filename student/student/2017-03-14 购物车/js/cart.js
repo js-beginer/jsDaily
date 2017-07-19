@@ -10,6 +10,7 @@ var vm = new Vue({
 	filters:{
 		formatMoney: function (value) {
 			return "￥" + value.toFixed(2);
+			console
 		}
 	},
 	mounted: function () {

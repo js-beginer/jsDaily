@@ -1,32 +1,66 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>会议室预定系统</title>
-		<link rel="stylesheet" href="../../style/vendor/bootstrap.css"/>
-		<link rel="stylesheet" href="../../style/index.css" />	
-		<script src="../../script/vendor/jquery-3.2.0.min.js"></script>
-		
-		<!--日期选择插件-->
-		<link type="text/css" href="../../style/vendor/jquery-ui-1.11.4.css" rel="stylesheet" />
-	    <script type="text/javascript" src="../../script/vendor/jquery-1.11.1.js"></script>
-		<script type="text/javascript" src="../../script/vendor/jquery-ui-1.11.4.js"></script>
-		<script type="text/javascript" src="../../script/vendor/jquery-ui-timepicker-addon.js"></script>
-  		<script src="../../script/vendor/jquery.ui.datepicker-zh-CN.js"  type="text/javascript"></script>
-  		
+		<link rel="stylesheet" href="<%=path%>/style/index.css" />	
+		<link rel="stylesheet" href="<%=path%>/style/vendor/bootstrap.css"/>
+		<link rel="stylesheet" href="<%=path%>/style/vendor/element-ui.css"/>
+		<script src="<%=path%>/script/vendor/jquery-3.2.0.min.js"></script>
+		<script src="<%=path%>/script/vendor/jquery.placeholder.js"  type="text/javascript"></script>
+		<!--timepicker-->
+		<link rel="stylesheet" href="<%=path%>/style/vendor/jquery-ui-1.11.4.css"/>
+	    <script src="<%=path%>/script/vendor/jquery-1.11.1.js"></script>
+		<script src="<%=path%>/script/vendor/jquery-ui-1.11.4.js"></script>
+		<script src="<%=path%>/script/vendor/jquery-ui-timepicker-addon.js"></script>
+  		<script src="<%=path%>/script/vendor/jquery.ui.datepicker-zh-CN.js"  type="text/javascript"></script>
+  		<style>
+			.el-form-item__error{
+				position: absolute;
+				top: 10px;
+				left: -20px;
+				font-size: 20px;
+			}	
+			.el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-textarea__inner {
+				 border-color: #bfcbd9; 
+			}
+			.el-date-editor.el-input {
+				margin-left: 4px;
+			    width: 105px;
+			   
+			}
+			.el-input__inner{
+				border:1px dashed #CACACB;
+				height: 40px;
+				/*line-height: -1; */
+			}
+			.el-date-editor.el-input  .el-input__inner{
+				 border: none;
+			}
+			.time-select-item {
+			    padding: 8px 28px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="meetApp">
 			<nav class="navbar navbar-default">
 				<div class="nav-header">
-			      		<img src="../../image/logo.png" />
+			      	<img src="<%=path%>/image/logo.png" />
 			    </div>
 				<ul class="nav-body">
 				    <li><a href="#">退出</a></li>
-				    <li><a href="#">Hello,赵婧</a></li>
+				    <li><a href="#">Hello</a></li>
 				</ul>
 			</nav>
-		
 			<div class="main">
 				<div class="box meet-left">
 					<div class="zone date">
@@ -51,7 +85,7 @@
 						</table>
 						<div class="instBtn">
 							<div class="instBtn-box">
-								<input type="button" class="btn"  value="回到今日" />
+								<input type="button" class="btn" @click="orderView"   id="gotoToday" value="回到今日" />
 							</div>
 							<div class="instBtn-box">
 								<input type="button" class="btn" @click="addConfirm" value="添加预约">
@@ -62,10 +96,7 @@
 				</div>
 				<div class="box meet-right">
 					<div class="zone order">
-						<!--<div class="order-date" id="alternate">{{orderList[0].Appointment_date}}</div>-->
 						<div class="order-date" id="alternate">{{orderList.chooseDate}}</div>
-						<div></div>
-						<!--行程表格-->
 						<div id="orderTable">
 							<ul class="order-thead">
 								<li></li>
@@ -91,10 +122,10 @@
 							<div id="liBoxClass" v-html="this.allText"></div>
 	
 							<div class="orderBox"  v-for="item in orderList.list">
-								<div class="move"   v-on:click="resConfirm(item)"  v-bind:style="orderStyle(item.conf_id,item.Appointment_begin_time,item.Appointment_end_time)">
-									<span>{{item.Appointment_begin_time | timeSort}}</span>
+								<div class="move"   v-on:click="resConfirm(item)"  v-bind:style="orderStyle(item.conf_id,item.appointment_begin_time,item.appointment_end_time)">
+									<span>{{item.appointment_begin_time | timeSort}}</span>
 									<span>~</span>
-									<span>{{item.Appointment_end_time | timeSort}}</span>
+									<span>{{item.appointment_end_time | timeSort}}</span>
 									<span>{{item.user_name}}</span>
 								</div>
 							</div>
@@ -111,88 +142,57 @@
 								<button class="close" data-dismiss="modal" @click="addFlag=false">&times;</button>
 							</div>
 							<div class="modal-body">
-								<form class="form-horizontal">
+								<el-form :model="ruleForm" :rules="rules" ref="ruleForm" >
 									<div class="form-group has-feedback text-center">
 										<div class="order-time">
-											<div class="order-box">{{myDate}}
+											<div class="order-box">
 												<h1>开始时间</h1>
-												<select v-model="startTimeNew">
-													<option value="08:30">08:30</option>
-													<option value="09:00">09:00</option>
-													<option value="09:30">09:30</option>
-													<option value="10:00">10:00</option>
-													<option value="10:30">10:30</option>
-													<option value="11:00">11:00</option>
-													<option value="11:30">11:30</option>
-													<option value="12:00">12:00</option>
-													<option value="12:30">12:30</option>
-													<option value="13:00">13:00</option>
-													<option value="13:30">13:30</option>
-													<option value="14:00">14:00</option>
-													<option value="14:30">14:30</option>
-													<option value="15:00">15:00</option>
-													<option value="15:30">15:30</option>
-													<option value="16:00">16:00</option>
-													<option value="16:30">16:30</option>
-													<option value="17:00">17:00</option>
-												</select>
+													<el-form-item prop="startTimeNew" required >
+														<el-time-select  v-model="ruleForm.startTimeNew" :picker-options="{start: '08:30',step: '00:30',end: '17:00'}" placeholder="选择时间"></el-time-select>
+													</el-form-item>
 											</div>
 											<div class="order-box">
 												<h1>结束时间</h1>
-												<select v-model="endTimeNew">
-													<option value="08:30">08:30</option>
-													<option value="09:00">09:00</option>
-													<option value="09:30">09:30</option>
-													<option value="10:00">10:00</option>
-													<option value="10:30">10:30</option>
-													<option value="11:00">11:00</option>
-													<option value="11:30">11:30</option>
-													<option value="12:00">12:00</option>
-													<option value="12:30">12:30</option>
-													<option value="13:00">13:00</option>
-													<option value="13:30">13:30</option>
-													<option value="14:00">14:00</option>
-													<option value="14:30">14:30</option>
-													<option value="15:00">15:00</option>
-													<option value="15:30">15:30</option>
-													<option value="16:00">16:00</option>
-													<option value="16:30">16:30</option>
-													<option value="17:00">17:00</option>
-												</select>
+												<el-form-item prop="endTimeNew" required >
+													<el-time-select  v-model="ruleForm.endTimeNew" :picker-options="{start: '08:30',step: '00:30',end: '17:00'}" placeholder="选择时间"></el-time-select>
+												</el-form-item>
 											</div>
 										</div>
 										<div class="order-text">
 											<div>
-												<input type="text" class="order-peaple" v-model="userNameNew" placeholder="预约人">
+												<el-form-item prop="userNameNew">
+													<el-input v-model="ruleForm.userNameNew"  class="order-peaple" placeholder="预约人（1~5字符）"></el-input>
+												</el-form-item>
 											</div>
 											<div>
-												<input type="text" class="order-content" v-model="contentNew"  placeholder="会议内容">
+												<el-form-item prop="contentNew">
+													<el-input v-model="ruleForm.contentNew"  class="order-content" placeholder="会议内容（1~10字符）"></el-input>
+												</el-form-item>
 											</div>
 										</div>
 									</div>
 									<div class="form-group text-center">
-										<div class="roomChoose">第
-											<select  v-model="meetRoomNew">
-												<option value="1">一</option>
-												<option value="2">二</option>
-												<option value="3">三</option>
-												<option value="4">四</option>
-												<option value="5">五</option>
-											</select>
-											会议室
-										</div>
+										<el-form-item prop="meetRoomNew" class="roomChoose">
+											<el-select v-model="ruleForm.meetRoomNew" placeholder="选择会议室">
+												<el-option label="第一会议室" value="1"></el-option>
+												<el-option label="第二会议室" value="2"></el-option>
+												<el-option label="第三会议室" value="3"></el-option>
+												<el-option label="第四会议室" value="4"></el-option>
+												<el-option label="第五会议室" value="5"></el-option>
+											</el-select>
+										</el-form-item>
 										<div class="btnChoose">
-				               				<button class="order-ok btn btn-success" @click="addOrder">
-												确定
-				               				</button>
+											<el-form-item>
+												<el-button type="primary" class="order-ok btn btn-success" @click="addOrder('ruleForm')">确定</el-button>
+											</el-form-item>
 										</div>
 									</div>
-								</form>
+								</el-form>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="md-overlay" v-if="addFlag||resFlag"></div>
+				
 				<!--修改预约遮罩层-->
 				<div class="modal" v-bind:class="{'md-show':resFlag}">
 					<div class="modal-dialog">
@@ -207,7 +207,7 @@
 										<div class="order-time">
 											<div class="order-box">
 												<h1>开始时间</h1>
-												<select v-model="startTime">
+												<select v-model="beginTime">
 													<option>08:30</option>
 													<option>09:00</option>
 													<option>09:30</option>
@@ -257,7 +257,7 @@
 												<input type="text" class="order-peaple" v-model="userName" placeholder="预约人">
 											</div>
 											<div>
-												<input type="textare" class="order-content" v-model="content"  placeholder="会议内容">
+												<input type="text" class="order-content" v-model="content"  placeholder="会议内容">
 											</div>
 										</div>
 									</div>
@@ -273,10 +273,10 @@
 											会议室
 										</div>
 										<div class="btnChoose">
-											<button class="order-del btn btn-danger" @click="delConfirm">
+											<button type="button" @click="delConfirm" class="order-del btn btn-danger">
 												删除
 				               				</button>
-				               				<button class="order-ok btn btn-success">
+				               				<button type="button" @click="resOrder" class="order-ok btn btn-success">
 												确定
 				               				</button>
 										</div>
@@ -290,10 +290,11 @@
 			</div>
 		</div>
 	</body>
-<script src="../../script/vendor/jquery.placeholder.js"></script>
-<script src="../../script/vendor/moment.js"></script>
-<script src="../../script/vendor/vue.js"></script>
-<script src="../../script/vendor/vue-resource.min.js"></script>
-<script src="../../script/index.js"></script>
+	<script src="<%=path%>/script/vendor/moment.js"></script>
+	<script src="<%=path%>/script/vendor/vue.js"></script>
+	<script src="<%=path%>/script/vendor/vue-resource.min.js"></script>
+	<script src="<%=path%>/script/vendor/element-ui.js"></script>
+	
+	<script src="<%=path%>/script/index.js"></script>
 </html>
 

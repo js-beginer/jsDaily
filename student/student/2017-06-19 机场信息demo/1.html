@@ -1,0 +1,64 @@
+<!doctype html> 
+<html> 
+ 
+<head> 
+ <meta charset="utf-8"> 
+ <title>jQuery拖拽放大缩小插件idrag</title> 
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+ <style type="text/css"> 
+ .item1 { 
+  width: 405px; 
+  height: 291px; 
+  cursor: move; 
+  position: absolute; 
+  top: 30px; 
+  left: 30px; 
+  background-color: #FFF; 
+  border: 1px solid #CCCCCC; 
+  -webkit-box-shadow: 10px 10px 25px #ccc; 
+  -moz-box-shadow: 10px 10px 25px #ccc; 
+  box-shadow: 10px 10px 25px #ccc; 
+ } 
+  
+ .item2 { 
+  width: 200px; 
+  height: 100px; 
+  cursor: move; 
+  position: absolute; 
+  top: 400px; 
+  left: 100px; 
+  background-color: #FFF; 
+  border: 1px solid #CCCCCC; 
+  -webkit-box-shadow: 10px 10px 25px #ccc; 
+  -moz-box-shadow: 10px 10px 25px #ccc; 
+  box-shadow: 10px 10px 25px #ccc; 
+  line-height: 100px; 
+  text-align: center; 
+ } 
+  
+ body { 
+  background-color: #F3F3F3; 
+ } 
+ </style> 
+</head> 
+ 
+<body> 
+ <div id="mydiv" style="width:800px; height:800px; border-style:solid"> 
+  <div id="div1" class="resize-item item1"> 
+   <img src="images/dog.png" width="100%" height="100%"> 
+  </div> 
+  <div class="resize-item item2"> 
+   你是我的小小狗 
+  </div> 
+ </div> 
+ <script src="js/jquery-1.11.3.min.js"></script> 
+ <script type="text/javascript" src="1.js"></script> 
+ <script type="text/javascript"> 
+  new ZResize({ 
+   stage: "#mydiv", //舞台 
+   item: '#div1', //可缩放的类名 
+  }); 
+ </script> 
+</body> 
+ 
+</html>

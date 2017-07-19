@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!-- 引入样式 -->
+		<!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">-->
+		<link rel="stylesheet" href="style/vendor/element-ui.css"/>
+		<style>
+			body{
+				width: 400px;
+				height: 400px;
+				background-image:url(image/bg2.jpg) ;
+			}
+			#app{
+				width: 500px;
+				height: 500px;
+			}
+			.el-form-item__error{
+				position: absolute;
+				top: 10px;
+				left: 300px;
+				color: green;
+				border: 1px solid;
+			}
+			.el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-textarea__inner {
+    			 border-color: #bfcbd9; 
+			}		
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" >
+				
+				<el-form-item prop="name">
+					<el-input v-model="ruleForm.name"></el-input>
+				</el-form-item>
+				
+				<el-form-item prop="region">
+					<el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+						<el-option label="区域一" value="shanghai"></el-option>
+						<el-option label="区域二" value="beijing"></el-option>
+					</el-select>
+				</el-form-item>
+				
+					
+				<el-form-item prop="value1" required>
+					<el-time-select v-model="ruleForm.value1" :picker-options="{start: '08:30',step: '00:30',end: '17:00'}" placeholder="选择时间"></el-time-select>
+				</el-form-item>
+						
+
+				<el-form-item prop="desc">
+					<el-input type="textarea"  v-model="ruleForm.desc" placeholder="这里"></el-input>
+				</el-form-item>
+				
+				<el-form-item>
+					<el-button plain @click="open7"> 偏移的消息</el-button>
+					<el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+					
+					
+					<el-popover ref="popover5" placement="top" width="160" v-model="visible2">
+					  <p>确定重置吗？</p>
+					  <div style="text-align: right; margin: 0">
+					    <el-button size="mini" type="text" @click="visible2 = false">取消</el-button>
+					    <el-button type="primary" size="mini" @click="resetForm('ruleForm')">确定</el-button>
+					  </div>
+					</el-popover>
+					<el-button v-popover:popover5>重置</el-button>
+					
+					
+					
+					
+					<el-button @click="resetForm('ruleForm')">重置</el-button>
+				</el-form-item>
+				
+				
+			</el-form>
+			
+			<el-pagination
+			  small
+			  layout="prev, pager, next"
+			  :total="50">
+			</el-pagination>
+		</div>
+	</body>
+	<!-- 先引入 Vue -->
+	<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+	<script src="script/vendor/vue.js"></script>
+	<script src="script/vendor/element-ui.js"></script>
+	
+	<script>
+		var Main = {
+			data:function(){
+				return {
+					visible2: false,
+					ruleForm: {
+						name: '',
+						region: '',
+						value1: '',
+						desc: ''
+						
+					},
+					rules: {
+						name: [{
+								required: true,
+								message: '请输入活动名称',
+								trigger: 'blur'
+							},
+							{
+								min: 3,
+								max: 5,
+								message: '长度在 3 到 5 个字符',
+								trigger: 'blur'
+							}
+						],
+						region: [{
+							required: true,
+							message: '请选择活动区域',
+							trigger: 'change'
+						}],
+						value1: [{
+
+							editable: false,
+							required: true,
+							message: '时间',
+							trigger: 'change',
+							align: 'right',
+							clearable: false,
+							disabled: true
+						}],
+						desc: [{
+							required: true,
+							message: '请填写活动形式',
+							trigger: 'blur'
+						}]
+					}
+				};
+			},
+			methods: {
+				open7: function () {
+			        this.$notify({
+			          title: '警告',
+			          message: '这是一条警告的提示消息',
+			          type: 'warning'
+			        });
+			   },
+				submitForm:function(formName) {
+					this.$refs[formName].validate(function(valid){
+						if(valid) {
+							alert('submit!');
+						} else {
+							console.log('error submit!!');
+							return false;
+						}
+					});
+				},
+				resetForm :function (formName) {
+					this.visible2 = false;
+					this.$refs[formName].resetFields();
+				}
+			}
+		}
+		var Ctor = Vue.extend(Main)
+		new Ctor().$mount('#app')
+	</script>
+
+</html>
